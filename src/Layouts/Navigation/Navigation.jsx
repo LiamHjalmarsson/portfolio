@@ -15,14 +15,15 @@ const Navigation = () => {
     let navigationItems = (
         <ul className="hidden padd:flex">
             <NavigationItem address="home" title="Home" />
-            <NavigationItem address="about" title="About" />
+            <NavigationItem address="about" title="Resume" />
+            <NavigationItem address="projects" title="Projects" />
         </ul>
     );
 
     return (
-        <nav className="items-center flex justify-center fixed w-full h-40 z-40 bg-slate-800 top-0">
+        <nav className="items-center flex justify-center fixed w-full h-40 z-40 bg-dark_500 top-0">
             <div className="flex items-center w-full max-w-[1500px] group relative m-8">
-                <div className="h-28 w-28 border-indigo-400 border-t-8 border-l-8 absolute left-0 group-hover:w-full group-hover:h-28 transition-all duration-300 ease-in-out"></div>
+                <div className="h-28 w-28 border-green_500 border-t-8 border-l-8 absolute left-0 group-hover:w-full group-hover:h-28 transition-all duration-1000 ease-in-out"></div>
                 <div className="flex w-full justify-between items-center z-10 px-8">
                     <div>
                         <Logo />
@@ -39,7 +40,7 @@ const Navigation = () => {
                         </a>
                     </div>
                 </div>
-                <div className="absolute border-indigo-400 border-b-8 border-r-8 h-28 w-28 right-0 group-hover:w-full group-hover:h-28 transition-all duration-300 ease-in-out"></div>
+                <div className="absolute border-green_500 border-b-8 border-r-8 h-28 w-28 right-0 group-hover:w-full group-hover:h-28 transition-all duration-1000 ease-in-out"></div>
             </div>
             <div className={`w-full padd:hidden absolute top-40 z-10 bg-slate-800 py-8 ${isOpen ? "flex" : "hidden"}`}>
                 <ul className="flex flex-col justify-between items-center w-full h-96 z-10">

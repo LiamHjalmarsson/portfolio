@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GetOptionsSideBar = ({selectedBulletsIndex, handelOption}) => {
+const GetOptionsBar = ({selectedBulletsIndex, handelOption}) => {
     let sideBarOptions = [
         {
             label: "Education",
@@ -54,4 +54,4 @@ const GetOptionsSideBar = ({selectedBulletsIndex, handelOption}) => {
     ));
 }
 
-export default GetOptionsSideBar;
+export default GetOptionsBar;
