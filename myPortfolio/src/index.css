@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.highlighted-icon.bounce {
+    animation: bounce 1s ease;
+}
+
+.details-enter {
+    left: 100%;
+}
+
+.details-enter-active {
+    left: 0;
+    transition: left 500ms;
+}
+
+.details-exit {
+    left: 0;
+}
+
+.details-exit-active {
+    left: -100%;
+    transition: left 450ms;
+}
