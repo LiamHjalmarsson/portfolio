@@ -1,15 +1,25 @@
 import React from 'react';
-import Heading from '../Heading/Heading';
 
 const Education = () => {
     return (
-        <div className='resume-screen-container absolute justify-center h-full flex flex-col w-full p-4 bg-indigo-600 text-slate-200' key="education">
-            <Heading 
-                heading="Malmö University, Sweden"
-                subheading="Bachelor degree in Media production and processdesign"
-                fromDate="2021"
-                toDate="2024"
-            />
+        <div className='absolute justify-center min-h-40 grid grid-cols-2 gap-8 w-full' key="education">
+            <div className="bg-green_400 flex flex-col justify-center h-full p-8">
+                <h2 className='text-2xl'>
+                    Malmö University
+                </h2>
+                <div className='flex justify-between mt-2'>
+                    <div>
+                        <p>
+                            Bachelor degree in Media technology 
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            2021 - 2024
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

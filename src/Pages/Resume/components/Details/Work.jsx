@@ -1,24 +1,24 @@
 import React from 'react';
-import Heading from '../Heading/Heading';
 
 const Work = () => {
     return (
-        <div className='resume-screen-container justify-center flex flex-col h-full w-full p-4 bg-indigo-600 text-slate-200 absolute' key="work">
-            <Heading 
-                heading="Sjöbergska huset AB"
-                subheading="Intership"
-                fromDate="2023"
-                toDate="2023"
-            />
-            <div className='experience-description mt-2 text-center max-w-full'>
-                <p className='resume-description-text'>
-
-                </p>
-            </div>
-            <div className='experince-description'>
-                <p className='resume-description-text'>
-
-                </p>
+        <div className='absolute justify-center min-h-40 grid grid-cols-2 gap-8 w-full' key="work">
+            <div className="bg-green_400 flex flex-col justify-center h-full p-8">
+                <h2 className='text-2xl'>
+                    Sjöbergska Huset
+                </h2>
+                <div className='flex justify-between mt-2'>
+                    <div>
+                        <p>
+                            Intership 
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            Sep 2023 - Dec 2023
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

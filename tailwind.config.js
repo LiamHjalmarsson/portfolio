@@ -20,6 +20,7 @@ export default {
       },
       colors: {
         whiteish: "#FAFAFA",
+        green_400: "#00AA8A",
         green_500: "#00AA7A",
         palatine_blue_500: "#4044E1",
         blue_500: "#133055",

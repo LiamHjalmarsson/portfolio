@@ -44,6 +44,7 @@
 }
 
 .details-exit-active {
-    left: -100%;
-    transition: left 450ms;
+    left: 100%;
+    opacity: 0%;
+    transition: left 500ms, opacity 300ms;
 }

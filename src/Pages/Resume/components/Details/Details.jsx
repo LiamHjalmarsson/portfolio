@@ -37,7 +37,7 @@ const Details = ({show}) => {
     ];
     
     return (
-        <div className='flex relative h-full '>
+        <div className='flex relative h-[400px]'>
             <CSSTransition
                 in={show === 'Education'}
                 timeout={500}
@@ -72,15 +72,6 @@ const Details = ({show}) => {
                 unmountOnExit
             >
                 <Projects projects={projectDetails} />
-            </CSSTransition>
-
-            <CSSTransition
-                in={show === 'Interests'}
-                timeout={500}
-                classNames="details"
-                unmountOnExit
-            >
-                <Interests />
             </CSSTransition>
         </div>
     );

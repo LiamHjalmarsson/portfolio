@@ -4,12 +4,14 @@ import Heading from '../Heading/Heading';
 const Projects = ({projects}) => {
 
     return (
-        <div className='resume-screen-container projects-container justify-center h-full w-full p-4 bg-indigo-600 text-slate-200 absolute' key="projects">
+        <div className='absolute justify-center min-h-40 grid grid-cols-2 gap-8 w-full' key="projects">
             {projects.map((project, index) => (
-                <Heading 
-                    key={index}
-                    heading={project.title}
-                />
+                <div className="bg-green_400 flex flex-col justify-center h-full p-8">
+                    <Heading 
+                        key={index}
+                        heading={project.title}
+                    />
+                </div>
             ))}
         </div>
     );

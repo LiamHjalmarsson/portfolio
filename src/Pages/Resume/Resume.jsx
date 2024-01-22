@@ -12,14 +12,12 @@ const Resume = () => {
     };
 
     return (
-        <div className='mt-8 h-full w-full flex justify-center items-center'>
+        <div className='h-full w-full flex justify-center items-center p-8'>
             <div className='w-full'>
-                <nav className='flex justify-center h-full p-2 w-full relative'>
-                    <div className='flex justify-between w-full gap-4 relative z-20'>
-                        <GetOptionsBar selectedBulletsIndex={selectedBulletsIndex} handelOption={handelOption} />
-                    </div>
+                <nav className='flex justify-between w-full gap-4'>
+                    <GetOptionsBar selectedBulletsIndex={selectedBulletsIndex} handelOption={handelOption} />
                 </nav>
-                <div className={`w-full my-8 overflow-x-hidden h-40`}>
+                <div className={`w-full my-8 overflow-x-hidden`}>
                     <Details show={selectedOption} />
                 </div>
             </div>
