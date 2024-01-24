@@ -3,7 +3,7 @@ import ButtonSecondary from './ButtonSubmary';
 
 const CvButton = () => {
     return (
-        <ButtonSecondary width="true">
+        <ButtonSecondary>
             <a href="liam.pdf" download="liam.pdf">
                 Get Resume
             </a>

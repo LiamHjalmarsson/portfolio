@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ButtonSecondary = ({children, button, width = false, onClick, custom}) => {
+const ButtonSecondary = ({children, button, onClick, custom}) => {
     return (
         <button 
             button={button} 
             onClick={onClick} 
-            className={`rounded-lg py-4 px-8 ${width ? "w-full" : "full padd:w-1/2"} ${custom ? custom : ""} cursor-pointer text-lg font-medium border-green_500 text-green_500 border-2 hover:text-whiteish transition-colors duration-500`}
+            className={`rounded-lg py-4 px-8 w-full border-2 border-green_400 cursor-pointer text-lg font-medium text-md hover:bg-green_500 hover:border-green_500 transition-colors duration-200`}
         >
             {children}
         </button>

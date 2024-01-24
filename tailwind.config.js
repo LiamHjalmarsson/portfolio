@@ -22,10 +22,13 @@ export default {
         whiteish: "#FAFAFA",
         green_400: "#00AA8A",
         green_500: "#00AA7A",
+        begie_500: "#E9DFCE",
+        burgendy_500: "#800020",
         palatine_blue_500: "#4044E1",
         blue_500: "#133055",
         gray_500: "#20221E",
         rasin_500: "#161221",
+        dark_600: "#1E2125",
         dark_500: "#040615",
       },
       backgroundImage: {

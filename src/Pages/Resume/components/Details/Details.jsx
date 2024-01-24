@@ -1,21 +1,19 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Education from './Education';
-import Work from './Work';
-import Skills from './Skills';
-import Projects from './Projects';
-import Interests from './Interests';
+import Education from './components/Education';
+import Work from './components/Work';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Interests from './components/Interests';
 
 const Details = ({show}) => {
 
     let skillDetails = [
         {
             skill: "Javascript",
-            rating: 80
         },  
         {
-            skill: "React Js",
-            rating: 60
+            skill: "React",
         },  
     ];
 
