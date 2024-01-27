@@ -4,7 +4,7 @@ import GetOptionsBar from './components/SideBar/GetOptions';
 
 const About = () => {
     let [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
-    let [selectedOption, setSelectedOption] = useState("Education");
+    let [selectedOption, setSelectedOption] = useState("education");
 
     let handelOption = (option, index) => {
         setSelectedOptionIndex(index);

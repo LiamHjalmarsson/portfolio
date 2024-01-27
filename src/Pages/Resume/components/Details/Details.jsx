@@ -3,46 +3,12 @@ import Detail from './components/Detail';
 
 const Details = ({ show }) => {
 
-    let skillDetails = [
-        {
-            skill: "js",
-            icon: "bg-js"
-        },
-        {
-            skill: "react",
-            icon: "bg-react"
-        },
-        {
-            skill: "figma",
-            icon: "bg-figma"
-        },
-        {
-            skill: "html",
-            icon: "bg-html"
-        },
-        {
-            skill: "svelte",
-            icon: "bg-svelte"
-        },
-
-        {
-            skill: "webflow",
-            icon: "bg-webflow"
-        },
-        {
-            skill: "tailwind",
-            icon: "bg-tailwind"
-        },
-        {
-            skill: "php",
-            icon: "bg-php"
-        },
-    ];
+    let skillDetails = ["js", "react", "tailwind", "css", "html", "php", "laravel", "webflow", "svelte", "figma"];
 
     return (
         <div className={`flex relative min-h-80 w-full gap-8`}>
             {
-                show === "Education" &&
+                show === "education" &&
                 <Detail id="education">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>
@@ -61,7 +27,7 @@ const Details = ({ show }) => {
             }
 
             {
-                show === "Work" &&
+                show === "work" &&
                 <Detail id="work">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>
@@ -79,21 +45,20 @@ const Details = ({ show }) => {
                 </Detail>
             }
 
-            {
-                show === "Skills" &&
+            {show === "skills" &&
                 <Detail id="skills">
                     <div className='flex gap-8 flex-wrap'>
                         {skillDetails.map((skill, index) => (
-                            <div key={index} className='h-24 w-24 shadow-nobel_300 shadow-sm rounded-full'>
-                                <div className={`h-full w-full rounded-full ${skill.icon} bg-contain bg-no-repeat bg-center`}></div>
-                            </div>
+                        <div key={index} className='h-24 w-24 shadow-nobel_300 shadow-sm rounded-full'>
+                            <div className={`h-full w-full rounded-full ${"bg-" + skill} bg-contain bg-no-repeat bg-center`}></div>
+                        </div>
                         ))}
                     </div>
                 </Detail>
             }
 
             {
-                show === "Interests" &&
+                show === "interests" &&
                 <Detail id="interests">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>
