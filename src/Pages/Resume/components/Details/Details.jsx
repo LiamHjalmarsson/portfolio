@@ -49,7 +49,7 @@ const Details = ({ show }) => {
                 <Detail id="skills">
                     <div className='flex gap-8 flex-wrap'>
                         {skillDetails.map((skill, index) => (
-                        <div key={index} className='h-24 w-24 shadow-nobel_300 shadow-sm rounded-full'>
+                        <div key={index} className='h-16 w-16 shadow-nobel_300 shadow-sm rounded-full'>
                             <div className={`h-full w-full rounded-full ${"bg-" + skill} bg-contain bg-no-repeat bg-center`}></div>
                         </div>
                         ))}
