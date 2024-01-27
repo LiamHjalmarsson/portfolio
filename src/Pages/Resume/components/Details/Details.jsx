@@ -1,76 +1,112 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import Education from './components/Education';
-import Work from './components/Work';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Interests from './components/Interests';
+import Detail from './components/Detail';
 
-const Details = ({show}) => {
+const Details = ({ show }) => {
 
     let skillDetails = [
         {
-            skill: "Javascript",
-        },  
+            skill: "js",
+            icon: "bg-js"
+        },
         {
-            skill: "React",
-        },  
+            skill: "react",
+            icon: "bg-react"
+        },
+        {
+            skill: "figma",
+            icon: "bg-figma"
+        },
+        {
+            skill: "html",
+            icon: "bg-html"
+        },
+        {
+            skill: "svelte",
+            icon: "bg-svelte"
+        },
+
+        {
+            skill: "webflow",
+            icon: "bg-webflow"
+        },
+        {
+            skill: "tailwind",
+            icon: "bg-tailwind"
+        },
+        {
+            skill: "php",
+            icon: "bg-php"
+        },
     ];
 
-    let projectDetails = [
-        {
-            title: "Portfolio",
-            used: ["React", "Node", "Tailwind"],
-            url: "",
-            github: "",
-            image: "",
-        },
-        {
-            title: "Leksaksbilen",
-            used: ["Webflow", "Figma"],
-            url: "",
-            github: "",
-            image: "",
-        },
-    ];
-    
     return (
-        <div className='flex relative h-[400px]'>
-            <CSSTransition
-                in={show === 'Education'}
-                timeout={500}
-                classNames="details"
-                unmountOnExit
-            >
-                <Education />
-            </CSSTransition>
+        <div className={`flex relative min-h-80 w-full gap-8`}>
+            {
+                show === "Education" &&
+                <Detail id="education">
+                    <div>
+                        <h2 className='text-2xl max-padd:text-center'>
+                            Malmö University
+                        </h2>
+                        <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                            <div className='text-center max-padd:w-full'>
+                                Bachelor degree in Media technology
+                            </div>
+                            <div className='max-mobil:mt-2 text-center max-padd:w-full'>
+                                2021 - 2024
+                            </div>
+                        </div>
+                    </div>
+                </Detail>
+            }
 
-            <CSSTransition
-                in={show === 'Work'}
-                timeout={500}
-                classNames="details"
-                unmountOnExit
-            >
-                <Work />
-            </CSSTransition>
+            {
+                show === "Work" &&
+                <Detail id="work">
+                    <div>
+                        <h2 className='text-2xl max-padd:text-center'>
+                            Sjöbergska Huset
+                        </h2>
+                        <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                            <div className='text-center max-padd:w-full'>
+                                Internship 
+                            </div>
+                            <div className='max-mobil:mt-2 text-center max-padd:w-full'>
+                                Sep 2023 - Dec 2023
+                            </div>
+                        </div>
+                    </div>
+                </Detail>
+            }
 
-            <CSSTransition
-                in={show === 'Skills'}
-                timeout={500}
-                classNames="details"
-                unmountOnExit
-            >
-                <Skills skills={skillDetails} />
-            </CSSTransition>
+            {
+                show === "Skills" &&
+                <Detail id="skills">
+                    <div className='flex gap-8 flex-wrap'>
+                        {skillDetails.map((skill, index) => (
+                            <div key={index} className='h-24 w-24 shadow-nobel_300 shadow-sm rounded-full'>
+                                <div className={`h-full w-full rounded-full ${skill.icon} bg-contain bg-no-repeat bg-center`}></div>
+                            </div>
+                        ))}
+                    </div>
+                </Detail>
+            }
 
-            <CSSTransition
-                in={show === 'Projects'}
-                timeout={500}
-                classNames="details"
-                unmountOnExit
-            >
-                <Projects projects={projectDetails} />
-            </CSSTransition>
+            {
+                show === "Interests" &&
+                <Detail id="interests">
+                    <div>
+                        <h2 className='text-2xl max-padd:text-center'>
+                            Traning
+                        </h2>
+                        <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                            <div className='text-center max-padd:w-full'>
+                                I belive in an active life style where working out and activeating my body
+                            </div>
+                        </div>
+                    </div>
+                </Detail>
+            }
         </div>
     );
 }

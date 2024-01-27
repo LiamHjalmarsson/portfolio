@@ -13,17 +13,17 @@
 }
 
 .details-enter-active {
-    left: 0;
+    left: 0%;
     transition: left 500ms;
 }
 
 .details-exit {
-    left: 0;
+    left: 0%;
 }
 
 .details-exit-active {
-    left: 100%;
+    left: -100%;
     opacity: 0%;
-    transition: left 500ms, opacity 300ms;
+    transition: left 500ms, opacity 500ms;
 }
 

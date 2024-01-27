@@ -7,8 +7,8 @@ import ProfileImage from './Components/Profile_Image';
 const Profile = () => {
     return (
         <div className='flex items-center justify-center text-center w-full h-full'>
-            <div className='flex-col padd:flex-row flex items-center gap-8 w-full justify-center h-full'>
-                <div className='w-full h-1/2 min-h-[500px] flex gap-8 flex-col items-center justify-center'>
+            <div className='flex-col padd:flex-row flex items-center gap-4 w-full justify-center h-full'>
+                <div className='w-full h-1/2 min-h-[500px] flex gap-4 flex-col items-center justify-center'>
                     <ProfileHeader />
                     <ProfileTypwriter />
                     <ProfileButtons />

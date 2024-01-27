@@ -22,14 +22,41 @@ export default {
         whiteish: "#FAFAFA",
         green_400: "#00AA8A",
         green_500: "#00AA7A",
-        begie_500: "#E9DFCE",
-        burgendy_500: "#800020",
-        palatine_blue_500: "#4044E1",
-        blue_500: "#133055",
-        gray_500: "#20221E",
-        rasin_500: "#161221",
         dark_600: "#1E2125",
         dark_500: "#040615",
+
+        // Nobel Black 
+        nobel_100: "#6f7174", 
+        nobel_200: "#595c5f", 
+        nobel_300: "#44474b", 
+        nobel_400: "#313337", 
+        nobel_500: "#1e2125", 
+        nobel_600: "#191b1f", 
+        nobel_700: "#131619", 
+        nobel_800: "#0e1013", 
+        nobel_900: "#090b0d",
+
+        // Caribbean Black 
+        caribbean_100: "#90d2f1", 
+        caribbean_200: "#7bcbef", 
+        caribbean_300: "#65c3ec", 
+        caribbean_400: "#4bbbe9", 
+        caribbean_500: "#26b3e6", 
+        caribbean_600: "#209bc8", 
+        caribbean_700: "#1984ab", 
+        caribbean_800: "#136e8e", 
+        caribbean_900: "#0d5873",
+
+        // Velvet Cosmos
+        velvet_100: "#8c7095", 
+        velvet_200: "#7a5a84", 
+        velvet_300: "#684473", 
+        velvet_400: "#562f62", 
+        velvet_500: "#451952", 
+        velvet_600: "#3b1446", 
+        velvet_700: "#31103b", 
+        velvet_800: "#270b2f", 
+        velvet_900: "#1e0725",
       },
       backgroundImage: {
         'home': "url('./src/Assets/Home/liam.png')",
@@ -37,7 +64,19 @@ export default {
         'work': "url('./src/Assets/About/work.svg')",
         "interests": "url('./src/Assets/About/interests.svg')",
         "skills": "url('./src/Assets/About/skills.svg')",
-        "projects": "url('./src/Assets/About/projects.svg')",
+
+
+        // skills 
+        'css': "url('./src/Assets/About/css.png')",
+        'figma': "url('./src/Assets/About/figma.png')",
+        'html': "url('./src/Assets/About/html.png')",
+        'js': "url('./src/Assets/About/js.png')",
+        'php': "url('./src/Assets/About/php.png')",
+        'react': "url('./src/Assets/About/react.png')",
+        'svelte': "url('./src/Assets/About/svelte.png')",
+        'tailwind': "url('./src/Assets/About/tailwind.png')",
+        'webflow': "url('./src/Assets/About/webflow.png')",
+
       },
       boxShadow: {
         right: '12px 0px 7px -7px',
@@ -46,7 +85,7 @@ export default {
         bottom: "0px 17px 13px -9px",
       },
       screens: {
-        'mobil': '320px',    
+        'mobil': '400px',    
         'padd': '760px',    
         'laptop': '960px',   
         'desktop': '1200px',    
