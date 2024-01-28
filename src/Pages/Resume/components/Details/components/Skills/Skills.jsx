@@ -1,9 +1,9 @@
 import React from "react";
 import Container from "../components/Container";
 import Card from "../components/Card";
-import Item from "./components/Item";
+import Category from "./components/Category";
 
-const Skills = () => {
+const Skills = ({show}) => {
     let skillDetails = [
         {
             skill: "html",
@@ -67,23 +67,15 @@ const Skills = () => {
         },
     ];
 
-    let skillTypes = ["front-end", "back-end", "ui/ux"];
+    const skillTypes = ["front-end", "back-end", "ui/ux"];
 
     return (
-        <Container id="skills">
-            {skillTypes.map((type, typeIndex) => (
-                <Card key={typeIndex}>
-                    <div className="flex gap-8 justify-center flex-wrap">
-                        {skillDetails
-                            .filter((skill) => skill.type === type)
-                            .map((skill) => (
-                                <div key={skill.skill} className="flex justify-center items-center flex-col">
-                                    <Item item={skill} />
-                                </div>
-                            ))}
-                    </div>
-                </Card>
-            ))}
+        <Container id="Skills" show={show}>
+            <Card show={show} id="Skills">
+                {skillTypes.map((type, typeIndex) => (
+                    <Category key={typeIndex} skillDetails={skillDetails} type={type} show={show} />
+                ))}
+            </Card>
         </Container>
     );
 };

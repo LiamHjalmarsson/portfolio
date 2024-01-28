@@ -1,10 +1,11 @@
 import React from 'react';
 import Container from '../components/Container';
+import Card from '../components/Card';
 
-const Education = () => {
+const Education = ({show}) => {
     return (
-        <Container id="education">
-            <div>
+        <Container id="Education" show={show}>
+            <Card>
                 <h2 className='text-2xl max-padd:text-center'>
                     Malmö University
                 </h2>
@@ -16,7 +17,7 @@ const Education = () => {
                         2021 - 2024
                     </div>
                 </div>
-            </div>
+            </Card>
         </Container>
     );
 }

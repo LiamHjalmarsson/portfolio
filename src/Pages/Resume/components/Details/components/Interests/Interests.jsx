@@ -1,10 +1,11 @@
 import React from 'react';
 import Container from '../components/Container';
+import Card from '../components/Card';
 
 const Interests = () => {
     return (
-        <Container id="interests">
-            <div>
+        <Container id="Interests">
+            <Card>
                 <h2 className='text-2xl max-padd:text-center'>
                     Traning
                 </h2>
@@ -13,7 +14,7 @@ const Interests = () => {
                         I belive in an active life style where working out and activeating my body
                     </div>
                 </div>
-            </div>
+            </Card>
         </Container>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = ({item}) => {
+const Skill = ({item}) => {
     return (
         <>
             <div className="h-16 w-16 shadow-nobel_300 shadow-sm rounded-full mb-2">
@@ -8,11 +8,11 @@ const Item = ({item}) => {
             </div>
             <div>
                 <h2 className='text-sm'>
-                    {item.skill}
+                    {item.level}
                 </h2>
             </div>
         </>
     );
 }
 
-export default Item;
+export default Skill;

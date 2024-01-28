@@ -6,16 +6,16 @@ import OptionItem from './OptionItem';
 const GetOptionsBar = ({selectedOptionIndex, handelOption}) => {
     let sideBarOptions = [
         {
+            label: "Skills",
+            icon: "bg-skills",
+        },
+        {
             label: "Education",
             icon: "bg-education"
         },
         {
             label: "Work",
             icon: "bg-work",
-        },
-        {
-            label: "Skills",
-            icon: "bg-skills",
         },
         {
             label: "Interests",
