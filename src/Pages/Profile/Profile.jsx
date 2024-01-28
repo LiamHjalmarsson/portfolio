@@ -6,9 +6,9 @@ import ProfileImage from './Components/Profile_Image';
 
 const Profile = () => {
     return (
-        <div className='flex items-center justify-center text-center w-full h-full'>
-            <div className='flex-col padd:flex-row flex items-center gap-4 w-full justify-center h-full'>
-                <div className='w-full h-1/2 min-h-[500px] flex gap-4 flex-col items-center justify-center'>
+        <div className='flex items-center justify-center text-center w-full h-[50vh] min-h-[400px] max-h-[500px]'>
+            <div className='flex-col padd:flex-row flex items-center gap-4 w-full justify-center h-[80%]'>
+                <div className='w-full h-full flex flex-col items-center justify-between'>
                     <ProfileHeader />
                     <ProfileTypwriter />
                     <ProfileButtons />
