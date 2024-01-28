@@ -3,12 +3,55 @@ import Detail from './components/Detail';
 
 const Details = ({ show }) => {
 
-    let skillDetails = ["js", "react", "tailwind", "css", "html", "php", "laravel", "webflow", "svelte", "figma"];
+    let skillDetails = [
+        {
+            skill: "html",
+            icon: "bg-html"
+        },
+        {
+            skill: "css",
+            icon: "bg-css"
+        },
+        {
+            skill: "js",
+            icon: "bg-js"
+        },
+        {
+            skill: "react",
+            icon: "bg-react"
+        },
+        {
+            skill: "tailwind",
+            icon: "bg-tailwind"
+        },
+        {
+            skill: "php",
+            icon: "bg-php"
+        },
+        {
+            skill: "laravel",
+            icon: "bg-laravel"
+        },
+        {
+            skill: "figma",
+            icon: "bg-figma"
+        },
+        {
+            skill: "webflow",
+            icon: "bg-webflow"
+        },
+        {
+            skill: "svelte",
+            icon: "bg-svelte"
+        },
+    ];
 
     return (
         <div className={`flex relative min-h-80 w-full gap-8`}>
+
+            
             {
-                show === "education" &&
+                show === "Education" &&
                 <Detail id="education">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>
@@ -27,7 +70,7 @@ const Details = ({ show }) => {
             }
 
             {
-                show === "work" &&
+                show === "Work" &&
                 <Detail id="work">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>
@@ -45,20 +88,20 @@ const Details = ({ show }) => {
                 </Detail>
             }
 
-            {show === "skills" &&
+            {show === "Skills" &&
                 <Detail id="skills">
                     <div className='flex gap-8 flex-wrap'>
                         {skillDetails.map((skill, index) => (
-                        <div key={index} className='h-16 w-16 shadow-nobel_300 shadow-sm rounded-full'>
-                            <div className={`h-full w-full rounded-full ${"bg-" + skill} bg-contain bg-no-repeat bg-center`}></div>
-                        </div>
+                            <div key={index} className='h-16 w-16 shadow-nobel_300 shadow-sm rounded-full'>
+                                <div className={`h-full w-full ${skill.icon} rounded-full bg-contain bg-no-repeat bg-center`}></div>
+                            </div>
                         ))}
                     </div>
                 </Detail>
             }
 
             {
-                show === "interests" &&
+                show === "Interests" &&
                 <Detail id="interests">
                     <div>
                         <h2 className='text-2xl max-padd:text-center'>

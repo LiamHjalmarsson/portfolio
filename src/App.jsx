@@ -1,5 +1,5 @@
-import Navigation from "./Layouts/Navigation/Navigation";
 import Root from "./Pages/root";
+import Navigation from "./Components/Layouts/Navigation/Navigation";
 import styles from './App.module.css';
 
 function App() {

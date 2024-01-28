@@ -73,6 +73,7 @@ export default {
         'js': "url('./src/Assets/About/js.png')",
         'php': "url('./src/Assets/About/php.png')",
         'react': "url('./src/Assets/About/react.png')",
+        'laravel': "url('./src/Assets/About/laravel.png')",
         'svelte': "url('./src/Assets/About/svelte.png')",
         'tailwind': "url('./src/Assets/About/tailwind.png')",
         'webflow': "url('./src/Assets/About/webflow.png')",

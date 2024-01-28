@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import LinkButton from '../../../Components/Ui/Link_Button';
+import LinkButton from '../../../Ui/Link_Button';
 
 const Items = ({ open, openHandler}) => {
 

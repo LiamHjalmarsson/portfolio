@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Corner from "./components/Corner";
-import Logo from "../../Components/Ui/Logo";
+import Logo from "../../Ui/Logo";
 import Burger from "./components/Burger";
 import Items from "./components/Items";
 
