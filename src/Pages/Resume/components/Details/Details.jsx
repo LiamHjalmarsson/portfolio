@@ -1,9 +1,9 @@
 import React from 'react';
 import Detail from './components/components/Container';
-import Education from './components/Education';
-import Work from './components/Work';
-import Interests from './components/Interests';
-import Skills from './components/Skills';
+import Education from './components/Education/Education';
+import Work from './components/Work/Work';
+import Interests from './components/Interests/Interests';
+import Skills from './components/Skills/Skills';
 
 const Details = ({ show }) => {
     return (

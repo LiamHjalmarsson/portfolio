@@ -1,9 +1,9 @@
 import React from 'react';
-import Detail from './components/Container';
+import Container from '../components/Container';
 
 const Education = () => {
     return (
-        <Detail id="education">
+        <Container id="education">
             <div>
                 <h2 className='text-2xl max-padd:text-center'>
                     Malmö University
@@ -17,7 +17,7 @@ const Education = () => {
                     </div>
                 </div>
             </div>
-        </Detail>
+        </Container>
     );
 }
 
