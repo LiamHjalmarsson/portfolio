@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 
 const Item = ({ address, title, close }) => {
