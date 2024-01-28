@@ -12,7 +12,7 @@ const Root = () => {
             </div>
             <div className="min-h-screen flex justify-center items-center relative" id="about"> 
                 <About />
-                <ScrollDown address="projects" />
+                {/* <ScrollDown address="projects" /> */}
             </div>
             <div className="min-h-screen flex justify-center items-center relative" id="projects"> 
                 <h1>
