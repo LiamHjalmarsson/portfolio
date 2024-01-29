@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Container = ({id, children}) => {
+const Container = ({id, children, show}) => {
     return (
-        <div className={`w-full h-auto flex flex-col justify-center items-center py-4 absolute gap-8 `} key={id} >
+        <div className={`flex w-full h-auto flex-col justify-center items-center py-4 absolute gap-8`} key={id} >
             {children}
         </div>
     );

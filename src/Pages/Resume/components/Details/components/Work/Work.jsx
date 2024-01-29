@@ -1,10 +1,11 @@
 import React from 'react';
 import Container from '../components/Container';
+import Card from '../components/Card';
 
 const Work = () => {
     return (
-        <Container id="work">
-            <div>
+        <Container id="Work">
+            <Card>
                 <h2 className='text-2xl max-padd:text-center'>
                     Sjöbergska Huset
                 </h2>
@@ -16,7 +17,7 @@ const Work = () => {
                         Sep 2023 - Dec 2023
                     </div>
                 </div>
-            </div>
+            </Card>
         </Container>
     );
 }

@@ -9,22 +9,14 @@ const Details = ({ show }) => {
     return (
         <div className={`flex relative min-h-80 w-full gap-8`}>
 
-            {
-                show === "Skills" && <Skills />
-            }
+            { show === "Skills" && <Skills show={show} />}
             
-            {
-                show === "Education" && <Education/>
-            }
+            { show === "Education" && <Education show={show} />}
+            
+            { show === "Work" && <Work show={show} />}
 
-            {
-                show === "Work" && <Work />
-            }
+            {show === "Interests" && <Interests show={show} />}
 
-
-            {
-                show === "Interests" && <Interests />
-            }
         </div>
     );
 }
