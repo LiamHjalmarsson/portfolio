@@ -8,7 +8,7 @@ const Navigation = () => {
     let [open,setOpen]=useState(false);
 
     return (
-        <nav className="items-center flex justify-center sticky w-full z-20 bg-nobel_600 top-0 left-0 px-2 padd:px-8 h-32">
+        <nav className="items-center flex justify-center sticky w-full z-20 bg-nobel_600 px-2 padd:px-8 h-[15vh]">
             <div className='flex items-center w-full group relative padd:m-8 m-0'>
                 <Corner custom="border-t-8 border-l-8 z-10 left-0"/>
                 <div className="w-full justify-between items-center px-8 flex">
