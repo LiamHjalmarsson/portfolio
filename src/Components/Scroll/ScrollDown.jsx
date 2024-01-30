@@ -5,12 +5,12 @@ const ScrollDown = ({address}) => {
     return (
         <div className='w-full flex flex-col justify-center items-center gap-2'>
             <h3 className='text-caribbean_500 text-sm tracking-widest'>
-                Scroll
+                Next section
             </h3>
             <ScrollLink
                 to={address}
                 smooth="true"
-                offset={0}
+                offset={address === "about" ? -150 : 0}
                 duration={1000}
             >
                 <div className='flex flex-col gap-1 relative w-14 h-14 justify-center items-center rounded-full'>
