@@ -3,7 +3,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const ScrollDown = ({address}) => {
     return (
-        <div className='w-full flex flex-col justify-center items-center gap-2 absolute bottom-5'>
+        <div className='w-full flex flex-col justify-center items-center gap-2'>
             <h3 className='text-caribbean_500 text-sm tracking-widest'>
                 Scroll
             </h3>
