@@ -35,7 +35,7 @@ const Items = ({ open, openHandler}) => {
                 </div>
             </ul>
 
-            <ul className={`padd:hidden flex flex-col h-screen w-screen flex-1 -left-2 transition-all absolute flex-grow duration-0 ease-in  ${open ? '-top-[200%]' : 'top-[-100vh] delay-[1500ms]'}`}>
+            <ul className={`padd:hidden flex flex-col h-screen w-screen flex-1 -left-2 transition-all absolute flex-grow duration-0 ease-in  ${open ? '-top-[150%]' : 'top-[-100vh] delay-[1500ms]'}`}>
                 <div className={`flex-1 flex-grow h-1/2 flex-col flex justify-end items-end bg-nobel_900 transtion ${open ? 'w-full duration-500' : 'w-0 delay-1000 duration-500'}`}>
                     {
                         links.map((link) => (
