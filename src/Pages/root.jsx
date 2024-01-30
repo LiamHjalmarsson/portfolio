@@ -2,6 +2,7 @@ import React from 'react';
 import Profile from "./Profile/Profile";
 import About from "./Resume/About";
 import RootSection from './components/RootSection';
+import Projects from './Projects/Projects';
 
 const Root = () => {
     return (
@@ -13,9 +14,7 @@ const Root = () => {
                 <About />
             </RootSection>
             <RootSection id="projects" to="home">
-                <h1>
-                    Projets 
-                </h1>
+                <Projects />
             </RootSection>
         </div>
     );

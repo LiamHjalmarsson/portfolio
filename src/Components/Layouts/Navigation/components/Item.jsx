@@ -12,7 +12,6 @@ const Item = ({ address, title, close }) => {
                 onClick={close}
                 duration={1000}
                 className={`w-full text-center p-4 text-bold padd:text-xl text-2xl`}
-                activeClass="text-caribbean_500 tracking-widest transtion duration-200"
             >
                 {title.charAt(0).toUpperCase() + title.slice(1)}
             </ScrollLink>

@@ -3,14 +3,14 @@ import Container from "../components/Container";
 import Card from "../components/Card";
 import Category from "./components/Category";
 
-const Skills = ({show}) => {
+const Skills = ({ show }) => {
     let skillDetails = [
         {
             skill: "html",
             icon: "bg-html",
             level: "intermediate",
             type: "front-end",
-            percentage: 100,
+            percentage: 80,
         },
         {
             skill: "css",
@@ -31,49 +31,49 @@ const Skills = ({show}) => {
             icon: "bg-react",
             level: "advanced",
             type: "front-end",
-            percentage: 80,
+            percentage: 60,
         },
         {
             skill: "tailwind",
             icon: "bg-tailwind",
             level: "intermediate",
             type: "front-end",
-            percentage: 80,
+            percentage: 60,
         },
         {
             skill: "php",
             icon: "bg-php",
             level: "intermediate",
             type: "back-end",
-            percentage: 80,
+            percentage: 60,
         },
         {
             skill: "laravel",
             icon: "bg-laravel",
             level: "intermediate",
             type: "back-end",
-            percentage: 80,
+            percentage: 50,
         },
         {
             skill: "figma",
             icon: "bg-figma",
             level: "Advanced",
             type: "ui/ux",
-            percentage: 80,
+            percentage: 70,
         },
         {
             skill: "webflow",
             icon: "bg-webflow",
             level: "intermediate",
             type: "ui/ux",
-            percentage: 80,
+            percentage: 70,
         },
         {
             skill: "svelte",
             icon: "bg-svelte",
             level: "intermediate",
             type: "front-end",
-            percentage: 80,
+            percentage: 40,
         },
     ];
 
@@ -81,11 +81,9 @@ const Skills = ({show}) => {
 
     return (
         <Container id="Skills" show={show}>
-            <Card show={show} id="Skills">
-                {skillTypes.map((type, typeIndex) => (
-                    <Category key={typeIndex} skillDetails={skillDetails} type={type} show={show} />
-                ))}
-            </Card>
+            {skillTypes.map((type, typeIndex) => (
+                <Category key={typeIndex} skillDetails={skillDetails} type={type} show={show} />
+            ))}
         </Container>
     );
 };

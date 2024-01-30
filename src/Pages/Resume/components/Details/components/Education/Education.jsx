@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../components/Container';
 import Card from '../components/Card';
 
-const Education = ({show}) => {
+const Education = ({ show }) => {
     return (
         <Container id="Education" show={show}>
             <Card>
