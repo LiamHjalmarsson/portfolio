@@ -12,13 +12,13 @@ const About = () => {
     };
 
     return (
-        <div className='min-h-screen w-full flex top-[15%] absolute items-center flex-col p-2 padd:p-8'>
-            <nav className='flex justify-between w-full gap-4 flex-wrap'>
-                <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
-            </nav>
-            <div className={`w-full h-auto my-8`}>
+        <div className='min-h-screen w-full flex justify-start items-start flex-col p-2 padd:p-8'>
+            {/* <div className='w-full h-auto flex justify-start items-start flex-col'> */}
+                <nav className='flex justify-between w-full gap-4 flex-wrap'>
+                    <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
+                </nav>
                 <Details show={selectedOption} />
-            </div>
+            {/* </div> */}
         </div>
     );
 }

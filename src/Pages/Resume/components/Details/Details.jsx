@@ -7,7 +7,7 @@ import Skills from './components/Skills/Skills';
 
 const Details = ({ show }) => {
     return (
-        <div className={`flex relative min-h-80 w-full gap-8`}>
+        <div className={`flex relative my-8 min-h-80 w-full justify-center`}>
 
             { show === "Skills" && <Skills show={show} />}
             
