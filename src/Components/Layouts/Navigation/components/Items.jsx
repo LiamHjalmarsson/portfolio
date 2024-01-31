@@ -14,6 +14,9 @@ const Items = ({ open, openHandler}) => {
         {
             title:"projects",
         },
+        {
+            title:"contact",
+        },
     ];
 
     return (
