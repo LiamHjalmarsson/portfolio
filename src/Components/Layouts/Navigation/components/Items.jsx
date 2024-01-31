@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import LinkButton from '../../../Ui/Link_Button';
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 const Items = ({ open, openHandler}) => {
 
@@ -28,9 +28,14 @@ const Items = ({ open, openHandler}) => {
                         ))
                     }
                 </div>
-                <div className={`bg-dark_500 w-36 flex justify-center items-center`}>
-                    <div className={`w-full`}>
-                        <LinkButton />
+                <div className={`w-24 flex justify-center items-center`}>
+                    <div className={`flex justify-end gap-8`}>
+                        <div>
+                            <FaLinkedin className='w-8 h-8' />
+                        </div>
+                        <div>
+                            <FaGithubSquare className='w-8 h-8' />
+                        </div>
                     </div>
                 </div>
             </ul>
@@ -46,8 +51,13 @@ const Items = ({ open, openHandler}) => {
                     }
                 </div>
                 <div className={`bg-nobel_900 h-1/2 flex justify-center items-center ${open ? 'delay-500 w-[100vw] duration-500' : 'w-0 duration-500 delay-500'}`}>
-                    <div className={`w-48 ${open ? 'delay-1000 opacity-100 duration-500' : 'opacity-0 padd:opacity-100 duration-500'}`}>
-                        <LinkButton />
+                    <div className={`flex justify-center gap-8 w-48 ${open ? 'delay-1000 opacity-100 duration-500' : 'opacity-0 padd:opacity-100 duration-500'}`}>
+                        <div>
+                            <FaLinkedin className='w-8 h-8' />
+                        </div>
+                        <div>
+                            <FaGithubSquare className='w-8 h-8' />
+                        </div>
                     </div>
                 </div>
             </ul>
