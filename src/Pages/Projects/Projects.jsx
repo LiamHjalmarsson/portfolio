@@ -8,22 +8,16 @@ const db = [
         used: "webflow, figma",
         url: "/",
         description: "leksaksbilen",
-        image: "",
+        image: "../../../public/placeholder.png",
     },
     {
         title: "mochamovies",
         used: "js, php, css, figma",
         url: "/",
         description: "mochamovies",
-        image: "",
+        image: "../../../public/placeholder.png",
     },
-    {
-        title: "mochamovies",
-        used: "js, php, css, figma",
-        url: "/",
-        description: "mochamovies",
-        image: "",
-    },
+
 ]
 
 const Projects = () => {
@@ -32,11 +26,10 @@ const Projects = () => {
             <Heading heading="Projects" />
 
 
-            <div className="grid grid-cols-3     w-full gap-8">
+            <div className="flex justify-center flex-wrap w-full gap-8">
                 {
-                    db.map((item) => (
-                        <div className='w-full border border-nobel_400 p-8'>
-                            {item.title}
+                    db.map((item, index) => (
+                        <div key={item.title} className={`w-[350px] flex-1  min-w-80 border border-nobel_400 p-8 bg-cover bg-center h-96`} style={{ backgroundImage: `url(${item.image})`}}>
                         </div>
                     ))
                 }
