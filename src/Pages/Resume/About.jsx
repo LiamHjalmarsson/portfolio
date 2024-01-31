@@ -42,18 +42,15 @@ const About = () => {
                             Langages: Swedish, English
                         </div>
                     </div>
-                </div>
-
-                <div className='w-full my-2 flex'>
-                    <div className='w-1/2 border-2 rounded-full border-nobel_500'></div>
-                </div>
-
-                <div>
-                    Recently gratiuatde junior Front-end Developer that has learned several skills during my period.
+                    <div className='w-full my-4 flex'>
+                            <div className='w-1/2 border-2 rounded-full h-0 border-caribbean_500'></div>
+                    </div>
+                    <div>
+                        Recently gratiuatde junior Front-end Developer that has learned several skills during my period.
+                    </div>
                 </div>
             </Container>
 
-            <div className='mb-16'></div>
 
             <div className='w-full'>
                 <nav className='flex justify-between w-full gap-4 flex-wrap'>

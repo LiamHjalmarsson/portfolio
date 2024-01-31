@@ -9,9 +9,9 @@ const Category = ({ skillDetails, type }) => {
     const filteredSkills = skillDetails.filter((skill) => skill.type === type);
 
     return (
-        <Card>
+        <Card custom={"justify-start"}>
             <Heading heading={type} />
-            <div className="flex gap-6 flex-wrap">
+            <div className="flex gap-4 flex-wrap laptop:justify-start justify-center">
                 {filteredSkills.map((skill) => (
                     <div key={skill.skill} className="flex justify-center items-center flex-col h-auto">
                         <Skill item={skill} />
