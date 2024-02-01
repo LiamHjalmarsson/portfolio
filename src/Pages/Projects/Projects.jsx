@@ -37,10 +37,10 @@ const db = [
 const Projects = () => {
     return (
         <Section id="projects">
-            <div className="flex flex-col gap-6 lg:gap-8 justify-start items-start w-full min-h-[5/6]">
+            <div className="flex flex-col gap-8 justify-start items-start w-full min-h-[5/6]">
                 <Heading heading="Projects" />
 
-                <div className="flex justify-center flex-wrap w-full gap-6 lg:gap-8">
+                <div className="flex justify-center flex-wrap w-full gap-8">
                     {
                         db.map((item, index) => (
                             <div key={index} className='min-w-56 md:min-w-72 lg:min-w-80 flex-1 h-60 lg:h-72 relative rounded-md'>

@@ -5,7 +5,7 @@ import { ScrollLink } from 'react-scroll';
 
 const ProfileButtons = () => {
     return (
-        <div className='w-full items-center justify-center flex gap-6 lg:gap-8 md:flex-row flex-col max-w-[400px] md:max-w-[600px]'>
+        <div className='w-full items-center justify-center flex gap-8 md:flex-row flex-col max-w-[400px] md:max-w-[600px]'>
             <ButtonPrimary>
                 Contact Me
             </ButtonPrimary>
