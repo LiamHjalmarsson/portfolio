@@ -2,10 +2,8 @@ import React from 'react';
 
 const ProfileImage = () => {
     return (
-        <div className='padd:flex hidden justify-center laptop:justify-end items-center h-full w-full'>
-            <div className='flex items-center justify-center w-40 laptop:w-2/3 laptop:h-full h-40 laptop:min-w-[300px]'>
-                <div className="bg-cover bg-center opacity-90 bg-home shadow-middle h-full shadow-amber-300 hover:shadow-middle_hover transition-shadow duration-500 hover:shadow-amber-400 w-full rounded-full laptop:rounded-md"></div>
-            </div>
+        <div className='padd:flex hidden justify-center laptop:justify-end items-center w-full'>
+            <div className="bg-cover bg-center opacity-90 bg-home shadow-middle h-56 w-56 laptop:h-96 laptop:w-80 shadow-caribbean_300 rounded-full laptop:rounded-md"></div>
         </div>
     );
 }

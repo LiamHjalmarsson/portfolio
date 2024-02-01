@@ -17,11 +17,11 @@ const Contact = () => {
     };
 
     return (
-        <div className="m-32 w-full h-screen flex justify-center items-center p-4">
-            <div className='w-1/2 justify-center flex items-center'>
+        <div className="dm-32 w-full h-screen flex justify-center items-center p-4">
+            <div className='w-fit justify-center flex items-center'>
                 <Heading heading="Contact" />
             </div>
-            <div className='w-1/2 flex justify-center items-center'>
+            <div className='w-1/2 flex h-[80%] justify-center items-center'>
                 <form className='flex flex-col gap-4 w-full' ref={form} onSubmit={sendEmail}>
                     <div className='flex gap-8'>
                         <div className='flex flex-1 flex-col'>

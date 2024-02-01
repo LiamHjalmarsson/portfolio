@@ -39,10 +39,10 @@ const Projects = () => {
         <div className="m-32 w-full h-screen flex justify-start items-start flex-col p-4">
             <Heading heading="Projects" />
 
-            <div className="flex justify-center flex-wrap w-full gap-4 padd:gap-6 laptop:gap-8">
+            <div className="flex justify-center flex-wrap w-full gap-8 padd:gap-6 laptop:gap-8">
                 {
                     db.map((item, index) => (
-                        <div key={index} className='min-w-56 padd:min-w-72 laptop:min-w-80 flex-1  h-72 padd:h-80 laptop:h-96 relative rounded-md'>
+                        <div key={index} className='min-w-56 padd:min-w-72 laptop:min-w-80 flex-1 h-60 laptop:h-72 relative rounded-md'>
                             <div className={`w-full h-full border border-nobel_400 p-8 bg-cover bg-center absolute rounded-md`} style={{ backgroundImage: `url(${item.image})`} }>
                             </div>
                         </div>
