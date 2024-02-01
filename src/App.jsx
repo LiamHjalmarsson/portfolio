@@ -6,7 +6,7 @@ function App() {
     <>
       <div className='font-roboto bg-nobel_600 text-whiteish'>
           <Navigation />
-          <main className='w-full flex flex-col items-center justify-center'>
+          <main className='w-full flex items-center justify-center'>
             <Root />
           </main>
       </div>
