@@ -8,11 +8,10 @@ const Navigation = () => {
     let [open,setOpen] = useState(false);
 
     return (
-        <nav className="items-center flex justify-center fixed w-full z-20 bg-nobel_600">
-            <div className='flex items-center w-full relative m-8'>
-                <Corner custom="border-t-8 border-l-8 z-10 left-0"/>
+        <nav className="items-center flex justify-center fixed w-full z-20 bg-nobel_600 py-8 px-4">
+            <div className='flex items-center max-w-[1300px] w-full h-10'>
                 <div className="w-full items-center px-8 flex">
-                    <div className=" w-24">
+                    <div className="w-24">
                         <Logo />
                     </div>
 
@@ -20,7 +19,6 @@ const Navigation = () => {
                 
                     <Items open={open} openHandler={setOpen} />
                 </div>
-                <Corner custom="border-b-8 border-r-8 right-0" />
             </div>
         </nav>
     )

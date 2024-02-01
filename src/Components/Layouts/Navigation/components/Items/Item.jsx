@@ -8,7 +8,7 @@ const Item = ({ address, title, close }) => {
                 to={address}
                 spy={true}
                 smooth="true"
-                offset={address === "about" ? 0 : 0}
+                offset={address === "about" ? -80 : 0}
                 onClick={close}
                 duration={1000}
                 className={`w-full text-center p-4 text-bold padd:text-xl text-2xl`}

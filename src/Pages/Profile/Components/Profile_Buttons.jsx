@@ -1,17 +1,19 @@
 import React from 'react';
 import ButtonPrimary from '../../../Components/Ui/ButtonPrimary';
 import ButtonSecondary from '../../../Components/Ui/ButtonSubmary';
+import { ScrollLink } from 'react-scroll';
 
 const ProfileButtons = () => {
     return (
-        <div className='w-full items-center flex gap-8 padd:flex-row flex-col max-w-[400px] padd:max-w-[600px]'>
+        <div className='w-full items-center justify-center flex gap-8 md:flex-row flex-col max-w-[400px] md:max-w-[600px]'>
             <ButtonPrimary>
                 Contact Me
             </ButtonPrimary>
+
             {/* <a href="liam.pdf" download="liam.pdf" className=' w-full'> */}
-                <ButtonSecondary>
-                        Get Resume
-                </ButtonSecondary>
+            <ButtonSecondary>
+                Get Resume
+            </ButtonSecondary>
             {/* </a> */}
         </div>
     );
