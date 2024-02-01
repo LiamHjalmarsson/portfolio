@@ -7,13 +7,3 @@
     width: 6px !important;
     height: 6px !important;
 }
-
-.CircularProgressbar-path {
-    stroke: #26b3e6 !important;
-    stroke-linecap: butt !important; 
-}
-
-.CircularProgressbar-trail {
-    stroke: #595c5f !important;
-}
-

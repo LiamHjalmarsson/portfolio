@@ -8,7 +8,6 @@ import Heading from '../../../../Components/Heading/Heading';
 
 const Details = ({ show }) => {
     return (
-        // <div className={`flex flex-row gap-8 min-h-fit w-full justify-center items-start`}>
         <div className={`min-h-fit w-full`}>
 
             {show === "Skills" && <Skills show={show} />}

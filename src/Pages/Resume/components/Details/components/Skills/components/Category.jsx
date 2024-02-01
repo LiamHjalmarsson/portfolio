@@ -1,8 +1,6 @@
 import React from "react";
 import Heading from "../../components/Heading";
 import Skill from "./Skill";
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import Card from "../../components/Card";
 
 const Category = ({ skillDetails, type }) => {
