@@ -13,7 +13,7 @@ const ProfileTypwriter = () => {
     
     return (
         <div className='w-full h-10 flex justify-center items-center'>
-            <h1 className='font-bold lg:text-4xl md:text-3xl text-2xl text-caribbean_400 tracking-wide'>
+            <h1 className='font-bold lg:text-5xl md:text-4xl text-3xl text-caribbean_400 tracking-wide'>
                 {typeEffect}
             </h1>
         </div>
