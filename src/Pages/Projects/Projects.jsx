@@ -16,21 +16,21 @@ const db = [
         used: "js, php, css, figma",
         url: "/",
         description: "mochamovies",
-        image: "/public/placeholder.png",
+        image: "/placeholder.png",
     },
     {
         title: "mochamovies",
         used: "js, php, css, figma",
         url: "/",
         description: "mochamovies",
-        image: "/public/placeholder.png",
+        image: "/placeholder.png",
     },
     {
         title: "mochamovies",
         used: "js, php, css, figma",
         url: "/",
         description: "mochamovies",
-        image: "/public/placeholder.png",
+        image: "/placeholder.png",
     },
 ];
 
