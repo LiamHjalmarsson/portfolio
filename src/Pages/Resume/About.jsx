@@ -15,13 +15,13 @@ const About = () => {
 
     return (
         <Section id="about">
-            <div className='flex flex-col gap-16 justify-start items-start w-full min-h-screen'>
+            <div className='flex flex-col gap-6 lg:gap-8 justify-start items-start w-full min-h-screen'>
                 <div className='w-full h-auto'>
-                    <div className="flex flex-col gap-4 md:justify-start md:items-start justify-center items-center">
+                    <div className="flex flex-col gap-6 lg:gap-8 md:justify-start md:items-start justify-center items-center">
                         <div className='w-fit'>
                             <Heading heading="About Me" />
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 text-sm text-start w-1/2 md:w-full'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-sm text-start w-1/2 md:w-full'>
                             <div>
                                 First Name: Liam
                             </div>
@@ -50,12 +50,10 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className='w-full'>
-                    <nav className='flex justify-between w-full gap-4 flex-wrap'>
+                    <nav className='flex justify-between w-full gap-6 lg:gap-8 flex-wrap'>
                         <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
                     </nav>
                     <Details show={selectedOption} />
-                </div>
             </div>
         </Section>
     );

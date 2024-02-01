@@ -52,11 +52,11 @@ const Contact = () => {
 
     return (
         <Section id="contact">
-            <div className="w-full h-screen flex justify-center flex-col items-center gap-8">
+            <div className="w-full h-screen flex justify-center flex-col items-center gap-6 lg:gap-8">
                 <Heading heading="Get in touch" />
                 <div className='w-full md:min-w-[500px] md:max-w-[600px] flex justify-center items-center'>
-                    <form className='flex flex-col gap-8 w-full' onSubmit={formHandler} ref={form}>
-                        <div className='flex gap-8 flex-col md:flex-row'>
+                    <form className='flex flex-col gap-6 lg:gap-8 w-full' onSubmit={formHandler} ref={form}>
+                        <div className='flex gap-6 lg:gap-8 flex-col md:flex-row'>
                             <div className='flex flex-col flex-grow items-start'>
                                 <label htmlFor="name">Name</label>
                                 <input type="text" name="name" onChange={nameHandler} value={name} className={`w-full bg-transparent border-2 ${!error ? "border-nobel_100" : "border-red-400"} rounded-md p-2 outline-none `} />
@@ -72,7 +72,12 @@ const Contact = () => {
                         </div>
                         <div className='send-btn w-full flex mt-4 justify-center items-center'>
                             <ButtonPrimary button={{ type: 'submit' }}>
-                                send
+                                <div className='flex items-center'>
+                                    <p className='flex-grow'>
+                                        Send
+                                    </p>
+                                    <LuSend />
+                                </div>
                             </ButtonPrimary>
                         </div>
                     </form>
