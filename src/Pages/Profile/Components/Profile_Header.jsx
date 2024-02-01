@@ -2,12 +2,12 @@ import React from 'react';
 
 const ProfileHeader = () => {
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-8'>
             <div className=''>
-                <h1 className='laptop:text-6xl padd:text-5xl text-3xl tracking-widest'>
+                <h1 className='laptop:text-5xl padd:text-4xl text-2xl tracking-widest'>
                     <span className='text-caribbean_400 laptop:text-8xl padd:text-7xl text-6xl'>L</span>iam 
                 </h1>
-                <h1 className='laptop:text-6xl padd:text-5xl text-3xl tracking-widest'>
+                <h1 className='laptop:text-5xl padd:text-4xl text-2xl tracking-widest'>
                     <span className='text-caribbean_400 laptop:text-8xl padd:text-7xl text-6xl'>H</span>jalmarsson
                 </h1>
             </div>

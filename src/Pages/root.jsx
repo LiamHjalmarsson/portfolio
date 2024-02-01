@@ -3,6 +3,7 @@ import Profile from "./Profile/Profile";
 import About from "./Resume/About";
 import RootSection from './components/RootSection';
 import Projects from './Projects/Projects';
+import Contact from './Contact/Contact';
 
 const Root = () => {
     return (
@@ -13,8 +14,11 @@ const Root = () => {
             <RootSection id="about" to="projects">
                 <About />
             </RootSection>
-            <RootSection id="projects" to="home">
+            <RootSection id="projects" to="contact">
                 <Projects />
+            </RootSection>
+            <RootSection id="contact" to="home">
+                <Contact />
             </RootSection>
         </div>
     );
