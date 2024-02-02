@@ -35,10 +35,14 @@ const Items = ({ open, openHandler}) => {
                 <div className={`w-24 flex justify-end items-center`}>
                     <div className={`flex justify-end gap-4`}>
                         <div>
-                            <FaLinkedin className='w-8 h-8 cursor-pointer hover:text-caribbean_100' />
+                            <a href='https://www.linkedin.com/in/liam-hjalmarsson-710505231/'>
+                                <FaLinkedin className='w-8 h-8 cursor-pointer hover:text-caribbean_100' />
+                            </a>
                         </div>
                         <div>
-                            <FaGithubSquare className='w-8 h-8 cursor-pointer hover:text-caribbean_100' />
+                            <a href="https://github.com/LiamHjalmarsson">
+                                <FaGithubSquare className='w-8 h-8 cursor-pointer hover:text-caribbean_100' />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -59,10 +63,14 @@ const Items = ({ open, openHandler}) => {
                 <div className={`bg-nobel_700 flex-1 flex-grow h-1/2 flex justify-center items-center transtion ${open ? 'w-full duration-500 delay-300' : 'w-0 delay-500 duration-500'}`}>
                     <div className={`flex justify-center gap-8 w-48 ${open ? 'delay-700 opacity-100 duration-500' : 'opacity-0 lg:opacity-100 duration-500'}`}>
                         <div>
-                            <FaLinkedin className='w-8 h-8' />
+                            <a href='https://www.linkedin.com/in/liam-hjalmarsson-710505231/'>
+                                    <FaLinkedin className='w-8 h-8' />
+                            </a>
                         </div>
                         <div>
-                            <FaGithubSquare className='w-8 h-8' />
+                            <a href="https://github.com/LiamHjalmarsson">
+                                <FaGithubSquare className='w-8 h-8' />
+                            </a>
                         </div>
                     </div>
                 </div>
