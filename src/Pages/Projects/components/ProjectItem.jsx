@@ -2,8 +2,24 @@ import React from 'react';
 
 const ProjectItem = ({index, item}) => {
     return (
-        <div key={index} className='min-w-56 md:min-w-72 lg:min-w-80 flex-1 h-60 lg:h-72 relative rounded-md'>
-            <div className={`w-full h-full border border-nobel_400 p-8 bg-cover bg-center absolute rounded-md`} style={{ backgroundImage: `url(${item.image})`} }></div>
+        <div key={index} className='w-full h-fit rounded-md p-4 border border-nobel_300'>
+            <div className={`w-full bg-cover bg-center rounded-md h-96`} style={{ backgroundImage: `url(${item.image})`} }></div>
+            <div className='mt-4 flex items-center'>
+                <h2 className='text-xl font-bold tracking-widest'>
+                    {
+                        item.title
+                    }
+                </h2>
+                <div className='flex w-full justify-end gap-4'>
+                    {
+                        item.skills.map((skill, index) => (
+                            <div className='p-2 border border-nobel_200 rounded-md' key={index}>
+                                {skill}
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     );
 }
