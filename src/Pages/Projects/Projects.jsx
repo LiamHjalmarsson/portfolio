@@ -6,29 +6,29 @@ import ProjectItem from './components/ProjectItem';
 
 const db = [
     {
-        title: "leksaksbilen",
-        used: "webflow, figma",
+        title: "Leksaksbilen",
+        skills: ["webflow", "figma"],
         url: "/",
-        description: "leksaksbilen",
-        image: "/placeholder.png",
+        description:"leksaksbilen",
+        image: "/Assets/Projects/lek.png",
     },
     {
         title: "HIVE",
-        used: "svelete, firebase, css, figma",
+        skills: ["svelete", "firebase", "css", "figma"],
         url: "/",
         description: "mochamovies",
-        image: "/Assets/Projects/hive.PNG",
+        image: "/Assets/Projects/hive.png",
     },
     {
         title: "mochamovies",
-        used: "js, php, css, figma",
+        skills: ["js", "php", "css", "figma"],
         url: "/",
-        description: "mochamovies",
+        description:"mochamovies",
         image: "/placeholder.png",
     },
     {
         title: "mochamovies",
-        used: "js, php, css, figma",
+        skills: ["js", "php", "css", "figma"],
         url: "/",
         description: "mochamovies",
         image: "/placeholder.png",
@@ -42,6 +42,7 @@ const Projects = () => {
                 <Heading heading="Projects" />
 
                 <div className="flex justify-center flex-wrap w-full gap-8">
+                {/* <div className="flex flex-col w-full gap-8"> */}
                     {
                         db.map((item, index) => (
                             <ProjectItem item={item} index={index} key={index} />

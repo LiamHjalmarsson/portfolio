@@ -21,7 +21,7 @@ const About = () => {
                         <div className='md:w-fit w-1/2'>
                             <Heading heading="About Me" />
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-lg text-start w-1/2 md:w-full'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-lg text-start w-full'>
                             <div className='text-center md:text-start'>
                                 First Name: Liam
                             </div>
