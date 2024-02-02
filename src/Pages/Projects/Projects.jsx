@@ -1,6 +1,7 @@
 import React from 'react';
 import Heading from '../../Components/Heading/Heading';
 import Section from '../../Components/Layouts/Section/Section';
+import ProjectItem from './components/ProjectItem';
 
 
 const db = [
@@ -12,11 +13,11 @@ const db = [
         image: "/placeholder.png",
     },
     {
-        title: "mochamovies",
-        used: "js, php, css, figma",
+        title: "HIVE",
+        used: "svelete, firebase, css, figma",
         url: "/",
         description: "mochamovies",
-        image: "/placeholder.png",
+        image: "/Assets/Projects/hive.PNG",
     },
     {
         title: "mochamovies",
@@ -43,9 +44,7 @@ const Projects = () => {
                 <div className="flex justify-center flex-wrap w-full gap-8">
                     {
                         db.map((item, index) => (
-                            <div key={index} className='min-w-56 md:min-w-72 lg:min-w-80 flex-1 h-60 lg:h-72 relative rounded-md'>
-                                <div className={`w-full h-full border border-nobel_400 p-8 bg-cover bg-center absolute rounded-md`} style={{ backgroundImage: `url(${item.image})`} }></div>
-                            </div>
+                            <ProjectItem item={item} index={index} key={index} />
                         ))
                     }
                 </div>

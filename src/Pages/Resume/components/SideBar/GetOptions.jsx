@@ -24,7 +24,7 @@ const GetOptionsBar = ({selectedOptionIndex, handelOption}) => {
     ];
 
     return sideBarOptions.map((option, index) => (
-        <div className={`md:w-full h-14 flex-1 flex items-center justify-center transition-transform duration-500 relative`} onClick={() => handelOption(option.label, index)} key={index}>
+        <div className={`md:w-full h-14 flex-1 flex items-center justify-center transition-transform duration-500 relative max-w-[250px] `} onClick={() => handelOption(option.label, index)} key={index}>
             <OptionItem icon={option.icon} label={option.label} index={index} selectedOptionIndex={selectedOptionIndex} handelOption={handelOption}/>
         </div>
     ));
