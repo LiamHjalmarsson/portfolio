@@ -12,7 +12,7 @@ const ProfileButtons = () => {
                 </ButtonPrimary>
             </Link>
 
-            <a href="/liam.pdf" download="liam.pdf" className='w-full max-w-[200px]'>
+            <a href="/assets/home/liam.pdf" download="liam.pdf" className='w-full max-w-[200px]'>
                 <ButtonSecondary>
                     Get Resume
                 </ButtonSecondary>

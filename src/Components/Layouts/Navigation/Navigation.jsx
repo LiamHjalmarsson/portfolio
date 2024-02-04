@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Corner from "./components/Cornner/Corner";
 import Logo from "../../Ui/Logo";
 import Burger from "./components/Burger/Burger";
 import Items from "./components/Items/Items";

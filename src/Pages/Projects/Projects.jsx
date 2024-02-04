@@ -10,14 +10,14 @@ const db = [
         skills: ["webflow", "figma"],
         url: "/",
         description:"leksaksbilen",
-        image: "/Assets/Projects/lek.png",
+        image: "/assets/projects/lek.png",
     },
     {
         title: "HIVE",
         skills: ["svelete", "firebase", "css", "figma"],
         url: "/",
         description: "mochamovies",
-        image: "/Assets/Projects/hive.png",
+        image: "/assets/projects/hive.png",
     },
 ];
 
