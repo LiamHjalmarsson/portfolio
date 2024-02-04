@@ -16,17 +16,14 @@ const About = () => {
     return (
         <Section id="about">
             <div className='flex flex-col gap-16 justify-start items-start w-full min-h-screen'>
-                <div className='w-full h-auto'>
+                <div className='w-[700px] h-auto'>
                     <div className="flex flex-col gap-8 md:justify-start md:items-start justify-center items-center">
                         <div className='md:w-fit w-1/2'>
                             <Heading heading="About Me" />
                         </div>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-lg text-start w-full'>
                             <div className='text-center md:text-start'>
-                                First Name: Liam
-                            </div>
-                            <div className='text-center md:text-start'>
-                                Last Name: Hjalmarsson
+                                Name: Liam Hjalmarsson
                             </div>
                             <div className='text-center md:text-start'>
                                 Age: 27
