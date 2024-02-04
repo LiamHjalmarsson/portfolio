@@ -61,7 +61,7 @@ export default {
       backgroundImage: {
         'home': "url('/assets/home/liam.png')",
         'education': "url('/assets/about/education.svg')",
-        'work': "url('/Assets/about/work.svg')",
+        'work': "url('/assets/about/work.svg')",
         "interests": "url('/assets/about/interests.svg')",
         "skills": "url('/assets/about/skills.svg')",
 

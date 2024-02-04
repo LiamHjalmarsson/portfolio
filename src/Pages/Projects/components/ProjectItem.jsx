@@ -4,7 +4,7 @@ const ProjectItem = ({index, item}) => {
     return (
         <div key={index} className='w-full h-fit rounded-md p-4 border border-nobel_300'>
             <div className={`w-full bg-cover bg-center rounded-md h-96`} style={{ backgroundImage: `url(${item.image})`} }></div>
-            <div className='mt-4 flex items-center'>
+            <div className='mt-4 flex flex-col padd:flex-row items-center'>
                 <h2 className='text-xl font-bold tracking-widest'>
                     {
                         item.title
