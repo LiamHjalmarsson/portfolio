@@ -14,7 +14,7 @@ const db = [
     },
     {
         title: "HIVE",
-        skills: ["svelete", "firebase", "css", "figma"],
+        skills: ["svelte", "firebase", "css", "figma"],
         url: "/",
         description: "mochamovies",
         image: "/assets/projects/hive.png",
