@@ -9,14 +9,12 @@ const db = [
         title: "Leksaksbilen",
         skills: ["webflow", "figma"],
         url: "/",
-        description:"leksaksbilen",
         image: "/assets/projects/lek.png",
     },
     {
-        title: "HIVE",
+        title: "HIVE Malmö",
         skills: ["svelte", "firebase", "css", "figma"],
-        url: "/",
-        description: "mochamovies",
+        url: "https://hivemalmo.se/",
         image: "/assets/projects/hive.png",
     },
 ];

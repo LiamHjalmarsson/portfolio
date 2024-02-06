@@ -46,17 +46,6 @@ export default {
         caribbean_700: "#1984ab", 
         caribbean_800: "#136e8e", 
         caribbean_900: "#0d5873",
-
-        // Velvet Cosmos
-        velvet_100: "#8c7095", 
-        velvet_200: "#7a5a84", 
-        velvet_300: "#684473", 
-        velvet_400: "#562f62", 
-        velvet_500: "#451952", 
-        velvet_600: "#3b1446", 
-        velvet_700: "#31103b", 
-        velvet_800: "#270b2f", 
-        velvet_900: "#1e0725",
       },
       backgroundImage: {
         'home': "url('/assets/home/liam.png')",
@@ -84,12 +73,6 @@ export default {
         middle: "0px 0px 20px -4px",
         middle_hover: "0px 0px 30px 4px",
         bottom: "0px 17px 13px -9px",
-      },
-      screens: {
-        'mobil': '400px',    
-        'padd': '760px',    
-        'laptop': '960px',   
-        'desktop': '1200px',    
       },
     },
   },
