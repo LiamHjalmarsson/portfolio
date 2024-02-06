@@ -7,11 +7,3 @@
     width: 6px !important;
     height: 6px !important;
 }
-
-.send-btn {
-    transition: all 0.3s ease-in-out; /* Define transition for all properties */
-}
-
-.send-btn.loading {
-    transform: translateY(-10px) translateX(10px); /* Adjust the translation values based on your design */
-}

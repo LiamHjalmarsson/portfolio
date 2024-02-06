@@ -48,7 +48,7 @@ const About = () => {
                 </div>
 
                 <nav className='flex justify-center items-center w-full'>
-                    <div className='flex gap-8 flex-wrap justify-between w-full'>
+                    <div className='flex gap-8 flex-wrap justify-center lg:justify-between w-full'>
                         <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
                     </div>
                 </nav>
