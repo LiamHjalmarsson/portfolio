@@ -27,7 +27,7 @@ const Projects = () => {
             <div className="flex flex-col gap-8 justify-start items-start w-full min-h-[5/6]">
                 <Heading heading="Projects" />
 
-                <div className="flex justify-center flex-wrap w-full gap-8">
+                <div className="flex justify-center flex-wrap w-full gap-12 lg:gap-8">
                     {
                         db.map((item, index) => (
                             <ProjectItem item={item} index={index} key={index} />

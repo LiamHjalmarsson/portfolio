@@ -8,8 +8,7 @@ import Heading from '../../../../Components/Heading/Heading';
 
 const Details = ({ show }) => {
     return (
-        <div className={`min-h-fit w-full`}>
-
+        <>
             {show === "Skills" && <Skills show={show} />}
 
             {show === "Education" && <Education show={show} />}
@@ -18,7 +17,7 @@ const Details = ({ show }) => {
 
             {show === "Interests" && <Interests show={show} />}
 
-        </div>
+        </>
     );
 }
 

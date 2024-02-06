@@ -15,7 +15,7 @@ const About = () => {
 
     return (
         <Section id="about">
-            <div className='flex flex-col gap-16 justify-start items-start w-full min-h-screen'>
+            <div className='flex flex-col gap-16 justify-start items-start w-full min-h-[100vh] lg:min-h-[80vh]'>
                 <div className='w-full lg:w-[700px] h-auto'>
                     <div className="flex flex-col gap-8 md:justify-start md:items-start justify-center items-center">
                         <div className='md:w-fit w-1/2'>
@@ -47,12 +47,12 @@ const About = () => {
                     </div>
                 </div>
 
-                    <nav className='flex justify-center items-center w-full'>
-                        <div className='flex gap-8 flex-wrap justify-between w-full'>
-                            <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
-                        </div>
-                    </nav>
-                    <Details show={selectedOption} />
+                <nav className='flex justify-center items-center w-full'>
+                    <div className='flex gap-8 flex-wrap justify-between w-full'>
+                        <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
+                    </div>
+                </nav>
+                <Details show={selectedOption} />
             </div>
         </Section>
     );
