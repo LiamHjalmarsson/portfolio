@@ -37,6 +37,10 @@ const Contact = () => {
         setSuccess(true);
         
         setLoading(false);
+        setName("");
+        setEmail("");
+        setMessage("");
+        
         e.target.reset();
     }
 

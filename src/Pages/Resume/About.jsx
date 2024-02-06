@@ -31,12 +31,12 @@ const About = () => {
                             <div className='text-center md:text-start'>
                                 Country: Sweden
                             </div>
-                            <div className='text-center md:text-start'>
+                            <a href="tel:+46767675775" className='text-center md:text-start'>
                                 Phone: +46767675775
-                            </div>
-                            <div className='text-center md:text-start'>
+                            </a>
+                            <a href='mailto:liam.hjalmarssons@gmail.com' className='text-center md:text-start'>
                                 Email: liam.hjalmarssons@gmail.com
-                            </div>
+                            </a>
                             <div className='text-center md:text-start'>
                                 Langages: Swedish, English
                             </div>
