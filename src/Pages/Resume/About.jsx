@@ -18,10 +18,10 @@ const About = () => {
             <div className='flex flex-col gap-16 justify-start items-start w-full min-h-[100vh] lg:min-h-[80vh]'>
                 <div className='w-full lg:w-[700px] h-auto'>
                     <div className="flex flex-col gap-8 md:justify-start md:items-start justify-center items-center">
-                        <div className='md:w-fit w-1/2'>
+                        <div className='md:w-fit w-full'>
                             <Heading heading="About Me" />
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-sm md:text-lg text-start w-full'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 text-[16px] md:text-lg text-start w-full'>
                             <div className='text-center md:text-start'>
                                 Name: Liam Hjalmarsson
                             </div>

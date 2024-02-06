@@ -8,13 +8,15 @@ const db = [
     {
         title: "Leksaksbilen",
         skills: ["webflow", "figma"],
-        url: "/",
+        url: false,
+        description: "Project for an organisation where they wanted a donations page where people can donate toys that are not used and people can sign up for events where they can get toys",
         image: "/assets/projects/lek.png",
     },
     {
         title: "HIVE Malmö",
         skills: ["svelte", "firebase", "css", "figma"],
         url: "https://hivemalmo.se/",
+        description: "Student-run organization bridging the gap between media students and industry in Malmö closer. Our aim: is to connect students and businesses and drive the industry forward.",
         image: "/assets/projects/hive.png",
     },
 ];
