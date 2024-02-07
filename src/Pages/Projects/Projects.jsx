@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Heading from '../../Components/Heading/Heading';
 import Section from '../../Components/Layouts/Section/Section';
 import ProjectItem from './components/ProjectItem';
-
 
 const db = [
     {
         title: "Leksaksbilen",
         skills: ["webflow", "figma"],
         url: false,
-        description: "Project for an organisation where they wanted a donations page where people can donate toys that are not used and people can sign up for events where they can get toys",
+        description: "Project for an organization where they wanted a donations page where people can donate toys and sign up for events wto get toys.",
         image: "/assets/projects/lek.png",
     },
     {
         title: "HIVE Malmö",
         skills: ["svelte", "firebase", "css", "figma"],
         url: "https://hivemalmo.se/",
-        description: "Student-run organization bridging the gap between media students and industry in Malmö closer. Our aim: is to connect students and businesses and drive the industry forward.",
+        description: "Student-run organization bridging the gap between media students and industry in Malmö closer. Our aim is to connect students and businesses and to drive the industry forward.",
+        image: "/assets/projects/hive.png",
+    },
+    {
+        title: "Portfolio",
+        skills: ["react", "tailwind"],
+        url: false,
+        description: "My portfolio",
         image: "/assets/projects/hive.png",
     },
 ];
