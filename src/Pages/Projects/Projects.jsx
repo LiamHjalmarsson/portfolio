@@ -7,23 +7,26 @@ const db = [
     {
         title: "Leksaksbilen",
         skills: ["webflow", "figma"],
-        url: false,
-        description: "Project for an organization where they wanted a donations page where people can donate toys and sign up for events wto get toys.",
+        url: null,
+        github: null,
+        description: "Project for an organization where they wanted a donations site where people could donate toys or sign up for events to get a toy.",
         image: "/assets/projects/lek.png",
     },
     {
         title: "HIVE Malmö",
         skills: ["svelte", "firebase", "css", "figma"],
         url: "https://hivemalmo.se/",
+        github: null,
         description: "Student-run organization bridging the gap between media students and industry in Malmö closer. Our aim is to connect students and businesses and to drive the industry forward.",
         image: "/assets/projects/hive.png",
     },
     {
         title: "Portfolio",
         skills: ["react", "tailwind"],
-        url: false,
+        url: "https://liamhjalmarsson.se/",
+        github: "https://github.com/LiamHjalmarsson/portfolio",
         description: "My portfolio",
-        image: "/assets/projects/hive.png",
+        image: "/assets/projects/portfolio.png",
     },
 ];
 

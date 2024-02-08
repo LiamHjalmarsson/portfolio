@@ -3,7 +3,7 @@ import { Link as ScrollLink } from 'react-scroll';
 const Item = ({ address, title, close }) => {
 
     return (
-        <li className={`lg:w-fit w-full cursor-pointer hover:text-caribbean_100 transition duration-500 flex justify-center items-center px-4`}>
+        <li className={`lg:w-fit w-full cursor-pointer text-caribbean_100 hover:text-caribbean_500 transition duration-500 flex justify-center items-center px-4`}>
             <ScrollLink
                 to={address}
                 spy={true}
