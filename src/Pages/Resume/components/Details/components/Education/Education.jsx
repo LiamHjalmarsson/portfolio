@@ -14,7 +14,7 @@ const Education = ({ show }) => {
                         Bachelor degree in Media technology
                     </div>
                     <div className='max-mobil:mt-2 text-center max-md:w-full'>
-                        2021 - 2024
+                        2021 - ongoing 
                     </div>
                 </div>
             </Card>

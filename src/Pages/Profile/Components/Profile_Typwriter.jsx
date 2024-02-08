@@ -4,7 +4,7 @@ import { useTypewriter } from "react-simple-typewriter";
 const ProfileTypwriter = () => {
     let [typeEffect] = useTypewriter(
         {
-            words: ["Javascript", "React", "CSS", "Tailwind", "Firebase", "Php", "Laravel", "Figma", "Webflow"],
+            words: ["Javascript", "React", "CSS", "Tailwind", "Firebase", "Php", "Laravel", "Figma", "Webflow", "Svelte"],
             loop: {},
             typeSpeed: 100,
             deleteSpeed: 50,
