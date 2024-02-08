@@ -70,7 +70,7 @@ export default {
       },
       boxShadow: {
         right: '12px 0px 7px -7px',
-        middle: "0px 0px 20px -4px",
+        middle: "0px 0px 16px -4px",
         middle_hover: "0px 0px 30px 4px",
         bottom: "0px 17px 13px -9px",
       },
