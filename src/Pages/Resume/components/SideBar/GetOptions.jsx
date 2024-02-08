@@ -1,6 +1,4 @@
 import React from 'react';
-import OptionIcon from './Option_Icon';
-import OptionLabel from './Option_Label';
 import OptionItem from './OptionItem';
 
 const GetOptionsBar = ({selectedOptionIndex, handelOption}) => {
