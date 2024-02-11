@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonPrimary from '../../../Components/Ui/ButtonPrimary';
-import ButtonSecondary from '../../../Components/Ui/ButtonSubmary';
-import { Link, ScrollLink } from 'react-scroll';
+import ButtonSecondary from '../../../Components/Ui/ButtonSecondary';
+import { Link } from 'react-scroll';
 
 const ProfileButtons = () => {
     return (

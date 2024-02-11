@@ -7,21 +7,21 @@ const Interests = () => {
         <Container id="Interests">
             <Card>
                 <h2 className='text-2xl max-md:text-center'>
-                    Traning
+                    Running
                 </h2>
-                <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                <div className='flex justify-between flex-wrap mt-2'>
                     <div className='text-center w-full'>
-                        I belive in an active life style where working out and activeating my body
+                        Keeping my self active with running 
                     </div>
                 </div>
             </Card>
             <Card>
                 <h2 className='text-2xl max-md:text-center'>
-                    Cooking
+                    Food
                 </h2>
-                <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                <div className='flex justify-between flex-wrap'>
                     <div className='text-center w-full'>
-                        I belive in an active life style where working out and activeating my body
+                        I like to cook and discover new food from different parts of the world.
                     </div>
                 </div>
             </Card>
@@ -29,9 +29,9 @@ const Interests = () => {
                 <h2 className='text-2xl max-md:text-center'>
                     Dogs
                 </h2>
-                <div className='flex justify-between gap-4 flex-wrap mt-2'>
+                <div className='flex justify-between flex-wrap mt-2'>
                     <div className='text-center w-full'>
-                        I belive in an active life style where working out and activeating my body
+                        I love spending time with my two golden retrivers. They bring joy even on a rain. 
                     </div>
                 </div>
             </Card>
