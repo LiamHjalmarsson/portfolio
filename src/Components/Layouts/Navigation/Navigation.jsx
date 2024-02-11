@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "./components/Logo";
-import Burger from "./components/Burger/Burger";
+import BurgerMenu from "./components/BurgerMenu/BurgerMenu";
 import Items from "./components/Items/Items";
 
 const Navigation = () => {
@@ -11,9 +11,7 @@ const Navigation = () => {
             <div className='flex items-center max-w-[1300px] w-full '>
                 <div className="w-full items-center px-4 flex">
                     <Logo />
-
-                    <Burger menuHandler={() => setOpen(!open)} open={open}/>
-                
+                    <BurgerMenu menuHandler={() => setOpen(!open)} open={open}/>
                     <Items open={open} openHandler={setOpen} />
                 </div>
             </div>

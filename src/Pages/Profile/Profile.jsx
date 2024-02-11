@@ -8,19 +8,17 @@ import Section from '../../Components/Layouts/Section/Section';
 const Profile = () => {
     return (
         <Section id="home">
-            {/* <div className='flex justify-center items-center w-full'> */}
-                <div className='flex-col-reverse lg:flex-row flex items-center gap-8 w-full justify-center'> 
-                    <div className='w-full flex flex-col items-center gap-8 justify-between'>
-                        <ProfileHeader />
-                        <h2 className="lg:text-3xl md:text-2xl w-full">
-                            Frontend Developer
-                        </h2>
-                        <ProfileTypwriter />
-                        <ProfileButtons />
-                    </div>
-                    <ProfileImage />
+            <div className='flex-col-reverse lg:flex-row flex items-center gap-8 w-full justify-center'>
+                <div className='w-full flex flex-col items-center gap-8 justify-between'>
+                    <ProfileHeader />
+                    <h2 className="lg:text-3xl md:text-2xl w-full">
+                        Frontend Developer
+                    </h2>
+                    <ProfileTypwriter />
+                    <ProfileButtons />
                 </div>
-            {/* </div> */}
+                <ProfileImage />
+            </div>
         </Section>
     );
 }

@@ -1,6 +1,6 @@
 import BurgerLine from "./BurgerLine";
 
-const Burger = ({menuHandler, open}) => {
+const BurgerMenu = ({menuHandler, open}) => {
     return (
         <>        
             <div className="flex w-full lg:hidden items-end relative cursor-pointer justify-end">
@@ -16,4 +16,4 @@ const Burger = ({menuHandler, open}) => {
     );
 }
 
-export default Burger;
+export default BurgerMenu;

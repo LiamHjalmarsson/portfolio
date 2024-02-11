@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Details from './components/Details/Details';
-import GetOptionsBar from './components/SideBar/GetOptions';
+import Options from './components/Options/Options';
 import Section from '../../Components/Layouts/Section/Section';
-import AboutMe from './components/Details/components/AboutMe';
+import AboutMe from './components/AboutMe';
 
 const About = () => {
-
     let [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
     let [selectedOption, setSelectedOption] = useState("Skills");
 
@@ -23,7 +22,7 @@ const About = () => {
         <Section id="about">
             <div className='flex flex-col gap-16 justify-start items-start w-full min-h-[100vh] lg:min-h-[80vh]'>
                 <AboutMe />
-                <GetOptionsBar selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
+                <Options selectedOptionIndex={selectedOptionIndex} handelOption={handelOption} />
                 <Details show={selectedOption} />
             </div>
         </Section>
