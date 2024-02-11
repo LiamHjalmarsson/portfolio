@@ -9,7 +9,7 @@ const ButtomCard = ({item, showHandler, show}) => {
                 {
                     item.github && (
                         <a href={item.github} target="_blank" rel="noopener noreferrer" className='flex justify-center p-1 items-center h-8 w-8 bg-caribbean_500 rounded-full'>
-                            <FaGithub className='h-full w-full text-nobel_400' />
+                            <FaGithub className='h-full w-full text-whiteish' />
                         </a>
                     )
                 }
@@ -17,7 +17,7 @@ const ButtomCard = ({item, showHandler, show}) => {
                     {item.title}
                 </h2>
                 <div className={`lg:hidden flex justify-center p-1 items-center h-8 w-8 rounded-full cursor-pointer ${show ? "bg-caribbean_400 shadow-middle shadow-caribbean_500" : "bg-caribbean_500"}`} onClick={() => showHandler()}>
-                    <BiSolidShow className='h-full w-full text-nobel_400' />
+                    <BiSolidShow className='h-full w-full text-text-whiteish' />
                 </div>
             </div>
             <div className='flex flex-wrap w-full justify-center gap-4'>

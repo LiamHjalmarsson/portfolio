@@ -1,11 +1,9 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Heading from '../../Components/Ui/Heading';
-import ButtonPrimary from '../../Components/Ui/ButtonPrimary';
-import { LuSend } from "react-icons/lu";
 import Section from '../../Components/Layouts/Section/Section';
-import Error from './components/error';
-import Sucess from './components/sucess';
+import Button from './components/Button';
+import Message from './components/Message';
 
 
 const Contact = () => {
@@ -17,20 +15,24 @@ const Contact = () => {
     let [name, setName] = useState("");
     let [email, setEmail] = useState("");
     let [message, setMessage] = useState("");
+    let [emailValid, setEmailValid] = useState(true);
 
+    let validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
 
     let formHandler = async (e) => {
         e.preventDefault();
 
         setError(false);
         setSuccess(false);
+        setLoading(true);
 
-        if (name === "" || email === "" || message === "") {
+        if (name === "" || email === "" || message === "" || !emailValid) {
             setError(true);
+            setLoading(false);
             return; 
         }
-
-        setLoading(true);
 
         await emailjs.sendForm('service_bx2imh9', 'template_qtj543b', form.current, 'mcrKYJtLl9odWjGFq')
 
@@ -43,6 +45,11 @@ const Contact = () => {
         
         e.target.reset();
     }
+
+    let handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        setEmailValid(validateEmail(e.target.value));
+    };
 
     return (
         <Section id="contact">
@@ -57,38 +64,19 @@ const Contact = () => {
                         </div>
                         <div className='flex flex-col flex-grow items-start'>
                             <label htmlFor="email">Email</label>
-                            <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className={`w-full bg-transparent border-2 ${error && email === "" ? "border-red-500" : "border-caribbean_200"} rounded-md p-2 outline-none `} />
+                            <input  name="email" onChange={(e) => handleEmailChange(e)} className={`w-full bg-transparent border-2 ${error && (email === "" || !emailValid)? "border-red-500" : "border-caribbean_200"} rounded-md p-2 outline-none `} />
                         </div>
                     </div>
                     <div className='flex flex-col items-start'>
                         <label htmlFor="message">Message</label>
                         <textarea type="text" name="message" onChange={(e) => setMessage(e.target.value)} className={`w-full bg-transparent border-2 ${error && message === "" ? "border-red-500" : "border-caribbean_200"} rounded-md p-2 outline-none `} />
                     </div>
-                    <div className='w-full flex mt-4 justify-center items-center'>
-                        <ButtonPrimary button={{ type: 'submit' }}>
-                            <div className='flex items-center'>
-                                {
-                                    !loading && (
-                                        <p className='flex-grow'>
-                                            Send
-                                        </p>
-                                    )
-                                }
-                                {
-                                    loading && (
-                                        <p className='flex-grow'>
-                                            Sending...
-                                        </p>
-                                    )
-                                }
-                                <LuSend />
-                            </div>
-                        </ButtonPrimary>
-                    </div>
+
+                    <Button loading={loading} />
                 </form>
             </div>
-            {error && <Error />}
-            {success && <Sucess />}
+            {error && <Message error={error} />}
+            {success && <Message />}
         </div>
     </Section>
     );

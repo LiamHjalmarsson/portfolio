@@ -21,7 +21,7 @@ const Work = () => {
                     <div className='w-1/2 border-2 rounded-full h-0 border-caribbean_500'></div>
                 </div>
                 <div>
-                    During this period, i had the opportunity to work on various projects and tasks using different tools, primarily Figma and Webflow. One off the more notable project involved working on a pro-bono case for an organization.                
+                    During this period, i had the opportunity to work on various projects and tasks, using different tools, primarily Figma and Webflow. One off the more notable projects involved working on a pro-bono case for an organization.                
                 </div>
             </Card>
         </Container>

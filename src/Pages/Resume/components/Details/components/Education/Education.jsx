@@ -60,7 +60,7 @@ const Education = ({ show }) => {
                 <div className='flex flex-wrap gap-8 justify-center'>
                     {
                         courses.map(course => (
-                            <div className='p-2 border border-nobel_300 rounded-md'>
+                            <div key={course.title} className='p-2 border border-nobel_400 rounded-md'>
                                 {
                                     course.title
                                 }

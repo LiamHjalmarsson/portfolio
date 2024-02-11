@@ -37,8 +37,8 @@ const TopCard = ({ item, show }) => {
             </div>
             {
                 item.github && (
-                    <a href={item.github} target="_blank" rel="noopener noreferrer" className='absolute hidden lg:flex justify-center p-2 items-center right-2 bottom-0 h-10 w-10 bg-caribbean_500 rounded-full hover:h-12 hover:w-12 z-10 transtion duration-500 cursor-pointer'>
-                        <FaGithub className='h-full w-full text-nobel_400' />
+                    <a href={item.github} target="_blank" rel="noopener noreferrer" className='absolute hidden lg:flex justify-center p-1 items-center right-2 bottom-0 h-10 w-10 bg-caribbean_500 rounded-full hover:h-12 hover:w-12 z-10 transtion duration-500 cursor-pointer'>
+                        <FaGithub className='h-full w-full text-text-whiteish' />
                     </a>
                 )
             }
