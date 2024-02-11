@@ -1,5 +1,5 @@
 import React from 'react';
-import Heading from '../../../../../Components/Ui/Heading';
+import Heading from '../../../Components/Ui/Heading';
 
 const AboutMe = () => {
     return (

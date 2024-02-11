@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Heading = ({heading, custom}) => {
+const Heading = ({heading}) => {
     return (
         <h1 className={`text-2xl lg:text-3xl tracking-wider`}>
             {heading.charAt(0).toUpperCase() + heading.slice(1)}

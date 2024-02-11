@@ -1,10 +1,9 @@
 import React from 'react';
-import OptionItem from './OptionItem';
-import OptionIcon from './Option_Icon';
-import OptionLabel from './Option_Label';
+import OptionIcon from './OptionIcon';
+import OptionLabel from './OptionLabel';
 
-const GetOptionsBar = ({ selectedOptionIndex, handelOption }) => {
-    let sideBarOptions = [
+const Options = ({ selectedOptionIndex, handelOption }) => {
+    let options = [
         {
             label: "Skills",
             icon: "bg-skills"
@@ -25,7 +24,7 @@ const GetOptionsBar = ({ selectedOptionIndex, handelOption }) => {
 
     return (
         <div className='flex gap-8 flex-wrap items-center justify-center w-full'>
-            {sideBarOptions.map((option, index) => (
+            {options.map((option, index) => (
                 <div className={`h-14 w flex items-center justify-center transition-transform duration-500`} onClick={() => handelOption(option.label, index)} key={index}>
                     <OptionIcon icon={option.icon} index={index} selectedOptionIndex={selectedOptionIndex} />
                     <OptionLabel label={option.label} index={index} selectedOptionIndex={selectedOptionIndex} />
@@ -35,4 +34,4 @@ const GetOptionsBar = ({ selectedOptionIndex, handelOption }) => {
     );              
 }
 
-export default GetOptionsBar;
+export default Options;

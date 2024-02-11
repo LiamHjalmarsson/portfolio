@@ -77,7 +77,7 @@ const Skills = ({ show }) => {
         },
     ];
 
-    const skillTypes = ["front-end", "back-end", "ui/ux"];
+    let skillTypes = ["front-end", "back-end", "ui/ux"];
 
     return (
         <Container id="Skills" show={show}>
