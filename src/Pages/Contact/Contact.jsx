@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import Heading from '../../Components/Heading/Heading';
+import Heading from '../../Components/Ui/Heading';
 import ButtonPrimary from '../../Components/Ui/ButtonPrimary';
 import { LuSend } from "react-icons/lu";
 import Section from '../../Components/Layouts/Section/Section';

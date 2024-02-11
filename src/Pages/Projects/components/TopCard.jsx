@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonSecondary from '../../../Components/Ui/ButtonSubmary';
+import ButtonSecondary from '../../../Components/Ui/ButtonSecondary';
 import { FaGithub } from "react-icons/fa6";
 
 const TopCard = ({ item, show }) => {

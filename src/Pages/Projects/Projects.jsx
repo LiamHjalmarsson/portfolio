@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Heading from '../../Components/Heading/Heading';
+import Heading from '../../Components/Ui/Heading';
 import Section from '../../Components/Layouts/Section/Section';
 import ProjectItem from './components/ProjectItem';
 
