@@ -57,7 +57,7 @@ onMounted(async () => {
 					<h1
 						class="flex flex-col flex-wrap gap-12 sm:gap-16 md:block uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold -tracking-tighter"
 						:class="themeColor">
-						{{ title }}
+						{{ title }}xx
 					</h1>
 				</div>
 			</div>
