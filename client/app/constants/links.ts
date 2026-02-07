@@ -1,7 +1,8 @@
 export const links = [
-	{ name: "Home", to: "/" },
-	{ name: "About", to: "/about" },
-	{ name: "Services", to: "/services" },
-	{ name: "Projects", to: "/projects" },
-	{ name: "Clients", to: "/clients" },
+	{ name: "Hem", to: "/" },
+	{ name: "Tech", to: "/about" },
+	{ name: "Backgrund", to: "/background" },
+	{ name: "om-mig", to: "/about" },
+	{ name: "Tjänster", to: "/service" },
+	{ name: "Kontakt", to: "/contact" },
 ];

@@ -64,10 +64,6 @@ function handleScroll(): void {
 }
 
 onMounted(async () => {
-	if (!import.meta.client) return;
-
-	await nextTick();
-
 	const navElement = navRef.value;
 
 	const contactElement = contactRef.value;
@@ -97,7 +93,7 @@ onMounted(async () => {
 	const ctx = gsap.context(() => {
 		gsap.set(navElement, { xPercent: 100 });
 
-		gsap.set([...linksRef.value, contactElement], { autoAlpha: 0, x: -20 });
+		gsap.set([...linksRef.value, contactElement], { autoAlpha: 0, x: -200 });
 
 		navTimeLineRef.value = gsap
 			.timeline({ paused: true })
@@ -107,11 +103,11 @@ onMounted(async () => {
 				{
 					autoAlpha: 1,
 					x: 0,
-					stagger: 0.1,
+					stagger: 0.25,
 					duration: 0.5,
 					ease: "power2.out",
 				},
-				"<",
+				"<+0.1",
 			)
 			.to(
 				contactElement,
@@ -126,9 +122,31 @@ onMounted(async () => {
 
 		iconTimeLineRef.value = gsap
 			.timeline({ paused: true })
-			.to(burgerTopLineElement, { rotate: 45, y: 6, duration: 0.25, ease: "power2.inOut" })
-			.to(burgerCenterLineElement, { autoAlpha: 0, duration: 0.15, ease: "power2.inOut" }, "<")
-			.to(burgerBottomLineElement, { rotate: -45, y: -6, duration: 0.25, ease: "power2.inOut" }, "<");
+			.to(burgerTopLineElement, {
+				rotate: 45,
+				y: 6,
+				duration: 0.3,
+				ease: "power2.inOut",
+			})
+			.to(
+				burgerCenterLineElement,
+				{
+					autoAlpha: 0,
+					duration: 0.15,
+					ease: "power2.inOut",
+				},
+				"<",
+			)
+			.to(
+				burgerBottomLineElement,
+				{
+					rotate: -45,
+					y: -6,
+					duration: 0.3,
+					ease: "power2.inOut",
+				},
+				"<",
+			);
 	}, navElement);
 
 	onBeforeUnmount(() => {
@@ -151,13 +169,15 @@ onBeforeUnmount(() => {
 		:aria-hidden="!isOpen"
 		class="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-28 space-y-10 md:w-1/2 md:left-1/2">
 		<ul class="flex flex-col space-y-4 text-5xl md:text-6xl lg:text-9xl">
-			<li v-for="(link, index) in links" :key="link.to">
+			<li
+				v-for="(link, index) in links"
+				:key="link.to"
+				:ref="
+					(element) => {
+						if (element) linksRef[index] = element as unknown as HTMLElement;
+					}
+				">
 				<NuxtLink
-					:ref="
-						(element) => {
-							if (element) linksRef[index] = element as unknown as HTMLElement;
-						}
-					"
 					:to="link.to"
 					class="cursor-pointer transition-all duration-300 hover:text-white"
 					@click="closeMenu">

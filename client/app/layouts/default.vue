@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-	<div class="relative w-screen min-h-screen overflow-x-auto">
+	<div class="relative min-h-screen">
 		<LayoutNavbar />
 		<slot />
 	</div>
