@@ -1,4 +1,16 @@
-export const backgroundData = [
+export type BackgroundItem = {
+	title: string;
+	description: string;
+};
+
+export type Background = {
+	title: string;
+	company: string;
+	description: string;
+	items: BackgroundItem[];
+};
+
+export const backgroundData: Background[] = [
 	{
 		title: "Fullstack Developer",
 		company: "Timetjek",
@@ -52,6 +64,30 @@ export const backgroundData = [
 		company: "Sjöbergska",
 		description:
 			"Deltog i ett pro bono-projekt där jag ansvarade för design och utveckling av en webbplats från kravspecifikation till färdig leverans. Arbetade med wireframes, prototyper och implementation i Webflow samt ansvarade för kommunikation med kund och dokumentation.",
+		items: [
+			{
+				title: "Design",
+				description: "Wireframes, prototyper, UI-struktur",
+			},
+			{
+				title: "Development",
+				description: "Webflow-implementation",
+			},
+			{
+				title: "Projektarbete",
+				description: "Kravspecifikation, tidsestimat, kunddialog",
+			},
+			{
+				title: "Dokumentation",
+				description: "Användardokumentation + Drupal-uppdateringar",
+			},
+		],
+	},
+	{
+		title: "Bachelor's Degree in Media Technology",
+		company: "Malmö University",
+		description:
+			"Studerade en bred utbildning inom media och teknik, med fokus på utveckling, digitala medier, projekt ledning. Genomförde projekt inom frontend- och backendutveckling, samt fördjupade mig i design och tekniska lösningar för digitala produkter.",
 		items: [
 			{
 				title: "Design",

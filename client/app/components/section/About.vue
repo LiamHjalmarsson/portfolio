@@ -16,7 +16,7 @@ onMounted(async () => {
 		scale: 0.85,
 		scrollTrigger: {
 			trigger: "#about",
-			start: "bottom 80%",
+			start: "bottom 70%",
 			end: "bottom 10%",
 			scrub: true,
 			markers: false,
