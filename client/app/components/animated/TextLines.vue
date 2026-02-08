@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import gsap from "gsap";
 
 const props = defineProps<{
@@ -19,10 +18,10 @@ onMounted(async () => {
 
 	if (lineRefs.value.length > 0) {
 		gsap.from(lineRefs.value, {
-			y: 100,
+			y: 200,
 			opacity: 0,
 			duration: 1,
-			stagger: 0.3,
+			stagger: 0.2,
 			ease: "back.out",
 			scrollTrigger: {
 				trigger: containerRef.value,
@@ -42,7 +41,7 @@ onMounted(async () => {
 					if (element) lineRefs[index] = element as HTMLElement;
 				}
 			"
-			class="block leading-relaxed tracking-wide text-2xl lg:text-3xl text-pretty">
+			class="block leading-relaxed tracking-wide text-base sm:text-lg md:text-xl 2xl:text-3xl text-pretty">
 			{{ line }}
 		</span>
 	</div>

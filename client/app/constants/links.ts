@@ -1,8 +1,38 @@
-export const links = [
-	{ name: "Hem", to: "/" },
-	{ name: "Tech", to: "/about" },
-	{ name: "Backgrund", to: "/background" },
-	{ name: "om-mig", to: "/about" },
-	{ name: "Tjänster", to: "/service" },
-	{ name: "Kontakt", to: "/contact" },
+type Link = {
+	name: string;
+	to: string;
+	sectionId: string;
+};
+
+export const links: Link[] = [
+	{
+		name: "Hem",
+		to: "/",
+		sectionId: "home",
+	},
+	{
+		name: "Tech",
+		to: "/",
+		sectionId: "tech",
+	},
+	{
+		name: "Backgrund",
+		to: "/background",
+		sectionId: "background",
+	},
+	{
+		name: "Om mig",
+		to: "/about",
+		sectionId: "about",
+	},
+	{
+		name: "Tjänster",
+		to: "/service",
+		sectionId: "service",
+	},
+	{
+		name: "Kontakt",
+		to: "/contact",
+		sectionId: "contact",
+	},
 ];

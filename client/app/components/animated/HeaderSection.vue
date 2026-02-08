@@ -8,11 +8,19 @@ const { theme, withScrollTrigger } = defineProps<{
 	withScrollTrigger: boolean;
 }>();
 
-const contextRef = ref(null);
+const slots = useSlots();
 
-const headerRef = ref(null);
+const sectionRootRef = ref(null);
+
+const headerContentRef = ref(null);
 
 const themeColor = computed(() => (theme === "dark" ? "text-black" : "text-white"));
+
+const hasDefaultSlotContent = computed(() => {
+	const renderedDefaultSlotNodes = slots.default?.() ?? [];
+
+	return renderedDefaultSlotNodes.length > 0;
+});
 
 onMounted(async () => {
 	if (!import.meta.client) return;
@@ -22,22 +30,22 @@ onMounted(async () => {
 	const timeline = gsap.timeline({
 		scrollTrigger: withScrollTrigger
 			? {
-					trigger: contextRef.value,
+					trigger: sectionRootRef.value,
 				}
 			: undefined,
 	});
 
-	timeline.from(contextRef.value, {
+	timeline.from(sectionRootRef.value, {
 		y: "30vh",
 		duration: 1,
 		ease: "circ.out",
 	});
 
 	timeline.from(
-		headerRef.value,
+		headerContentRef.value,
 		{
 			opacity: 0,
-			y: "200",
+			y: 200,
 			duration: 1,
 			ease: "circ.out",
 		},
@@ -47,22 +55,24 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div ref="contextRef">
+	<div ref="sectionRootRef ">
 		<div :style="{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }">
-			<div ref="headerRef" class="flex flex-col justify-center gap-10 pb-6 pt-24 sm:gap-12">
-				<p class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase px-6 sm:px-10" :class="themeColor">
+			<div ref="headerContentRef" class="flex flex-col justify-center gap-6 pb-6 pt-24 lg:gap-12">
+				<p
+					class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase px-3 md:px-6 lg:px-12"
+					:class="themeColor">
 					{{ subtitle }}
 				</p>
-				<div class="px-6 sm:px-10">
+				<div class="px-3 md:px-6 lg:px-12">
 					<h1
-						class="flex flex-col flex-wrap gap-12 sm:gap-16 md:block uppercase text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold -tracking-tighter"
+						class="flex flex-col flex-wrap gap-12 sm:gap-16 md:block uppercase text-4xl sm:text-5xl md:text-6xl lg:text-8xl 2xl:text-9xl font-bold -tracking-tighter"
 						:class="themeColor">
 						{{ title }}
 					</h1>
 				</div>
 			</div>
 		</div>
-		<div class="relative px-10" :class="themeColor">
+		<div v-if="hasDefaultSlotContent" class="relative px-3 md:px-6 lg:px-12" :class="themeColor">
 			<div class="py-12 sm:py-16 text-end">
 				<slot />
 			</div>

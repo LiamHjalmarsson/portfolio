@@ -16,10 +16,6 @@ export default defineNuxtConfig({
 		"@tresjs/nuxt",
 	],
 
-	image: {
-		domains: ["storage.googleapis.com"],
-	},
-
 	css: ["./app/assets/css/main.css"],
 
 	vite: {

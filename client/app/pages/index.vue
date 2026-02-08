@@ -9,7 +9,5 @@
 
 	<SectionAbout />
 
-	<SectionService />
-
 	<SectionContact />
 </template>
