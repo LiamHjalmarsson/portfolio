@@ -16,7 +16,7 @@ const getBackgroundStyle = computed(() => {
 		if (!isDesktop.value) return { top: "0" };
 
 		return {
-			top: `calc(1vh + ${index * 5}em)`,
+			top: `calc(1vh + ${index * 7}em)`,
 			marginBottom: `${(backgroundData.length - index - 1) * 5}rem`,
 		};
 	};

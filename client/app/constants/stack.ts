@@ -1,22 +1,10 @@
-export type TechStackLogoName =
-	| "nuxt"
-	| "vue"
-	| "react"
-	| "typescript"
-	| "laravel"
-	| "node"
-	| "figma"
-	| "gsap"
-	| "tailwind"
-	| "postgresql";
-
 export type TechTileSize = "large" | "small";
 
 export type TechTileItem = {
 	key: string;
 	label: string;
 	size: TechTileSize;
-	logo: TechStackLogoName;
+	logo: string;
 };
 
 export const stackItems: TechTileItem[] = [
@@ -24,54 +12,54 @@ export const stackItems: TechTileItem[] = [
 		key: "vue",
 		label: "Vue",
 		size: "large",
-		logo: "vue",
+		logo: "mdi:vuejs",
 	},
 	{
 		key: "nuxt",
 		label: "Nuxt.js",
 		size: "large",
-		logo: "nuxt",
+		logo: "mdi:nuxt",
 	},
 	{
 		key: "typescript",
 		label: "TypeScript",
 		size: "large",
-		logo: "typescript",
+		logo: "mdi:language-typescript",
 	},
 	{
 		key: "gsap",
 		label: "GSAP",
 		size: "small",
-		logo: "gsap",
+		logo: "simple-icons:gsap",
 	},
 	{
 		key: "laravel",
 		label: "Laravel",
 		size: "small",
-		logo: "laravel",
+		logo: "mdi:laravel",
 	},
 	{
 		key: "tailwind",
 		label: "Tailwind",
 		size: "small",
-		logo: "tailwind",
+		logo: "mdi:tailwind",
 	},
 	{
 		key: "postgreSQL",
 		label: "PostgreSQL",
 		size: "small",
-		logo: "postgresql",
+		logo: "akar-icons:postgresql-fill",
 	},
 	{
 		key: "node",
 		label: "Node",
 		size: "small",
-		logo: "node",
+		logo: "mdi:nodejs",
 	},
 	{
-		key: "figma",
-		label: "Figma",
+		key: "react",
+		label: "React",
 		size: "small",
-		logo: "figma",
+		logo: "mdi:react",
 	},
 ];

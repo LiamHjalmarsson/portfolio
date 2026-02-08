@@ -62,6 +62,7 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
 	stopImageRotation();
+
 	revertGridAnimation();
 });
 </script>
@@ -85,19 +86,23 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="topRightCardElement"
-					class="col-span-6 md:col-span-6 row-span-4 sm:row-span-2 grid grid-cols-3 items-center space-x-3 overflow-hidden rounded-4xl bg-black p-6 text-white">
+					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 grid sm:grid-cols-3 items-center md:justify-between overflow-hidden rounded-4xl bg-primary-600 p-3 text-white">
 					<NuxtLink
 						v-for="social in socials"
 						:key="social.name"
 						:to="social.href"
-						class="flex h-full items-center justify-center">
+						class="flex h-full items-center justify-center w-full">
 						<Icon :name="social.icon" size="36" />
 					</NuxtLink>
+
+					<button class="border-0 outline-0 flex justify-center items-center cursor-pointer">
+						<Icon name="mdi:download" size="36" />
+					</button>
 				</div>
 
 				<div
 					ref="rotatingCardElement"
-					class="col-span-6 md:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
+					class="col-span-8 sm:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
 					<div ref="currentImageWrapperElement" class="absolute inset-0">
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"

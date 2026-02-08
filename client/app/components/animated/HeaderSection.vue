@@ -73,7 +73,7 @@ onMounted(async () => {
 			</div>
 		</div>
 		<div v-if="hasDefaultSlotContent" class="relative px-3 md:px-6 lg:px-12" :class="themeColor">
-			<div class="pb-3 md:py-6 lg:py-12 2xl:py-16 text-end">
+			<div class="py-8 lg:py-12 2xl:py-16 text-end">
 				<slot />
 			</div>
 		</div>

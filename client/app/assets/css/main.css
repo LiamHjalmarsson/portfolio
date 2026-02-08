@@ -3,4 +3,15 @@
 @theme {
 	--color-black: #0e0f0f;
 	--color-white: #f9fafa;
+	--color-primary-50: #fef2f2;
+	--color-primary-100: #fee6e5;
+	--color-primary-200: #fccfd0;
+	--color-primary-300: #f9a8aa;
+	--color-primary-400: #f5777c;
+	--color-primary-500: #ee5b65;
+	--color-primary-600: #d8263b;
+	--color-primary-700: #b61a30;
+	--color-primary-800: #99182f;
+	--color-primary-900: #83182e;
+	--color-primary-950: #490813;
 }

@@ -3,10 +3,13 @@ import gsap from "gsap";
 
 const imageRef = ref<HTMLElement | null>(null);
 
-const aboutText = `Jag började min resa inom tech under utbildningen 
-och hittade snabbt en passion för utveckling och design.
-Sedan dess har jag fortsatt bygga, utforska och lära mig 
-genom verkliga projekt och samarbeten.`;
+const aboutPrimaryText = `Jag är baserad i Sverige och hämtar mycket inspiration
+från naturen och stillheten runt omkring.
+Ofta hittar du mig ute på vandring eller med mina två hundar.`;
+
+const aboutSecondaryText = `För mig handlar mycket om att vara närvarande i det jag gör.
+Att lyssna, justera och låta erfarenhet forma nästa steg,
+snarare än att skynda vidare.`;
 
 onMounted(async () => {
 	gsap.to("#about", {
@@ -38,15 +41,15 @@ onMounted(async () => {
 	<section id="about" class="min-h-screen lg:px-3">
 		<div class="bg-black rounded-b-4xl">
 			<AnimatedHeaderSection subtitle="Lite mer" title="Om mig" theme="light" :with-scroll-trigger="true">
-				<AnimatedTextLines :text="aboutText" class="font-light uppercase" />
+				<AnimatedTextLines :text="aboutPrimaryText" class="font-light uppercase" />
 			</AnimatedHeaderSection>
 
 			<div
-				class="flex max-md:flex-col-reverse md:items-center justify-between gap-16 px-3 md:px-6 lg:px-12 pb-16 font-ligt tracking-wide text-white/60">
-				<AnimatedTextLines :text="aboutText" class="font-light uppercase" />
+				class="flex max-md:flex-col-reverse md:items-center justify-between max-md:space-y-reverse max-md:space-y-8 md:space-x-16 px-3 md:px-6 lg:px-12 pb-16 font-ligt tracking-wide text-white/60">
+				<AnimatedTextLines :text="aboutSecondaryText" class="font-light uppercase" />
 
-				<div ref="imageRef">
-					<NuxtImg src="/images/test.png" class="rounded-3xl" />
+				<div ref="imageRef" class="flex-1 h-140 relative overflow-hidden">
+					<NuxtImg src="/images/me.png" class="rounded-3xl object-cover lg:absolute w-full h-full" />
 				</div>
 			</div>
 		</div>

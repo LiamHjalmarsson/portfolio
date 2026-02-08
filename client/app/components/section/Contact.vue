@@ -1,13 +1,25 @@
 <script lang="ts" setup>
-const text = `Got anye questions, want to come in contact or 
-    have any need of help with any project
-	i would love to hear from you`;
+const text = `Har du en idé, en fråga eller vill du bara säga hej?
+Tveka inte att höra av dig jag är alltid öppen för ett samtal eller ta en kopp kaffe.
+Oavsett om det gäller samarbete eller något helt annat.`;
 </script>
 
 <template>
 	<section id="contact" className="flex flex-col justify-between min-h-screen bg-black">
-		<AnimatedHeaderSection title="Contact" subtitle="Let's Get in Touch" theme="light" :with-scroll-trigger="true">
+		<AnimatedHeaderSection
+			title="Kontakta mig"
+			subtitle="Låt oss komma i kontakt"
+			theme="light"
+			:with-scroll-trigger="true">
 			<AnimatedTextLines :text="text" class="font-light uppercase" />
 		</AnimatedHeaderSection>
+
+		<div class="flex-1 px-3 md:px-6 lg:px-12">
+			<div class="flex flex-col items-center justify-center space-y-6 pt-12">
+				<UiButton label="Du kan skicka mig ett mail" />
+				<UiButton label="Hitta mig på LinkeIn" />
+				<UiButton label="Ladda ner mitt cv" />
+			</div>
+		</div>
 	</section>
 </template>
