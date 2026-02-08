@@ -69,13 +69,13 @@ onBeforeUnmount(() => {
 <template>
 	<section id="home" class="relative flex min-h-screen flex-col justify-end overflow-hidden">
 		<div
-			class="absolute inset-0 flex h-full w-full items-start xl:items-center xl:justify-end xl:pb-80 max-2xl:pt-32 px-3 md:px-6 lg:px-12">
+			class="absolute inset-0 flex h-full w-full items-start xl:items-center xl:justify-end xl:pb-80 pt-24 md:pt-32 xl:pt-0 px-3 md:px-6 lg:px-12">
 			<div
 				ref="gridRootElement"
-				class="grid h-170 lg:h-130 2xl:h-162 w-full xl:w-180 2xl:w-220 grid-cols-12 grid-rows-12 gap-3 overflow-hidden">
+				class="grid h-1/2 lg:h-130 2xl:h-162 w-full xl:w-180 2xl:w-220 grid-cols-12 grid-rows-12 gap-3 overflow-hidden">
 				<div
 					ref="leftCardElement"
-					class="col-span-12 md:col-span-6 row-span-6 md:row-span-12 relative overflow-hidden rounded-4xl p-6">
+					class="col-span-12 sm:col-span-6 row-span-6 sm:row-span-12 relative overflow-hidden rounded-4xl p-6">
 					<NuxtImg
 						src="/images/me.png"
 						alt="Liam Hjalmarsson"
@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="topRightCardElement"
-					class="col-span-6 row-span-2 grid grid-cols-3 items-center space-x-3 overflow-hidden rounded-4xl bg-black p-6 text-white">
+					class="col-span-6 md:col-span-6 row-span-4 sm:row-span-2 grid grid-cols-3 items-center space-x-3 overflow-hidden rounded-4xl bg-black p-6 text-white">
 					<NuxtLink
 						v-for="social in socials"
 						:key="social.name"
@@ -95,7 +95,9 @@ onBeforeUnmount(() => {
 					</NuxtLink>
 				</div>
 
-				<div ref="rotatingCardElement" class="col-span-6 row-span-10 relative overflow-hidden rounded-4xl">
+				<div
+					ref="rotatingCardElement"
+					class="col-span-6 md:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
 					<div ref="currentImageWrapperElement" class="absolute inset-0">
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"

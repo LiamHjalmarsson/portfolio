@@ -35,14 +35,14 @@ onMounted(async () => {
 </script>
 
 <template>
-	<section id="about" class="min-h-screen px-2">
+	<section id="about" class="min-h-screen lg:px-3">
 		<div class="bg-black rounded-b-4xl">
-			<AnimatedHeaderSection subtitle="Lite om mig" title="About" theme="light" :with-scroll-trigger="true">
+			<AnimatedHeaderSection subtitle="Lite mer" title="Om mig" theme="light" :with-scroll-trigger="true">
 				<AnimatedTextLines :text="aboutText" class="font-light uppercase" />
 			</AnimatedHeaderSection>
 
 			<div
-				class="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-ligt tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
+				class="flex max-md:flex-col-reverse md:items-center justify-between gap-16 px-3 md:px-6 lg:px-12 pb-16 font-ligt tracking-wide text-white/60">
 				<AnimatedTextLines :text="aboutText" class="font-light uppercase" />
 
 				<div ref="imageRef">

@@ -41,7 +41,7 @@ onMounted(async () => {
 					if (element) lineRefs[index] = element as HTMLElement;
 				}
 			"
-			class="block leading-relaxed tracking-wide text-base sm:text-lg md:text-xl 2xl:text-3xl text-pretty">
+			class="block leading-relaxed tracking-wide text-sm md:text-md lg:text-xl 2xl:text-3xl text-pretty">
 			{{ line }}
 		</span>
 	</div>
