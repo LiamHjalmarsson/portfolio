@@ -26,9 +26,9 @@ export const links: Link[] = [
 		sectionId: "about",
 	},
 	{
-		name: "Tjänster",
+		name: "Projekt",
 		to: "/service",
-		sectionId: "service",
+		sectionId: "projects",
 	},
 	{
 		name: "Kontakt",

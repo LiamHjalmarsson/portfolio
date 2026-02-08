@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="topRightCardElement"
-					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 grid sm:grid-cols-3 items-center md:justify-between overflow-hidden rounded-4xl bg-primary-600 p-3 text-white">
+					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 grid sm:grid-cols-3 items-center md:justify-between overflow-hidden rounded-4xl bg-black p-3 text-white max-sm:hidden">
 					<NuxtLink
 						v-for="social in socials"
 						:key="social.name"
@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="rotatingCardElement"
-					class="col-span-8 sm:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
+					class="col-span-12 sm:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
 					<div ref="currentImageWrapperElement" class="absolute inset-0">
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"

@@ -23,6 +23,7 @@ function registerMenuLinkElement(element: Element | ComponentPublicInstance | nu
 
 function scrollToSection(id: string) {
 	const element = document.getElementById(id);
+
 	emit("request-close");
 
 	element?.scrollIntoView({ behavior: "smooth" });

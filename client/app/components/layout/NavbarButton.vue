@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useLayoutNavbarButtonAnimation } from "~/composable/layout/useLayoutNavbarButtonAnimation";
+
 defineProps<{
 	isMenuOpen: boolean;
 }>();
 
-const emit = defineEmits(["toggle"]);
+const emit = defineEmits(["toggle", "animationReady"]);
 
 const toggleButtonRef = ref<HTMLButtonElement | null>(null);
 
@@ -12,6 +14,16 @@ const burgerTopLineRef = ref<HTMLElement | null>(null);
 const burgerCenterLineRef = ref<HTMLElement | null>(null);
 
 const burgerBottomLineRef = ref<HTMLElement | null>(null);
+
+const toggleButtonAnimation = useLayoutNavbarButtonAnimation({
+	topLineElement: burgerTopLineRef,
+	centerLineElement: burgerCenterLineRef,
+	bottomLineElement: burgerBottomLineRef,
+});
+
+onMounted(() => {
+	emit("animationReady", toggleButtonAnimation);
+});
 </script>
 
 <template>

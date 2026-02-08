@@ -1,18 +1,27 @@
 <script setup lang="ts">
+import type { NavbarToggleButtonAnimation } from "~/composable/layout/useLayoutNavbarButtonAnimation";
 import type { NavbarMenuAnimation } from "~/composable/layout/useLayoutNavbarMenuAnimation";
 
 const isMenuOpen = ref(false);
 
 const shouldShowMenuToggleButton = ref(true);
 
+const menuAnimation = shallowRef<NavbarMenuAnimation | null>(null);
+
+const toggleButtonAnimation = shallowRef<NavbarToggleButtonAnimation | null>(null);
+
 let lastKnownScrollY = 0;
 
-const menuAnimation = shallowRef<NavbarMenuAnimation | null>(null);
+function registerToggleButtonAnimation(animation: NavbarToggleButtonAnimation) {
+	toggleButtonAnimation.value = animation;
+}
 
 function openMenu() {
 	if (!menuAnimation.value) return;
 
 	menuAnimation.value.play();
+
+	toggleButtonAnimation.value?.play();
 
 	isMenuOpen.value = true;
 }
@@ -24,6 +33,8 @@ function closeMenu() {
 
 	menuAnimation.value.reverse();
 
+	toggleButtonAnimation.value?.reverse();
+
 	isMenuOpen.value = false;
 }
 
@@ -33,6 +44,7 @@ function toggleMenu() {
 
 		return;
 	}
+
 	openMenu();
 }
 
@@ -76,5 +88,5 @@ onBeforeUnmount(() => {
 <template>
 	<LayoutNavbarMenu :isMenuOpen="isMenuOpen" @requestClose="closeMenu" @animationReady="registerMenuAnimation" />
 
-	<LayoutNavbarButton :isMenuOpen="isMenuOpen" @toggle="toggleMenu" />
+	<LayoutNavbarButton :isMenuOpen="isMenuOpen" @toggle="toggleMenu" @animationReady="registerToggleButtonAnimation" />
 </template>

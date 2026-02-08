@@ -3,7 +3,7 @@ import gsap from "gsap";
 
 const imageRef = ref<HTMLElement | null>(null);
 
-const aboutPrimaryText = `Jag är baserad i Sverige och hämtar mycket inspiration
+const aboutPrimaryText = `Jag är baserad i Skåne och hämtar mycket inspiration
 från naturen och stillheten runt omkring.
 Ofta hittar du mig ute på vandring eller med mina två hundar.`;
 

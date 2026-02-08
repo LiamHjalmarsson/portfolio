@@ -20,6 +20,7 @@ const smallTechTileItems = computed(() => resolvedTechTileItems.value.filter((it
 
 <template>
 	<section
+		id="tech"
 		class="flex min-h-screen flex-col items-center justify-between space-y-12 px-3 py-48 md:px-6 lg:px-12 lg:py-64 xl:space-y-24">
 		<p
 			class="max-w-480 text-center text-lg leading-relaxed tracking-wide text-black/80 text-pretty md:text-2xl lg:text-3xl 2xl:text-5xl">

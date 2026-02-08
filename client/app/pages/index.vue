@@ -9,5 +9,7 @@
 
 	<SectionAbout />
 
+	<SectionProject />
+
 	<SectionContact />
 </template>
