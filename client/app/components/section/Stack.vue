@@ -15,22 +15,25 @@ const smallItems = computed(() => resolvedItems.value.filter((item) => item.size
 </script>
 
 <template>
-	<section class="flex flex-col min-h-screen items-center justify-between space-y-24 py-48 lg:py-64">
+	<section
+		class="flex flex-col min-h-screen items-center justify-between space-y-12 xl:space-y-24 py-48 lg:py-64 px-3 md:px-6 lg:px-12">
 		<p
-			class="block leading-relaxed tracking-wide text-5xl lg:text-6xl text-pretty text-center text-black/80 max-w-480">
+			class="block leading-relaxed tracking-wide text-lg md:text-2xl lg:text-3xl 2xl:text-5xl text-pretty text-center text-black/80 max-w-480">
 			{{ text }}
 		</p>
 
-		<div class="w-full px-4 sm:px-6 lg:px-8">
+		<div class="w-full">
 			<div class="overflow-hidden">
-				<div class="grid grid-cols-12 md:grid-rows-2">
+				<div class="grid grid-cols-12">
 					<TechStackCard
 						v-for="(item, index) in largeItems"
 						:key="item.key"
 						:size="item.size"
 						:is-last-column="(index + 1) % 3 === 0"
 						data-tech-card="large">
-						<div class="font-black tetx-4xl group:hover:text-white duration-300">{{ item.label }}</div>
+						<div class="font-black text-xs md:text-sm xl:text-xl group:hover:text-white duration-300">
+							{{ item.label }}
+						</div>
 					</TechStackCard>
 
 					<TechStackCard
@@ -39,7 +42,9 @@ const smallItems = computed(() => resolvedItems.value.filter((item) => item.size
 						:size="item.size"
 						:is-last-column="(index + 1) % 6 === 0"
 						data-tech-card="small">
-						<div class="font-black tetx-4xl group:hover:text-white duration-300">{{ item.label }}</div>
+						<div class="font-black text-xs md:text-sm xl:text-xl group:hover:text-white duration-300">
+							{{ item.label }}
+						</div>
 					</TechStackCard>
 				</div>
 			</div>

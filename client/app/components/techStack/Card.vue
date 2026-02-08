@@ -26,7 +26,7 @@ onMounted(async () => {
 			trigger: iconRef.value,
 			start: "top 80%",
 		},
-		ease: "ease.inOut",
+		ease: "power2.inOut",
 	});
 });
 </script>
@@ -36,9 +36,9 @@ onMounted(async () => {
 		class="flex items-center justify-center transition border-black/10"
 		:class="[
 			size === 'large'
-				? 'col-span-12 md:col-span-4 md:row-span-2 h-120 border-b md:border-b-0 md:border-r p-10 md:p-12'
-				: 'col-span-6 sm:col-span-4 md:col-span-2 h-80 border-t border-l md:border-l-0 md:border-r p-6 md:p-7',
-			isLastColumn && 'md:border-r-0',
+				? 'col-span-4 row-span-2 h-40 lg:h-52 2xl:h-96 border-b md:border-b-0 border-r p-10 md:p-12'
+				: 'col-span-4 sm:col-span-2 h-40 lg:h-52 2xl:h-80 border-t border-l md:border-l-0 md:border-r p-6 md:p-7',
+			isLastColumn && 'border-r-0',
 		]">
 		<div ref="iconRef">
 			<slot />
