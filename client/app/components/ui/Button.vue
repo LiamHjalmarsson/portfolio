@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<AppButtonProps>(), {
 });
 
 const baseClassName =
-	"inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-12 py-6 relative rounded-full block cursor-pointer";
+	"inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 relative rounded-full block cursor-pointer";
 
 const variantClassName = computed((): string => {
 	if (props.variant === "outline") {

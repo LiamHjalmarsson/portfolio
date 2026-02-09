@@ -57,19 +57,17 @@ onMounted(async () => {
 <template>
 	<div ref="sectionRootRef ">
 		<div :style="{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }">
-			<div ref="headerContentRef" class="flex flex-col justify-center gap-3 md:gap-6 pb-6 pt-24 lg:gap-12">
-				<p
-					class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase px-3 md:px-6 lg:px-12"
-					:class="themeColor">
+			<div
+				ref="headerContentRef"
+				class="flex flex-col justify-center gap-3 md:gap-6 pb-6 pt-24 lg:gap-12 px-3 md:px-6 lg:px-12">
+				<p class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase" :class="themeColor">
 					{{ subtitle }}
 				</p>
-				<div class="px-3 md:px-6 lg:px-12">
-					<h1
-						class="flex flex-col flex-wrap gap-12 sm:gap-16 md:block uppercase text-4xl sm:text-5xl md:text-6xl lg:text-8xl 2xl:text-9xl font-bold -tracking-tighter"
-						:class="themeColor">
-						{{ title }}
-					</h1>
-				</div>
+				<h1
+					class="flex flex-col flex-wrap gap-12 sm:gap-16 md:block uppercase text-4xl sm:text-5xl md:text-6xl lg:text-8xl 2xl:text-9xl font-bold -tracking-tighter"
+					:class="themeColor">
+					{{ title }}
+				</h1>
 			</div>
 		</div>
 		<div v-if="hasDefaultSlotContent" class="relative px-3 md:px-6 lg:px-12" :class="themeColor">

@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import gsap from "gsap";
+import { useMediaQuery } from "@vueuse/core";
 import { projectsData } from "~/constants/projects";
 
 type ProjectId = string;
+
+const isDesktop = useMediaQuery("(min-width: 63rem)");
 
 const activeHoverProjectId = ref<ProjectId | null>(null);
 
@@ -154,7 +157,7 @@ onBeforeUnmount(() => {
 	<section id="projects" class="relative flex min-h-screen flex-col justify-between">
 		<AnimatedHeaderSection title="Projekt" subtitle="Några projekt" theme="dark" :with-scroll-trigger="true" />
 
-		<div class="relative flex-1 pt-12">
+		<div class="relative flex-1 lg:pt-12">
 			<div
 				v-for="project in projectsData"
 				:key="project.id"
@@ -162,25 +165,33 @@ onBeforeUnmount(() => {
 				@pointerenter="handleProjectPointerEnter(project.id, $event)"
 				@pointermove="handleProjectPointerMove(project.id, $event)"
 				@pointerleave="handleProjectPointerLeave(project.id)">
-				<div class="pointer-events-none absolute inset-0 transition duration-300 group-hover:border-4" />
+				<div class="pointer-events-none absolute inset-0 transition duration-300 lg:group-hover:border-4" />
 
-				<div class="space-y-12 border-b px-12 py-24">
-					<div class="flex items-center justify-between">
+				<div
+					class="lg:border-b px-3 md:px-12 py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
+					<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
 						<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
 							{{ project.title }}
 						</h2>
 
-						<NuxtLink :to="project.href" class="text-lg text-black/60">Visa mer</NuxtLink>
+						<div
+							class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
+							<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+						</div>
 					</div>
 
-					<div class="flex space-x-6 text-xl font-medium">
-						<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+					<div v-if="!isDesktop">
+						<NuxtImg
+							:src="project.imageSrc"
+							:alt="project.imageAlt"
+							class="object-cover object-center"
+							format="webp" />
 					</div>
 				</div>
 			</div>
 
 			<div
-				v-if="activeProject"
+				v-if="activeProject && isDesktop"
 				ref="previewRootElement"
 				class="pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-96 h-74">
 				<NuxtImg
