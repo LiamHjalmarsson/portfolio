@@ -1,8 +1,8 @@
 import tailwindcss from "@tailwindcss/vite";
-import svgLoader from "vite-svg-loader";
 
 export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
+
 	devtools: { enabled: true },
 
 	modules: [
@@ -14,12 +14,13 @@ export default defineNuxtConfig({
 		"@nuxt/icon",
 		"v-gsap-nuxt",
 		"@tresjs/nuxt",
+		"nuxt-gtag",
 	],
 
 	css: ["./app/assets/css/main.css"],
 
 	vite: {
-		plugins: [tailwindcss(), svgLoader()],
+		plugins: [tailwindcss()],
 	},
 
 	vgsap: {
@@ -27,6 +28,10 @@ export default defineNuxtConfig({
 		breakpoint: 768,
 		scroller: "",
 		composable: true,
+	},
+
+	gtag: {
+		id: "G-LQTJ7HQDB0",
 	},
 });
 
