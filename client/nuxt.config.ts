@@ -17,6 +17,17 @@ export default defineNuxtConfig({
 		"nuxt-gtag",
 	],
 
+	app: {
+		head: {
+			meta: [
+				{
+					name: "google-site-verification",
+					content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+				},
+			],
+		},
+	},
+
 	css: ["./app/assets/css/main.css"],
 
 	vite: {
@@ -31,7 +42,6 @@ export default defineNuxtConfig({
 	},
 
 	gtag: {
-		id: "G-LQTJ7HQDB0",
+		id: process.env.NUXT_PUBLIC_GTAG_ID,
 	},
 });
-
