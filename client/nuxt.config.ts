@@ -19,10 +19,33 @@ export default defineNuxtConfig({
 
 	app: {
 		head: {
+			htmlAttrs: {
+				lang: "sv",
+			},
 			meta: [
 				{
 					name: "google-site-verification",
 					content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+				},
+				{
+					charset: "utf-8",
+				},
+				{
+					name: "viewport",
+					content: "width=device-width, initial-scale=1",
+				},
+			],
+
+			link: [
+				{
+					rel: "icon",
+					type: "image/png",
+					href: "/favicon.png",
+				},
+
+				{
+					rel: "canonical",
+					href: "https://liamhjalmarsson.se",
 				},
 			],
 		},
