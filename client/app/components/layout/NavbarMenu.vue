@@ -46,7 +46,7 @@ onMounted(() => {
 	<nav
 		ref="menuRootElement"
 		:aria-hidden="!isMenuOpen"
-		class="fixed z-50 flex h-full w-full flex-col justify-between bg-black px-10 py-14 lg:py-28 uppercase text-white/80 md:left-1/2 md:w-1/2">
+		class="fixed z-50 flex h-full w-full flex-col justify-between bg-black px-10 pb-8 max-lg:pt-14 lg:py-28 uppercase text-white/80 md:left-1/2 md:w-1/2">
 		<ul class="flex flex-col space-y-4 overflow-hidden">
 			<li
 				v-for="(link, index) in links"
@@ -60,7 +60,9 @@ onMounted(() => {
 			</li>
 		</ul>
 
-		<div ref="contactSectionElement" class="flex flex-col flex-wrap justify-between space-y-6 md:flex-row">
+		<div
+			ref="contactSectionElement"
+			class="flex flex-col flex-wrap justify-between space-y-3 lg:space-y-6 md:flex-row">
 			<div class="font-light">
 				<p class="tracking-wider text-white/50">Email</p>
 				<p class="text-pretty text-lg lg:text-xl tracking-widest lowercase">liam.hjalmarssons@gmail.com</p>

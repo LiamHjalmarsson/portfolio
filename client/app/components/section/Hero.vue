@@ -70,13 +70,13 @@ onBeforeUnmount(() => {
 <template>
 	<section id="home" class="relative flex min-h-screen flex-col justify-end overflow-hidden">
 		<div
-			class="flex max-2xl:flex-col max-xl:flex-1 2xl:absolute inset-0 h-full w-full items-start xl:items-end 2xl:items-center xl:justify-end 2xl:pb-80 pt-24 md:pt-32 xl:pt-0 px-3 md:px-6 lg:px-12">
+			class="max-lg:min-h-[60vh] flex max-2xl:flex-col max-xl:flex-1 2xl:absolute inset-0 h-full w-full items-start xl:items-end 2xl:items-center xl:justify-end 2xl:pb-80 pt-24 md:pt-32 xl:pt-0 px-3 md:px-6 lg:px-12">
 			<div
 				ref="gridRootElement"
 				class="grid max-lg:flex-1 min-h-0 w-full h-1/2 lg:h-130 2xl:h-162 xl:w-180 2xl:w-220 grid-cols-12 grid-rows-12 gap-3 overflow-hidden">
 				<div
 					ref="leftCardElement"
-					class="col-span-12 sm:col-span-6 row-span-6 sm:row-span-12 relative overflow-hidden rounded-4xl p-6">
+					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-12 relative overflow-hidden rounded-4xl p-6">
 					<NuxtImg
 						src="/images/me.png"
 						alt="Liam Hjalmarsson"
@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="rotatingCardElement"
-					class="col-span-12 sm:col-span-6 row-span-6 sm:row-span-10 relative overflow-hidden rounded-4xl">
+					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-10 relative overflow-hidden rounded-4xl">
 					<div ref="currentImageWrapperElement" class="absolute inset-0">
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"

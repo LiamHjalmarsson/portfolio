@@ -59,7 +59,7 @@ onMounted(async () => {
 		<div :style="{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }">
 			<div
 				ref="headerContentRef"
-				class="flex flex-col justify-center gap-3 md:gap-6 pb-6 pt-24 lg:gap-12 px-3 md:px-6 lg:px-12">
+				class="flex flex-col justify-center gap-3 md:gap-6 pb-6 pt-12 lg:pt-24 lg:gap-12 px-3 md:px-6 lg:px-12">
 				<p class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase" :class="themeColor">
 					{{ subtitle }}
 				</p>
