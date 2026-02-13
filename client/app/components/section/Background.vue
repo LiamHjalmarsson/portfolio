@@ -47,8 +47,8 @@ function registerItemElement(element: Element | ComponentPublicInstance | null, 
 				:ref="(element) => registerItemElement(element, index)"
 				class="lg:sticky min-h-[65vh] w-full border-t border-white/20 bg-black text-white px-3 py-12 md:px-6 lg:px-12"
 				:style="getItemStyle(index)">
-				<div class="flex flex-col space-y-12 font-light">
-					<div class="flex justify-between items-center">
+				<div class="flex flex-col space-y-6 lg:space-y-12 font-light">
+					<div class="flex max-sm:flex-col justify-between sm:items-center gap-3">
 						<h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
 							{{ background.title }}
 						</h2>
@@ -63,7 +63,7 @@ function registerItemElement(element: Element | ComponentPublicInstance | null, 
 						{{ background.description }}
 					</p>
 
-					<ul class="grid gap-6 lg:gap-12 lg:grid-cols-2">
+					<ul class="grid gap-3 lg:gap-6 lg:grid-cols-2">
 						<li v-for="(item, itemIndex) in background.items" :key="itemIndex">
 							<div
 								class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12 transition duration-300">

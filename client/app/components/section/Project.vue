@@ -63,8 +63,7 @@ onMounted(async () => {
 				clearProps: "transform",
 				scrollTrigger: {
 					trigger: item,
-					start: "top 80%",
-					toggleActions: "play none none none",
+					start: "top 85%",
 					once: true,
 					invalidateOnRefresh: true,
 				},
