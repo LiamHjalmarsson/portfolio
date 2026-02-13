@@ -57,7 +57,7 @@ onMounted(async () => {
 				class="grid max-lg:flex-1 min-h-0 w-full h-1/2 lg:h-130 2xl:h-162 xl:w-180 2xl:w-220 grid-cols-12 grid-rows-12 gap-3 overflow-hidden">
 				<div
 					ref="leftCardElement"
-					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-12 relative overflow-hidden rounded-4xl p-6">
+					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-12 relative overflow-hidden rounded-2xl lg:rounded-4xl p-6">
 					<NuxtImg
 						src="/images/me.png"
 						alt="Liam Hjalmarsson"
@@ -67,7 +67,7 @@ onMounted(async () => {
 
 				<div
 					ref="topRightCardElement"
-					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 flex items-center justify-between overflow-hidden rounded-4xl bg-black p-3 text-white max-sm:hidden">
+					class="col-span-6 sm:col-span-6 row-span-2 sm:row-span-2 flex items-center justify-between overflow-hidden rounded-2xl lg:rounded-4xl bg-black p-3 text-white">
 					<NuxtLink
 						v-for="social in socials"
 						:key="social.name"
@@ -80,7 +80,7 @@ onMounted(async () => {
 
 				<div
 					ref="rotatingCardElement"
-					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-10 relative overflow-hidden rounded-4xl">
+					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-10 sm:row-span-10 relative overflow-hidden rounded-2xl lg:rounded-4xl">
 					<div ref="currentImageWrapperElement" class="absolute inset-0">
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"
