@@ -66,7 +66,7 @@ function registerItemElement(element: Element | ComponentPublicInstance | null, 
 					<ul class="grid gap-6 lg:gap-12 lg:grid-cols-2">
 						<li v-for="(item, itemIndex) in background.items" :key="itemIndex">
 							<div
-								class="h-full rounded-2xl border border-white/10 bg-white/3 px-8 py-8 transition duration-300">
+								class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12 transition duration-300">
 								<h3 class="text-lg md:text-xl font-semibold tracking-wide text-white">
 									{{ item.title }}
 								</h3>
