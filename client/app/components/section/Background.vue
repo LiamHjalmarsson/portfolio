@@ -123,6 +123,10 @@ onBeforeUnmount(() => {
 									{{ item.title }}
 								</h3>
 
+								<div class="text-md my-6 ml-12">
+									{{ item.description }}
+								</div>
+
 								<div
 									v-if="itemIndex < background.items.length - 1"
 									class="my-2 h-px w-full bg-white/30" />

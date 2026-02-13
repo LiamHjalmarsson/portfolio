@@ -70,7 +70,7 @@ export const backgroundData: Background[] = [
 		items: [
 			{
 				title: "Design",
-				description: "Wireframes, prototyper, UI-struktur",
+				description: "Wireframes, prototyper och UI-struktur",
 			},
 			{
 				title: "Development",
@@ -78,7 +78,7 @@ export const backgroundData: Background[] = [
 			},
 			{
 				title: "Projektarbete",
-				description: "Kravspecifikation, tidsestimat, kunddialog",
+				description: "Kravspecifikation, tidsestimat och kunddialog",
 			},
 			{
 				title: "Dokumentation",
@@ -103,7 +103,7 @@ export const backgroundData: Background[] = [
 			},
 			{
 				title: "UX & Ui Design",
-				description: "Grafiska användargränssnitt, interaktionsdesign, prototyparbete, wireframes",
+				description: "Grafiska användargränssnitt, interaktionsdesign, prototyparbete och wireframes",
 			},
 			{
 				title: "Projektledning",
@@ -117,7 +117,7 @@ export const backgroundData: Background[] = [
 			{
 				title: "Forskning & examensarbete",
 				description:
-					"Examensarbetet undersökte gamifications betydelse och påverkan på användarbeteende inom e-handel. Arbetet omfattade problemformulering, litteraturstudie och val av forskningsmetod. Datainsamlingen genomfördes dels genom kvalitativa intervjuer där deltagare fick navigera på en plattform och reflektera över sin upplevelse, dels genom kvantitativ insamling via formulär riktade mot en större målgrupp.",
+					"Undersökte gamifications betydelse och påverkan på användarbeteende inom e-handel. Problemformulering, litteraturstudie och forskningsmetod. Datainsamlingen, kvalitativa intervjuer, kvantitativ insamling via formulär",
 			},
 		],
 	},
