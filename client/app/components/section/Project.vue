@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
 						class="pointer-events-none absolute inset-0 border-4 border-black opacity-0 transition-all duration-300 ease-out will-change-transform lg:group-hover:opacity-100" />
 
 					<div
-						class="lg:border-b px-3 md:px-12 py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
+						class="lg:border-b px-3 md:px-12 py-6 md:py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
 						<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
 							<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
 								{{ project.title }}
@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
 							<NuxtImg
 								:src="project.imageSrc"
 								:alt="project.imageAlt"
-								class="object-cover object-center"
+								class="object-cover object-center rounded-2xl"
 								format="webp" />
 						</div>
 					</div>
