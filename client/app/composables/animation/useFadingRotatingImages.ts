@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export type UseFadingRotatingImagesOptions = {
+export type Options = {
 	animationRootElement: Ref<HTMLElement | null>;
 	rotatingImageSources: string[];
 	currentImageWrapperElement: Ref<HTMLElement | null>;
@@ -18,7 +18,7 @@ export type UseFadingRotatingImages = {
 	revertImageRotation: () => void;
 };
 
-export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions) {
+export function useFadingRotatingImages(options: Options) {
 	const currentImageIndex = ref(0);
 
 	const nextImageIndex = ref(Math.min(1, Math.max(0, options.rotatingImageSources.length - 1)));
@@ -43,6 +43,22 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 		transitionTimelineRef = null;
 	}
 
+	function prepareWrapperOpacity() {
+		const currentWrapper = options.currentImageWrapperElement.value;
+
+		const nextWrapper = options.nextImageWrapperElement.value;
+
+		if (!currentWrapper || !nextWrapper) return;
+
+		gsap.set(currentWrapper, {
+			opacity: 1,
+		});
+
+		gsap.set(nextWrapper, {
+			opacity: 0,
+		});
+	}
+
 	function scheduleNextSwap() {
 		clearScheduledSwap();
 
@@ -51,19 +67,11 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 		}, options.swapIntervalMs);
 	}
 
-	function prepareWrapperOpacity() {
-		const currentWrapper = options.currentImageWrapperElement.value;
+	function swapImage() {
+		const total = options.rotatingImageSources.length;
 
-		const nextWrapper = options.nextImageWrapperElement.value;
+		if (total <= 1) return;
 
-		if (!currentWrapper || !nextWrapper) return;
-
-		gsap.set(currentWrapper, { opacity: 1 });
-
-		gsap.set(nextWrapper, { opacity: 0 });
-	}
-
-	async function swapImage() {
 		const currentWrapper = options.currentImageWrapperElement.value;
 
 		const nextWrapper = options.nextImageWrapperElement.value;
@@ -88,27 +96,33 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 			},
 		});
 
+		const ease = options.imageEase ?? "power2.out";
+
+		const duration = options.transitionDurationSeconds;
+
 		transitionTimelineRef
 			.to(currentWrapper, {
 				opacity: 0,
-				duration: options.transitionDurationSeconds,
-				ease: options.imageEase ?? "power2.out",
+				duration,
+				ease,
 			})
 			.to(
 				nextWrapper,
 				{
 					opacity: 1,
-					duration: options.transitionDurationSeconds,
-					ease: options.imageEase ?? "power2.out",
+					duration,
+					ease,
 				},
 				"<",
 			);
 	}
 
-	function setup() {
+	async function setup() {
 		const root = options.animationRootElement.value;
 
 		if (!root) return;
+
+		await nextTick();
 
 		context?.revert();
 
@@ -119,6 +133,8 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 
 	function startImageRotation() {
 		if (!import.meta.client) return;
+
+		if (options.rotatingImageSources.length <= 1) return;
 
 		if (!context) setup();
 
@@ -134,18 +150,12 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 	}
 
 	function revertImageRotation() {
-		stop();
+		stopImageRotation();
 
 		context?.revert();
 
 		context = null;
 	}
-
-	onMounted(async () => {
-		await nextTick();
-
-		setup();
-	});
 
 	onBeforeUnmount(() => {
 		revertImageRotation();

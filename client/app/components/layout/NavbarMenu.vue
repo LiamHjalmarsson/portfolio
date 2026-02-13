@@ -7,13 +7,13 @@ defineProps<{
 	isMenuOpen: boolean;
 }>();
 
+const emit = defineEmits(["request-close", "animation-ready"]);
+
 const menuRootElement = ref<HTMLElement | null>(null);
 
 const contactSectionElement = ref<HTMLElement | null>(null);
 
 const menuLinkElements = ref<HTMLElement[]>([]);
-
-const emit = defineEmits(["request-close", "animation-ready"]);
 
 function registerMenuLinkElement(element: Element | ComponentPublicInstance | null, index: number) {
 	if (!(element instanceof HTMLElement)) return;

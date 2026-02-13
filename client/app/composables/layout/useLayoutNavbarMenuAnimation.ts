@@ -5,13 +5,13 @@ export type NavbarMenuAnimation = {
 	reverse: () => void;
 };
 
-type UseLayoutNavbarMenuAnimationOptions = {
+type Options = {
 	menuRootElement: Ref<HTMLElement | null>;
 	menuLinkElements: Ref<HTMLElement[]>;
 	contactSectionElement: Ref<HTMLElement | null>;
 };
 
-export function useLayoutNavbarMenuAnimation(options: UseLayoutNavbarMenuAnimationOptions): NavbarMenuAnimation {
+export function useLayoutNavbarMenuAnimation(options: Options) {
 	const timelineRef = shallowRef<gsap.core.Timeline | null>(null);
 
 	let context: gsap.Context | null = null;

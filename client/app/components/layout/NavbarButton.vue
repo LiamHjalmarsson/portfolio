@@ -5,9 +5,7 @@ defineProps<{
 	isMenuOpen: boolean;
 }>();
 
-const emit = defineEmits(["toggle", "animationReady"]);
-
-const toggleButtonRef = ref<HTMLButtonElement | null>(null);
+const emit = defineEmits(["toggle", "animation-ready"]);
 
 const burgerTopLineRef = ref<HTMLElement | null>(null);
 
@@ -22,13 +20,12 @@ const toggleButtonAnimation = useLayoutNavbarButtonAnimation({
 });
 
 onMounted(() => {
-	emit("animationReady", toggleButtonAnimation);
+	emit("animation-ready", toggleButtonAnimation);
 });
 </script>
 
 <template>
 	<button
-		ref="toggleButtonRef"
 		type="button"
 		:aria-label="isMenuOpen ? 'Close menu' : 'Open menu'"
 		class="fixed z-50 flex flex-col items-center justify-center space-y-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:h-20 md:w-20 top-4 right-10"

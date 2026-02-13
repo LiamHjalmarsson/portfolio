@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export type UseGridAnimationOptions = {
+export type Options = {
 	animationRootElement: Ref<HTMLElement | null>;
 	animatedItemElements: Ref<HTMLElement[]>;
 	initialState?: gsap.TweenVars;
@@ -16,7 +16,7 @@ export type UseGridAnimation = {
 	revertGridAnimation: () => void;
 };
 
-export function useGridAnimation(options: UseGridAnimationOptions) {
+export function useGridAnimation(options: Options) {
 	let context: gsap.Context | null = null;
 
 	let timelineRef: gsap.core.Timeline | null = null;
@@ -27,7 +27,7 @@ export function useGridAnimation(options: UseGridAnimationOptions) {
 		timelineRef = null;
 	}
 
-	function setup(): void {
+	function setup() {
 		const root = options.animationRootElement.value;
 
 		const items = options.animatedItemElements.value;
@@ -70,9 +70,20 @@ export function useGridAnimation(options: UseGridAnimationOptions) {
 	}
 
 	function playGridAnimation() {
-		if (!timelineRef) setup();
+		if (!timelineRef) {
+			setup();
 
-		timelineRef?.play(0);
+			if (!timelineRef) {
+				void nextTick().then(() => {
+					setup();
+
+					timelineRef?.play(0);
+				});
+				return;
+			}
+		}
+
+		timelineRef.play(0);
 	}
 
 	function reverseGridAnimation() {
@@ -86,12 +97,6 @@ export function useGridAnimation(options: UseGridAnimationOptions) {
 
 		context = null;
 	}
-
-	onMounted(async () => {
-		await nextTick();
-
-		setup();
-	});
 
 	onBeforeUnmount(() => {
 		revertGridAnimation();

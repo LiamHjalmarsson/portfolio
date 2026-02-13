@@ -84,7 +84,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-	<LayoutNavbarMenu :isMenuOpen="isMenuOpen" @requestClose="closeMenu" @animationReady="registerMenuAnimation" />
+	<LayoutNavbarMenu :isMenuOpen="isMenuOpen" @request-close="closeMenu" @animation-ready="registerMenuAnimation" />
 
-	<LayoutNavbarButton :isMenuOpen="isMenuOpen" @toggle="toggleMenu" @animationReady="registerToggleButtonAnimation" />
+	<LayoutNavbarButton
+		:isMenuOpen="isMenuOpen"
+		@toggle="toggleMenu"
+		@animation-ready="registerToggleButtonAnimation" />
 </template>

@@ -27,7 +27,7 @@ const currentImageWrapperElement = ref<HTMLElement | null>(null);
 
 const nextImageWrapperElement = ref<HTMLElement | null>(null);
 
-const { currentImageIndex, nextImageIndex, startImageRotation, revertImageRotation } = useFadingRotatingImages({
+const { currentImageIndex, nextImageIndex, startImageRotation } = useFadingRotatingImages({
 	animationRootElement: rotatingCardElement,
 	rotatingImageSources,
 	currentImageWrapperElement,
@@ -36,25 +36,15 @@ const { currentImageIndex, nextImageIndex, startImageRotation, revertImageRotati
 	transitionDurationSeconds: 0.9,
 });
 
-const { playGridAnimation, revertGridAnimation } = useGridAnimation({
+const { playGridAnimation } = useGridAnimation({
 	animationRootElement: gridRootElement,
 	animatedItemElements: animatedGridItemElements,
 });
 
 onMounted(async () => {
-	if (!import.meta.client) return;
-
-	await nextTick();
-
 	playGridAnimation();
 
 	startImageRotation();
-});
-
-onBeforeUnmount(() => {
-	revertImageRotation();
-
-	revertGridAnimation();
 });
 </script>
 

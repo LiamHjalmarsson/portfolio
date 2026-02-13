@@ -5,7 +5,7 @@ export type NavbarToggleButtonAnimation = {
 	reverse: () => void;
 };
 
-type UseLayoutNavbarButtonAnimationOptions = {
+type Options = {
 	topLineElement: Ref<HTMLElement | null>;
 
 	centerLineElement: Ref<HTMLElement | null>;
@@ -13,7 +13,7 @@ type UseLayoutNavbarButtonAnimationOptions = {
 	bottomLineElement: Ref<HTMLElement | null>;
 };
 
-export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAnimationOptions) {
+export function useLayoutNavbarButtonAnimation(options: Options) {
 	const timelineRef = shallowRef<gsap.core.Timeline | null>(null);
 
 	let context: gsap.Context | null = null;
@@ -31,9 +31,9 @@ export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAni
 
 		context?.revert();
 
-		context = null;
-
 		context = gsap.context(() => {
+			timelineRef.value?.kill();
+
 			timelineRef.value = gsap
 				.timeline({ paused: true })
 				.to(topLine, {
@@ -61,15 +61,17 @@ export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAni
 					},
 					"<",
 				);
-		});
+		}, topLine);
 	});
 
 	onBeforeUnmount(() => {
+		timelineRef.value?.kill();
+
+		timelineRef.value = null;
+
 		context?.revert();
 
 		context = null;
-
-		timelineRef.value = null;
 	});
 
 	return {
