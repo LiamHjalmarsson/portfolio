@@ -1,4 +1,3 @@
-// ~/composables/animation/useHeaderReveal.ts
 import gsap from "gsap";
 
 export type Options = {

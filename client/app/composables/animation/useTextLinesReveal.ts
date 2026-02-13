@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export type UseTextLinesRevealOptions = {
+export type Options = {
 	animationRootElement: Ref<HTMLElement | null>;
 	lineElements: Ref<HTMLElement[]>;
 	withScrollTrigger?: boolean;
@@ -15,7 +15,7 @@ export type UseTextLinesReveal = {
 	revertTextLines: () => void;
 };
 
-export function useTextLinesReveal(options: UseTextLinesRevealOptions) {
+export function useTextLinesReveal(options: Options) {
 	const timelineRef = shallowRef<gsap.core.Timeline | null>(null);
 
 	let context: gsap.Context | null = null;
@@ -81,6 +81,8 @@ export function useTextLinesReveal(options: UseTextLinesRevealOptions) {
 	}
 
 	onMounted(async () => {
+		if (!import.meta.client) return;
+
 		await nextTick();
 
 		setup();
