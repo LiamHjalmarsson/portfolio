@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { useTextLinesReveal } from "~/composables/animation/useTextLinesReveal";
 
-const props = defineProps<{
-	text: string;
-}>();
+const props = withDefaults(
+	defineProps<{
+		text: string;
+		wrapperClass?: string;
+		lineClass?: string;
+	}>(),
+	{
+		wrapperClass: "",
+		lineClass: "block leading-relaxed tracking-wide text-pretty text-sm md:text-md lg:text-xl 2xl:text-3xl",
+	},
+);
 
 const containerRootElement = ref<HTMLElement | null>(null);
 
@@ -25,12 +33,12 @@ useTextLinesReveal({
 </script>
 
 <template>
-	<div ref="containerRootElement">
+	<div ref="containerRootElement" :class="wrapperClass">
 		<span
 			v-for="(line, index) in textLines"
 			:key="line"
 			:ref="(element) => registerLineElement(element, index)"
-			class="block text-sm leading-relaxed tracking-wide text-pretty md:text-md lg:text-xl 2xl:text-3xl">
+			:class="lineClass">
 			{{ line }}
 		</span>
 	</div>

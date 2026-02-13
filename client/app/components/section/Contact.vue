@@ -71,7 +71,7 @@ onBeforeUnmount(() => {
 		</AnimatedHeaderSection>
 
 		<div class="flex-1 px-3 md:px-6 lg:px-12">
-			<div ref="buttonsWrapRef" class="flex flex-col items-center justify-center space-y-6 pt-12">
+			<div ref="buttonsWrapRef" class="flex flex-col items-center justify-center space-y-6 lg:space-y-12 pt-12">
 				<div ref="mailRef">
 					<UiButton to="mailto:liam.hjalmarssons@gmail.com" label="Skicka mig ett mail" />
 				</div>
