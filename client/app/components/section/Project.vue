@@ -1,179 +1,82 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import { useMediaQuery } from "@vueuse/core";
+import type { ComponentPublicInstance } from "vue";
+import { useProjectHoverPreview } from "~/composables/animation/useProjectHoverPreview";
 import { projectsData } from "~/constants/projects";
 
 type ProjectId = string;
-
-const isDesktop = useMediaQuery("(min-width: 63rem)");
 
 const activeHoverProjectId = ref<ProjectId | null>(null);
 
 const previewRootElement = ref<HTMLElement | null>(null);
 
-let gsapContext: gsap.Context | null = null;
+const listRootRef = ref<HTMLElement | null>(null);
 
-let previewTimeline: gsap.core.Timeline | null = null;
-
-let quickToX: ((value: number) => void) | null = null;
-
-let quickToY: ((value: number) => void) | null = null;
+const projectInnerRefs = ref<HTMLElement[]>([]);
 
 const activeProject = computed(() => {
-	const activeId = activeHoverProjectId.value;
+	const id = activeHoverProjectId.value;
 
-	if (!activeId) return null;
+	if (!id) return null;
 
-	return projectsData.find((project) => project.id === activeId) ?? null;
+	return projectsData.find((project) => project.id === id) ?? null;
 });
 
-function killPreviewTimeline() {
-	previewTimeline?.kill();
-
-	previewTimeline = null;
-}
-
-function setupQuickTo() {
-	const root = previewRootElement.value;
-
-	if (!root) return;
-
-	quickToX = gsap.quickTo(root, "x", {
-		duration: 0.3,
-		ease: "power3.out",
+const { isDesktop, handleProjectPointerEnter, handleProjectPointerMove, handleProjectPointerLeave } =
+	useProjectHoverPreview<ProjectId>({
+		previewRootElement,
+		activeHoverProjectId,
+		isDesktopQuery: "(min-width: 63rem)",
 	});
 
-	quickToY = gsap.quickTo(root, "y", {
-		duration: 0.3,
-		ease: "power3.out",
-	});
+let revealContext: gsap.Context | null = null;
+
+function registerProjectInner(element: Element | ComponentPublicInstance | null, index: number) {
+	if (!(element instanceof HTMLElement)) return;
+
+	projectInnerRefs.value[index] = element;
 }
 
-function setPreviewPositionInstant(event: PointerEvent) {
-	const root = previewRootElement.value;
-
-	if (!root) return;
-
-	const OFFSET_X = -14;
-
-	const OFFSET_Y = -14;
-
-	gsap.set(root, {
-		x: event.clientX + OFFSET_X,
-		y: event.clientY + OFFSET_Y,
-	});
-}
-
-function updatePreviewPositionSmooth(event: PointerEvent) {
-	const OFFSET_X = 50;
-
-	const OFFSET_Y = -250;
-
-	quickToX?.(event.clientX + OFFSET_X);
-
-	quickToY?.(event.clientY + OFFSET_Y);
-}
-
-function animatePreviewFadeIn() {
-	const root = previewRootElement.value;
-
-	if (!root) return;
-
-	killPreviewTimeline();
-
-	previewTimeline = gsap.timeline();
-
-	previewTimeline.fromTo(
-		root,
-		{ autoAlpha: 0 },
-		{
-			autoAlpha: 1,
-			duration: 0.14,
-			ease: "power2.out",
-		},
-	);
-}
-
-function animatePreviewFadeOut(onComplete?: () => void) {
-	const root = previewRootElement.value;
-
-	if (!root) {
-		onComplete?.();
-
-		return;
-	}
-
-	killPreviewTimeline();
-
-	previewTimeline = gsap.timeline({ onComplete });
-
-	previewTimeline.to(root, {
-		autoAlpha: 0,
-		duration: 0.12,
-		ease: "power2.out",
-	});
-}
-
-async function handleProjectPointerEnter(projectId: ProjectId, event: PointerEvent) {
-	if (!isDesktop.value) return;
-
-	activeHoverProjectId.value = projectId;
+onMounted(async () => {
+	if (!import.meta.client) return;
 
 	await nextTick();
 
-	const root = previewRootElement.value;
+	const items = projectInnerRefs.value.filter((element): element is HTMLElement => element instanceof HTMLElement);
 
-	if (!root) return;
+	if (items.length === 0) return;
 
-	gsapContext?.revert();
+	revealContext?.revert();
 
-	gsapContext = null;
+	revealContext = gsap.context(() => {
+		items.forEach((item) => {
+			gsap.set(item, {
+				autoAlpha: 0,
+				y: 200,
+			});
 
-	gsapContext = gsap.context(() => {
-		gsap.set(root, {
-			autoAlpha: 0,
+			gsap.to(item, {
+				autoAlpha: 1,
+				y: 0,
+				duration: 0.9,
+				ease: "power3.out",
+				clearProps: "transform",
+				scrollTrigger: {
+					trigger: item,
+					start: "top 80%",
+					toggleActions: "play none none none",
+					once: true,
+					invalidateOnRefresh: true,
+				},
+			});
 		});
 	});
-
-	setPreviewPositionInstant(event);
-
-	setupQuickTo();
-
-	animatePreviewFadeIn();
-}
-
-function handleProjectPointerMove(projectId: ProjectId, event: PointerEvent) {
-	if (!isDesktop.value) return;
-
-	if (activeHoverProjectId.value !== projectId) return;
-
-	updatePreviewPositionSmooth(event);
-}
-
-function handleProjectPointerLeave(projectId: ProjectId) {
-	if (!isDesktop.value) return;
-
-	if (activeHoverProjectId.value !== projectId) return;
-
-	animatePreviewFadeOut(() => {
-		activeHoverProjectId.value = null;
-
-		gsapContext?.revert();
-
-		gsapContext = null;
-
-		quickToX = null;
-
-		quickToY = null;
-	});
-}
+});
 
 onBeforeUnmount(() => {
-	killPreviewTimeline();
+	revealContext?.revert();
 
-	gsapContext?.revert();
-
-	gsapContext = null;
+	revealContext = null;
 });
 </script>
 
@@ -181,35 +84,38 @@ onBeforeUnmount(() => {
 	<section id="projects" class="relative flex min-h-screen flex-col justify-between">
 		<AnimatedHeaderSection title="Projekt" subtitle="Några projekt" theme="dark" :with-scroll-trigger="true" />
 
-		<div class="relative flex-1 lg:pt-12">
+		<div ref="listRootRef" class="relative flex-1 lg:pt-12 lg:px-12 pb-12 lg:pb-24">
 			<div
-				v-for="project in projectsData"
+				v-for="(project, index) in projectsData"
 				:key="project.id"
-				class="group relative z-10 mx-auto max-w-450 transition"
+				class="group relative z-10 mx-auto max-w-400 transition"
 				@pointerenter="handleProjectPointerEnter(project.id, $event)"
 				@pointermove="handleProjectPointerMove(project.id, $event)"
 				@pointerleave="handleProjectPointerLeave(project.id)">
-				<div class="pointer-events-none absolute inset-0 transition duration-300 lg:group-hover:border-4" />
+				<div :ref="(el) => registerProjectInner(el, index)">
+					<div
+						class="pointer-events-none absolute inset-0 border-4 border-black opacity-0 transition-all duration-300 ease-out will-change-transform lg:group-hover:opacity-100" />
 
-				<div
-					class="lg:border-b px-3 md:px-12 py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
-					<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
-						<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
-							{{ project.title }}
-						</h2>
+					<div
+						class="lg:border-b px-3 md:px-12 py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
+						<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
+							<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
+								{{ project.title }}
+							</h2>
 
-						<div
-							class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
-							<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+							<div
+								class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
+								<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+							</div>
 						</div>
-					</div>
 
-					<div v-if="!isDesktop">
-						<NuxtImg
-							:src="project.imageSrc"
-							:alt="project.imageAlt"
-							class="object-cover object-center"
-							format="webp" />
+						<div v-if="!isDesktop">
+							<NuxtImg
+								:src="project.imageSrc"
+								:alt="project.imageAlt"
+								class="object-cover object-center"
+								format="webp" />
+						</div>
 					</div>
 				</div>
 			</div>

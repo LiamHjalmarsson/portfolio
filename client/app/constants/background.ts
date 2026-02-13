@@ -14,9 +14,7 @@ export const backgroundData: Background[] = [
 	{
 		title: "Fullstack Utvecklare",
 		company: "Timetjek",
-		description: `I min tidigare roll på Timetjek arbetade jag med utveckling och vidareutveckling av ett webbaserat personalsystem som används dagligen för schemaläggning, löneunderlag och hantering av personaldata. Systemet hanterade känslig information och ställde höga krav på stabilitet, säkerhet, tillgänglighet och användarupplevelse.
-		
-		Jag ansvarade både för ny funktionalitet och löpande systemförvaltning. En central del av arbetet var moderniseringen av plattformen, där jag bidrog till migrering av legacy-frontend och backend-kod, omstrukturering av databastabeller samt förbättring av design och interaktion i användargränssnittet. Målet var att skapa en mer strukturerad, skalbar och långsiktigt hållbar arkitektur.`,
+		description: `Arbetade med utveckling och vidareutveckling av ett webbaserat personalsystem för schemaläggning, löneunderlag och personaldata. Ansvarade för ny funktionalitet, systemförvaltning och modernisering av plattformen genom migrering av legacy-kod, databasanpassningar och förbättrad struktur.`,
 		items: [
 			{
 				title: "Backend",
@@ -39,11 +37,7 @@ export const backgroundData: Background[] = [
 	{
 		title: "Junior Frontend Utvecklare",
 		company: "Nifitech",
-		description: `På Nifitech arbetade jag i flera projekt där fokus låg på att sätta mig in i befintliga kodbaser och bidra till mer robusta och underhållsvänliga lösningar.
-		
-		Jag ansvarade för frontendutveckling i en applikation baserad på Laravel och Vue. Arbetet innefattade implementation och underhåll av Laravel-routes och controllers som stöd för frontendfunktionalitet samt integration av API:er för att hämta, bearbeta och presentera backenddata i användargränssnittet.
-		
-		En viktig del av uppdraget var att successivt förbättra kodbasens struktur och långsiktiga hållbarhet. Jag refaktorerade befintlig frontendkod för ökad läsbarhet och underhållbarhet, bidrog till övergången från Vue Options API till Composition API samt ersatte mixins med Pinia för en mer förutsägbar och strukturerad state-hantering. Jag implementerade även stöd för flerspråkighet (i18n) för att möjliggöra en mer flexibel och skalbar applikation.`,
+		description: `Arbetade med frontendutveckling i Laravel- och Vue-baserade projekt. Integrerade API:er, förbättrade kodstruktur och bidrog till övergången till Composition API och Pinia samt implementerade flerspråkighet.`,
 		items: [
 			{
 				title: "Frontend",
@@ -62,11 +56,7 @@ export const backgroundData: Background[] = [
 	{
 		title: "Praktikant inom Projekt & Utveckling",
 		company: "Sjöbergska",
-		description: `Under min praktik på Sjöbergska deltog jag i ett pro bono-projekt där jag var involverad i hela processen från planering till leverans och hade huvudsakligt ansvar för design och utveckling av lösningen.
-		
-		Arbetet omfattade kunddialog genom möten och löpande kommunikation via mail samt framtagning av kravspecifikation och tidsestimat. Jag tog fram skisser, wireframes och prototyper som grund för den visuella och funktionella utformningen, och utvecklade den färdiga lösningen i Webflow.
-
-		Utöver utvecklingsarbetet ansvarade jag för att ta fram användardokumentation samt uppdatera befintlig Drupal-dokumentation. Projektet krävde ett strukturerat arbetssätt och tydlig kommunikation för att säkerställa att leveransen motsvarade verksamhetens behov.`,
+		description: `Deltog i ett pro bono-projekt från planering till leverans med ansvar för design och utveckling. Arbetade med kunddialog, kravspecifikation, prototyper och implementation i Webflow.`,
 		items: [
 			{
 				title: "Design",
@@ -89,9 +79,7 @@ export const backgroundData: Background[] = [
 	{
 		title: "Kandidatexamen i Medieteknik",
 		company: "Malmö universitet",
-		description: `Genomförde min utbildning inom medieteknik med fokus på utveckling, databaser, UX/UI-design och digital produktutveckling. Utbildningen kombinerade teknisk implementation med projektledning, affärsförståelse och forskningsmetodik, vilket gav en helhetssyn på hur digitala produkter planeras, byggs och förvaltas.
-
-		Under studietiden arbetade jag i flera större utvecklingsprojekt där hela processen genomfördes från idéarbete, wireframes och konceptutveckling till design, prototypframtagning, implementation, testning och slutlig presentation. Projekten genomfördes både individuellt och i team med tydlig rollfördelning, planering, dokumentation och uppföljning.`,
+		description: `Universitetsutbildning inom utveckling, databaser och digital produktutveckling. Arbetade genom hela utvecklingsprocessen från idé och design till implementation, testning och presentation, både individuellt och i team.`,
 		items: [
 			{
 				title: "Utveckling",

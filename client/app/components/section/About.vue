@@ -26,7 +26,8 @@ useScaleAnimation({
 useImageReveal({
 	rootEl: sectionRootRef,
 	targetEl: imageRef,
-	start: "top 85%",
+	withScrollTrigger: true,
+	start: "top 45%",
 	durationSeconds: 2,
 	ease: "power4.out",
 });

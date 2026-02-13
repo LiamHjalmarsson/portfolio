@@ -28,7 +28,7 @@ useHeaderReveal({
 	animationRootElement: sectionRootRef,
 	headerContentElement: headerContentRef,
 	withScrollTrigger,
-	start: "top 95%",
+	start: "top 90%",
 });
 </script>
 

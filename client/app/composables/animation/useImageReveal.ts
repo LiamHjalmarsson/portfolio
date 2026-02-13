@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export type UseImageRevealOptions = {
+export type Options = {
 	rootEl: Ref<HTMLElement | null>;
 	targetEl: Ref<HTMLElement | null>;
 
@@ -18,19 +18,10 @@ export type UseImageRevealReturn = {
 	revertImageReveal: () => void;
 };
 
-export function useImageReveal(options: UseImageRevealOptions) {
+export function useImageReveal(options: Options) {
 	const timelineRef = shallowRef<gsap.core.Timeline | null>(null);
 
 	let context: gsap.Context | null = null;
-
-	const defaults = {
-		withScrollTrigger: options.withScrollTrigger ?? true,
-		start: options.start ?? "top 85%",
-		durationSeconds: options.durationSeconds ?? 2,
-		ease: options.ease ?? "power4.out",
-		fromClipPath: options.fromClipPath ?? "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
-		toClipPath: options.toClipPath ?? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-	};
 
 	function killTimeline() {
 		timelineRef.value?.kill();
@@ -50,35 +41,40 @@ export function useImageReveal(options: UseImageRevealOptions) {
 		context = gsap.context(() => {
 			killTimeline();
 
-			gsap.set(target, { clipPath: defaults.fromClipPath });
+			const withScroll = options.withScrollTrigger ?? true;
+
+			const fromClip = options.fromClipPath ?? "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)";
+
+			const toClip = options.toClipPath ?? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+
+			gsap.set(target, { clipPath: fromClip });
 
 			const timeline = gsap.timeline({
-				paused: true,
-				scrollTrigger: defaults.withScrollTrigger
+				paused: !withScroll,
+				scrollTrigger: withScroll
 					? {
-							trigger: target,
-							start: defaults.start,
+							trigger: root,
+							start: options.start ?? "top 85%",
 							toggleActions: "play none none none",
+							invalidateOnRefresh: true,
 						}
 					: undefined,
 			});
 
 			timeline.to(target, {
-				clipPath: defaults.toClipPath,
-				duration: defaults.durationSeconds,
-				ease: defaults.ease,
+				clipPath: toClip,
+				duration: options.durationSeconds ?? 2,
+				ease: options.ease ?? "power4.out",
 			});
 
 			timelineRef.value = timeline;
 
-			if (!defaults.withScrollTrigger) timeline.play(0);
+			if (!withScroll) timeline.play(0);
 		}, root);
 	}
 
 	function playImageReveal() {
 		if (!timelineRef.value) setup();
-
-		if (!defaults.withScrollTrigger) timelineRef.value?.play(0);
 	}
 
 	function revertImageReveal() {
