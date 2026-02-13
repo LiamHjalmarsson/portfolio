@@ -2,24 +2,25 @@
 import gsap from "gsap";
 
 type ButtonVariant = "primary" | "outline" | "ghost";
+
 type ButtonType = "button" | "submit" | "reset";
 
-type AppButtonProps = {
+type UiButtonProps = {
 	label: string;
 	variant?: ButtonVariant;
 	type?: ButtonType;
 	to?: string;
 };
 
-const props = withDefaults(defineProps<AppButtonProps>(), {
+const props = withDefaults(defineProps<UiButtonProps>(), {
 	variant: "primary",
 	type: "button",
 });
 
-const baseClassName =
-	"inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 relative rounded-full block cursor-pointer";
+const baseClass =
+	"inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 rounded-full";
 
-const variantClassName = computed((): string => {
+const variantClass = computed<string>(() => {
 	if (props.variant === "outline") {
 		return "border-primary-600 text-primary-600 bg-transparent hover:bg-primary-700 hover:text-white active:bg-primary-200";
 	}
@@ -31,23 +32,21 @@ const variantClassName = computed((): string => {
 	return "bg-primary-600 border-primary-600 text-white hover:bg-primary-700 active:bg-primary-800";
 });
 
-const buttonRootElement = ref<HTMLElement | null>(null);
+const rootRef = ref<HTMLElement | null>(null);
 
-let gsapContext: gsap.Context | null = null;
-
-function animateButtonTowardPointer(buttonElement: HTMLElement, pointerOffsetX: number, pointerOffsetY: number): void {
+function animateTowardPointer(element: HTMLElement, offsetX: number, offsetY: number): void {
 	const strengthDivisor = 10;
 
-	gsap.to(buttonElement, {
-		x: pointerOffsetX / strengthDivisor,
-		y: pointerOffsetY / strengthDivisor,
+	gsap.to(element, {
+		x: offsetX / strengthDivisor,
+		y: offsetY / strengthDivisor,
 		duration: 0.3,
 		ease: "power3.out",
 	});
 }
 
-function resetButtonPosition(buttonElement: HTMLElement): void {
-	gsap.to(buttonElement, {
+function resetPosition(element: HTMLElement): void {
+	gsap.to(element, {
 		x: 0,
 		y: 0,
 		duration: 0.4,
@@ -56,64 +55,64 @@ function resetButtonPosition(buttonElement: HTMLElement): void {
 }
 
 function handlePointerMove(event: PointerEvent): void {
-	const buttonElement = buttonRootElement.value;
+	const element = rootRef.value;
 
-	if (!buttonElement) return;
+	if (!element) return;
 
-	const buttonRect = buttonElement.getBoundingClientRect();
+	const rect = element.getBoundingClientRect();
 
-	const pointerOffsetX = event.clientX - (buttonRect.left + buttonRect.width / 2);
+	const offsetX = event.clientX - (rect.left + rect.width / 2);
 
-	const pointerOffsetY = event.clientY - (buttonRect.top + buttonRect.height / 2);
+	const offsetY = event.clientY - (rect.top + rect.height / 2);
 
-	animateButtonTowardPointer(buttonElement, pointerOffsetX, pointerOffsetY);
+	animateTowardPointer(element, offsetX, offsetY);
 }
 
 function handlePointerLeave(): void {
-	const buttonElement = buttonRootElement.value;
+	const element = rootRef.value;
+	if (!element) return;
 
-	if (!buttonElement) return;
-
-	resetButtonPosition(buttonElement);
+	resetPosition(element);
 }
 
 onMounted(async () => {
-	if (!import.meta.client) return;
-
 	await nextTick();
 
-	const buttonElement = buttonRootElement.value;
+	const element = rootRef.value;
+	if (!element) return;
 
-	if (!buttonElement) return;
+	element.addEventListener("pointermove", handlePointerMove);
 
-	gsapContext = gsap.context(() => {
-		buttonElement.addEventListener("pointermove", handlePointerMove);
-
-		buttonElement.addEventListener("pointerleave", handlePointerLeave);
-	}, buttonElement);
+	element.addEventListener("pointerleave", handlePointerLeave);
 });
 
 onBeforeUnmount(() => {
-	const buttonElement = buttonRootElement.value;
+	const element = rootRef.value;
 
-	if (buttonElement) {
-		buttonElement.removeEventListener("pointermove", handlePointerMove);
+	if (element) {
+		element.removeEventListener("pointermove", handlePointerMove);
 
-		buttonElement.removeEventListener("pointerleave", handlePointerLeave);
+		element.removeEventListener("pointerleave", handlePointerLeave);
 	}
-
-	gsapContext?.revert();
-
-	gsapContext = null;
 });
 </script>
 
 <template>
-	<NuxtLink v-if="to" ref="buttonRootElement" :to="to" :class="[baseClassName, variantClassName]">
-		<slot>{{ label }}</slot>
+	<NuxtLink
+		v-if="to"
+		:to="to"
+		:aria-label="label"
+		:target="to.startsWith('http') ? '_blank' : undefined"
+		:rel="to.startsWith('http') ? 'noopener noreferrer' : undefined"
+		class="inline-flex">
+		<span ref="rootRef" :class="[baseClass, variantClass]">
+			<slot>{{ label }}</slot>
+		</span>
 	</NuxtLink>
 
-	<button v-else ref="buttonRootElement" :type="type" :class="[baseClassName, variantClassName]">
-		<slot>{{ label }}</slot>
+	<button v-else :type="type" :aria-label="label" class="inline-flex">
+		<span ref="rootRef" :class="[baseClass, variantClass]">
+			<slot>{{ label }}</slot>
+		</span>
 	</button>
 </template>

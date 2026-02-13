@@ -5,17 +5,14 @@ const props = withDefaults(defineProps<{ items?: TechTileItem[] }>(), {
 	items: () => [],
 });
 
-const text = `Vägen in i tech började med nyfikenhet kring hur idéer blir till fungerande digitala lösningar.
-Genom arbete med både kod och design har jag utvecklat ett helhetsperspektiv på digitala produkter.
-Det präglar hur jag bygger, tänker och samarbetar i varje projekt.`;
+const text = `Genom arbete med både kod och design har jag utvecklat ett helhetsperspektiv på digitala produkter.
+Det har jag med mig när jag bygger och tänker.`;
 
-const resolvedTechTileItems = computed<TechTileItem[]>(() => {
-	return props.items.length > 0 ? props.items : stackItems;
-});
+const resolvedItems = computed<TechTileItem[]>(() => (props.items.length > 0 ? props.items : stackItems));
 
-const largeTechTileItems = computed(() => resolvedTechTileItems.value.filter((item) => item.size === "large"));
+const largeTechItems = computed(() => resolvedItems.value.filter((item) => item.size === "large"));
 
-const smallTechTileItems = computed(() => resolvedTechTileItems.value.filter((item) => item.size === "small"));
+const smallTechItems = computed(() => resolvedItems.value.filter((item) => item.size === "small"));
 </script>
 
 <template>
@@ -29,11 +26,11 @@ const smallTechTileItems = computed(() => resolvedTechTileItems.value.filter((it
 
 		<div class="w-full overflow-hidden">
 			<div class="grid grid-cols-12">
-				<TechStackCard v-for="item in largeTechTileItems" :key="item.key" :size="item.size">
+				<TechStackCard v-for="item in largeTechItems" :key="item.key" :size="item.size">
 					<Icon :name="item.logo" />
 				</TechStackCard>
 
-				<TechStackCard v-for="item in smallTechTileItems" :key="item.key" :size="item.size">
+				<TechStackCard v-for="item in smallTechItems" :key="item.key" :size="item.size">
 					<Icon :name="item.logo" />
 				</TechStackCard>
 			</div>

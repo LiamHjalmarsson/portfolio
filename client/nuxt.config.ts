@@ -17,6 +17,14 @@ export default defineNuxtConfig({
 		"nuxt-gtag",
 	],
 
+	runtimeConfig: {
+		public: {
+			siteUrl: "https://liamhjalmarsson.se",
+			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
+			gtagId: process.env.NUXT_PUBLIC_GTAG_ID ?? "",
+		},
+	},
+
 	app: {
 		head: {
 			htmlAttrs: {
@@ -25,7 +33,7 @@ export default defineNuxtConfig({
 			meta: [
 				{
 					name: "google-site-verification",
-					content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+					content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
 				},
 				{
 					charset: "utf-8",
@@ -41,11 +49,6 @@ export default defineNuxtConfig({
 					rel: "icon",
 					type: "image/png",
 					href: "/favicon.png",
-				},
-
-				{
-					rel: "canonical",
-					href: "https://liamhjalmarsson.se",
 				},
 			],
 		},
@@ -65,6 +68,6 @@ export default defineNuxtConfig({
 	},
 
 	gtag: {
-		id: process.env.NUXT_PUBLIC_GTAG_ID,
+		id: process.env.NUXT_PUBLIC_GTAG_ID ?? "",
 	},
 });

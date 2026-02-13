@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import gsap from "gsap";
+import { useImageReveal } from "~/composables/animation/useImageReveal";
+import { useScaleAnimation } from "~/composables/animation/useScaleAnimation";
+
+const sectionRootRef = ref<HTMLElement | null>(null);
 
 const imageRef = ref<HTMLElement | null>(null);
 
@@ -11,34 +14,26 @@ const aboutSecondaryText = `För mig handlar mycket om att vara närvarande i de
 Att lyssna, justera och låta erfarenhet forma nästa steg,
 snarare än att skynda vidare.`;
 
-onMounted(async () => {
-	gsap.to("#about", {
-		scale: 0.85,
-		scrollTrigger: {
-			trigger: "#about",
-			start: "bottom 70%",
-			end: "bottom 10%",
-			scrub: true,
-			markers: false,
-		},
-		ease: "power1.inOut",
-	});
+useScaleAnimation({
+	animationRootElement: sectionRootRef,
+	withScrollTrigger: true,
+	scaleTo: 0.85,
+	start: "bottom 70%",
+	end: "bottom 10%",
+	scrub: true,
+});
 
-	gsap.set(imageRef.value, {
-		clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)",
-	});
-
-	gsap.to(imageRef.value, {
-		clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-		duration: 2,
-		ease: "power4.out",
-		scrollTrigger: { trigger: imageRef.value },
-	});
+useImageReveal({
+	rootEl: sectionRootRef,
+	targetEl: imageRef,
+	start: "top 85%",
+	durationSeconds: 2,
+	ease: "power4.out",
 });
 </script>
 
 <template>
-	<section id="about" class="min-h-screen lg:px-3">
+	<section id="about" ref="sectionRootRef" class="min-h-screen lg:px-3">
 		<div class="bg-black rounded-b-4xl">
 			<AnimatedHeaderSection subtitle="Lite mer" title="Om mig" theme="light" :with-scroll-trigger="true">
 				<AnimatedTextLines :text="aboutPrimaryText" class="font-light uppercase" />

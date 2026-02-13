@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLayoutNavbarMenuAnimation } from "~/composable/layout/useLayoutNavbarMenuAnimation";
+import { useLayoutNavbarMenuAnimation } from "~/composables/layout/useLayoutNavbarMenuAnimation";
 import { links } from "~/constants/links";
 import { socials } from "~/constants/socials";
 
@@ -29,15 +29,13 @@ function scrollToSection(id: string) {
 	element?.scrollIntoView({ behavior: "smooth" });
 }
 
+const animation = useLayoutNavbarMenuAnimation({
+	menuRootElement,
+	menuLinkElements,
+	contactSectionElement,
+});
+
 onMounted(() => {
-	if (!import.meta.client) return;
-
-	const animation = useLayoutNavbarMenuAnimation({
-		menuRootElement,
-		menuLinkElements,
-		contactSectionElement,
-	});
-
 	emit("animation-ready", animation);
 });
 </script>
@@ -65,7 +63,11 @@ onMounted(() => {
 			class="flex flex-col flex-wrap justify-between space-y-3 lg:space-y-6 md:flex-row">
 			<div class="font-light">
 				<p class="tracking-wider text-white/50">Email</p>
-				<p class="text-pretty text-lg lg:text-xl tracking-widest lowercase">liam.hjalmarssons@gmail.com</p>
+				<NuxtLink
+					to="mailto:liam.hjalmarssons@gmail.com"
+					class="text-pretty text-lg lg:text-xl tracking-widest lowercase"
+					>liam.hjalmarssons@gmail.com</NuxtLink
+				>
 			</div>
 
 			<div class="font-light">
@@ -76,6 +78,7 @@ onMounted(() => {
 						v-for="social in socials"
 						:key="social.name"
 						:to="social.href"
+						target="_blank"
 						class="text-xs lg:text-sm leading-loose tracking-widest uppercase transition-colors duration-300 hover:text-white">
 						{{ social.name }}
 					</NuxtLink>

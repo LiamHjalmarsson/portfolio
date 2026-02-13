@@ -1,11 +1,13 @@
 import gsap from "gsap";
 
 export type UseFadingRotatingImagesOptions = {
+	animationRootElement: Ref<HTMLElement | null>;
 	rotatingImageSources: string[];
 	currentImageWrapperElement: Ref<HTMLElement | null>;
 	nextImageWrapperElement: Ref<HTMLElement | null>;
 	swapIntervalMs: number;
 	transitionDurationSeconds: number;
+	imageEase?: string;
 };
 
 export type UseFadingRotatingImages = {
@@ -13,6 +15,7 @@ export type UseFadingRotatingImages = {
 	nextImageIndex: Ref<number>;
 	startImageRotation: () => void;
 	stopImageRotation: () => void;
+	revertImageRotation: () => void;
 };
 
 export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions) {
@@ -22,9 +25,9 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 
 	const swapTimeoutId = ref<number | null>(null);
 
-	let transitionTimeline: gsap.core.Timeline | null = null;
+	let transitionTimelineRef: gsap.core.Timeline | null = null;
 
-	let gsapContext: gsap.Context | null = null;
+	let context: gsap.Context | null = null;
 
 	function clearScheduledSwap() {
 		if (swapTimeoutId.value === null) return;
@@ -32,6 +35,12 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 		window.clearTimeout(swapTimeoutId.value);
 
 		swapTimeoutId.value = null;
+	}
+
+	function killTransition() {
+		transitionTimelineRef?.kill();
+
+		transitionTimelineRef = null;
 	}
 
 	function scheduleNextSwap() {
@@ -42,7 +51,7 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 		}, options.swapIntervalMs);
 	}
 
-	function prepareWrapperOpacity(): void {
+	function prepareWrapperOpacity() {
 		const currentWrapper = options.currentImageWrapperElement.value;
 
 		const nextWrapper = options.nextImageWrapperElement.value;
@@ -54,7 +63,7 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 		gsap.set(nextWrapper, { opacity: 0 });
 	}
 
-	async function swapImage(): Promise<void> {
+	async function swapImage() {
 		const currentWrapper = options.currentImageWrapperElement.value;
 
 		const nextWrapper = options.nextImageWrapperElement.value;
@@ -65,11 +74,9 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 			return;
 		}
 
-		transitionTimeline?.kill();
+		killTransition();
 
-		transitionTimeline = null;
-
-		transitionTimeline = gsap.timeline({
+		transitionTimelineRef = gsap.timeline({
 			onComplete: () => {
 				currentImageIndex.value = nextImageIndex.value;
 
@@ -81,55 +88,74 @@ export function useFadingRotatingImages(options: UseFadingRotatingImagesOptions)
 			},
 		});
 
-		transitionTimeline
+		transitionTimelineRef
 			.to(currentWrapper, {
 				opacity: 0,
 				duration: options.transitionDurationSeconds,
-				ease: "power2.out",
+				ease: options.imageEase ?? "power2.out",
 			})
 			.to(
 				nextWrapper,
 				{
 					opacity: 1,
 					duration: options.transitionDurationSeconds,
-					ease: "power2.out",
+					ease: options.imageEase ?? "power2.out",
 				},
 				"<",
 			);
 	}
 
-	function startImageRotation(): void {
-		if (!import.meta.client) return;
+	function setup() {
+		const root = options.animationRootElement.value;
 
-		gsapContext?.revert();
+		if (!root) return;
 
-		gsapContext = null;
+		context?.revert();
 
-		gsapContext = gsap.context(() => {
+		context = gsap.context(() => {
 			prepareWrapperOpacity();
-
-			scheduleNextSwap();
-		});
+		}, root);
 	}
 
-	function stopImageRotation(): void {
+	function startImageRotation() {
+		if (!import.meta.client) return;
+
+		if (!context) setup();
+
+		scheduleNextSwap();
+	}
+
+	function stopImageRotation() {
 		if (!import.meta.client) return;
 
 		clearScheduledSwap();
 
-		transitionTimeline?.kill();
-
-		transitionTimeline = null;
-
-		gsapContext?.revert();
-
-		gsapContext = null;
+		killTransition();
 	}
+
+	function revertImageRotation() {
+		stop();
+
+		context?.revert();
+
+		context = null;
+	}
+
+	onMounted(async () => {
+		await nextTick();
+
+		setup();
+	});
+
+	onBeforeUnmount(() => {
+		revertImageRotation();
+	});
 
 	return {
 		currentImageIndex,
 		nextImageIndex,
 		startImageRotation,
 		stopImageRotation,
+		revertImageRotation,
 	};
 }

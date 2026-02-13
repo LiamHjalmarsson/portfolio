@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import gsap from "gsap";
+import { useTextLinesReveal } from "~/composables/animation/useTextLinesReveal";
 
 const props = defineProps<{
 	text: string;
@@ -17,58 +17,10 @@ function registerLineElement(element: Element | ComponentPublicInstance | null, 
 	lineElements.value[index] = element;
 }
 
-let gsapContext: gsap.Context | null = null;
-
-onMounted(async () => {
-	if (!import.meta.client) return;
-
-	await nextTick();
-
-	const containerElement = containerRootElement.value;
-	if (!containerElement) return;
-
-	if (lineElements.value.length === 0) return;
-
-	gsapContext = gsap.context(() => {
-		gsap.set(lineElements.value, {
-			opacity: 0,
-			y: 24,
-			rotateX: -35,
-			transformPerspective: 800,
-			transformOrigin: "50% 100%",
-		});
-
-		gsap.timeline({
-			scrollTrigger: {
-				trigger: containerElement,
-				start: "top 95%",
-			},
-		})
-			.to(lineElements.value, {
-				opacity: 1,
-				y: 0,
-				rotateX: 0,
-				duration: 1,
-				stagger: 0.3,
-				ease: "power3.out",
-				clearProps: "transform",
-			})
-			.to(
-				lineElements.value,
-				{
-					letterSpacing: "0.04em",
-					duration: 1,
-					stagger: 0.3,
-					ease: "power2.out",
-				},
-				"<+0.05",
-			);
-	}, containerElement);
-});
-
-onBeforeUnmount(() => {
-	gsapContext?.revert();
-	gsapContext = null;
+useTextLinesReveal({
+	animationRootElement: containerRootElement,
+	lineElements,
+	withScrollTrigger: true,
 });
 </script>
 

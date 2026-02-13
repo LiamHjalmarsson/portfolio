@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { NavbarToggleButtonAnimation } from "~/composable/layout/useLayoutNavbarButtonAnimation";
-import type { NavbarMenuAnimation } from "~/composable/layout/useLayoutNavbarMenuAnimation";
+import type { NavbarToggleButtonAnimation } from "~/composables/layout/useLayoutNavbarButtonAnimation";
+import type { NavbarMenuAnimation } from "~/composables/layout/useLayoutNavbarMenuAnimation";
 
 const isMenuOpen = ref(false);
 
@@ -16,6 +16,10 @@ function registerToggleButtonAnimation(animation: NavbarToggleButtonAnimation) {
 	toggleButtonAnimation.value = animation;
 }
 
+function registerMenuAnimation(animation: NavbarMenuAnimation) {
+	menuAnimation.value = animation;
+}
+
 function openMenu() {
 	if (!menuAnimation.value) return;
 
@@ -27,11 +31,9 @@ function openMenu() {
 }
 
 function closeMenu() {
-	if (!isMenuOpen.value) return;
+	if (!isMenuOpen.value || !menuAnimation.value) return;
 
-	if (!menuAnimation.value) return;
-
-	menuAnimation.value.reverse();
+	menuAnimation.value?.reverse();
 
 	toggleButtonAnimation.value?.reverse();
 
@@ -60,10 +62,6 @@ function handleWindowScroll() {
 	shouldShowMenuToggleButton.value = currentScrollY <= lastKnownScrollY || currentScrollY < 10;
 
 	lastKnownScrollY = currentScrollY;
-}
-
-function registerMenuAnimation(animation: NavbarMenuAnimation) {
-	menuAnimation.value = animation;
 }
 
 onMounted(() => {

@@ -1,7 +1,6 @@
-<!-- components/sections/HomeHeroSection.vue -->
 <script setup lang="ts">
-import { useFadingRotatingImages } from "~/composable/animation/useFadingRotatingImages";
-import { useGridAnimation } from "~/composable/animation/useGridAnimation";
+import { useFadingRotatingImages } from "~/composables/animation/useFadingRotatingImages";
+import { useGridAnimation } from "~/composables/animation/useGridAnimation";
 import { socials } from "~/constants/socials";
 
 const heroDescriptionText = `Här utforskar jag kod, design och digitala lösningar.
@@ -18,21 +17,18 @@ const topRightCardElement = ref<HTMLElement | null>(null);
 
 const rotatingCardElement = ref<HTMLElement | null>(null);
 
-const animatedGridItemElements = ref<HTMLElement[]>([]);
+const animatedGridItemElements = computed<HTMLElement[]>(() => {
+	const elements = [leftCardElement.value, topRightCardElement.value, rotatingCardElement.value];
 
-function rebuildAnimatedGridItemElements(): void {
-	animatedGridItemElements.value = [
-		leftCardElement.value,
-		topRightCardElement.value,
-		rotatingCardElement.value,
-	].filter((element): element is HTMLElement => element !== null);
-}
+	return elements.filter((element): element is HTMLElement => element !== null);
+});
 
 const currentImageWrapperElement = ref<HTMLElement | null>(null);
 
 const nextImageWrapperElement = ref<HTMLElement | null>(null);
 
-const { currentImageIndex, nextImageIndex, startImageRotation, stopImageRotation } = useFadingRotatingImages({
+const { currentImageIndex, nextImageIndex, startImageRotation, revertImageRotation } = useFadingRotatingImages({
+	animationRootElement: rotatingCardElement,
 	rotatingImageSources,
 	currentImageWrapperElement,
 	nextImageWrapperElement,
@@ -40,12 +36,9 @@ const { currentImageIndex, nextImageIndex, startImageRotation, stopImageRotation
 	transitionDurationSeconds: 0.9,
 });
 
-const { playAnimation: playGridAnimation, revertAnimation: revertGridAnimation } = useGridAnimation({
-	animationScopeRootElement: gridRootElement,
+const { playGridAnimation, revertGridAnimation } = useGridAnimation({
+	animationRootElement: gridRootElement,
 	animatedItemElements: animatedGridItemElements,
-	itemDurationSeconds: 0.9,
-	itemOverlapSeconds: 0.15,
-	itemEase: "circ.out",
 });
 
 onMounted(async () => {
@@ -53,15 +46,13 @@ onMounted(async () => {
 
 	await nextTick();
 
-	rebuildAnimatedGridItemElements();
-
 	playGridAnimation();
 
 	startImageRotation();
 });
 
 onBeforeUnmount(() => {
-	stopImageRotation();
+	revertImageRotation();
 
 	revertGridAnimation();
 });
@@ -86,18 +77,15 @@ onBeforeUnmount(() => {
 
 				<div
 					ref="topRightCardElement"
-					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 grid sm:grid-cols-3 items-center md:justify-between overflow-hidden rounded-4xl bg-black p-3 text-white max-sm:hidden">
+					class="col-span-4 sm:col-span-6 row-span-6 sm:row-span-2 flex items-center justify-between overflow-hidden rounded-4xl bg-black p-3 text-white max-sm:hidden">
 					<NuxtLink
 						v-for="social in socials"
 						:key="social.name"
 						:to="social.href"
+						target="_blank"
 						class="flex h-full items-center justify-center w-full">
 						<Icon :name="social.icon" size="36" />
 					</NuxtLink>
-
-					<button class="border-0 outline-0 flex justify-center items-center cursor-pointer">
-						<Icon name="mdi:download" size="36" />
-					</button>
 				</div>
 
 				<div
@@ -122,11 +110,7 @@ onBeforeUnmount(() => {
 			</div>
 		</div>
 
-		<AnimatedHeaderSection
-			title="Liam Hjalmarsson"
-			subtitle="Fullstack developer"
-			theme="dark"
-			:with-scroll-trigger="false">
+		<AnimatedHeaderSection title="Liam Hjalmarsson" subtitle="Fullstack" theme="dark" :with-scroll-trigger="false">
 			<AnimatedTextLines :text="heroDescriptionText" class="font-light uppercase" />
 		</AnimatedHeaderSection>
 	</section>

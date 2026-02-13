@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useSinglePageSeo } from "~/composable/useSinglePageSeo";
-
-useSinglePageSeo();
+useSeo();
 </script>
 
 <template>

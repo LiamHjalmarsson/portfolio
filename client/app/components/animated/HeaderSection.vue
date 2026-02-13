@@ -27,35 +27,43 @@ onMounted(async () => {
 
 	await nextTick();
 
-	const timeline = gsap.timeline({
-		scrollTrigger: withScrollTrigger
-			? {
-					trigger: sectionRootRef.value,
-				}
-			: undefined,
-	});
+	const context = gsap.context(() => {
+		const timeline = gsap.timeline({
+			scrollTrigger: withScrollTrigger
+				? {
+						trigger: sectionRootRef.value,
+						start: "top 80%",
+						toggleActions: "play none none none",
+					}
+				: undefined,
+		});
 
-	timeline.from(sectionRootRef.value, {
-		y: "30vh",
-		duration: 1,
-		ease: "circ.out",
-	});
+		timeline
+			.from(sectionRootRef.value, {
+				y: "30vh",
+				duration: 1,
+				ease: "circ.out",
+			})
+			.from(
+				headerContentRef.value,
+				{
+					opacity: 0,
+					y: 200,
+					duration: 1,
+					ease: "circ.out",
+				},
+				"<+0.2",
+			);
+	}, sectionRootRef);
 
-	timeline.from(
-		headerContentRef.value,
-		{
-			opacity: 0,
-			y: 200,
-			duration: 1,
-			ease: "circ.out",
-		},
-		"<+0.2",
-	);
+	onBeforeUnmount(() => {
+		context.revert();
+	});
 });
 </script>
 
 <template>
-	<div ref="sectionRootRef ">
+	<div ref="sectionRootRef">
 		<div :style="{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }">
 			<div
 				ref="headerContentRef"

@@ -6,21 +6,29 @@ defineProps<{
 	size: TechTileSize;
 }>();
 
-const cardContentElement = ref<HTMLElement | null>(null);
+const contentRef = ref<HTMLElement | null>(null);
 
-let gsapContext: gsap.Context | null = null;
+let context: gsap.Context | null = null;
+
+let tween: gsap.core.Tween | null = null;
 
 onMounted(async () => {
-	if (!import.meta.client) return;
-
 	await nextTick();
 
-	const content = cardContentElement.value;
+	const content = contentRef.value;
 
 	if (!content) return;
 
-	gsapContext = gsap.context(() => {
-		gsap.from(content, {
+	context?.revert();
+
+	context = null;
+
+	context = gsap.context(() => {
+		tween?.kill();
+
+		tween = null;
+
+		tween = gsap.from(content, {
 			opacity: 0,
 			duration: 0.8,
 			ease: "power2.inOut",
@@ -33,9 +41,13 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
-	gsapContext?.revert();
+	tween?.kill();
 
-	gsapContext = null;
+	tween = null;
+
+	context?.revert();
+
+	context = null;
 });
 </script>
 
@@ -48,7 +60,7 @@ onBeforeUnmount(() => {
 				: 'col-span-4 h-40 p-6 sm:col-span-2 md:p-7 lg:h-52 2xl:h-80 max-sm:nth-6:border-r-0 last:border-r-0',
 		]">
 		<div
-			ref="cardContentElement"
+			ref="contentRef"
 			:class="[size === 'large' ? 'text-6xl lg:text-7xl' : 'text-5xl lg:text-6xl', 'font-bold']">
 			<slot />
 		</div>

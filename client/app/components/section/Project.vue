@@ -20,28 +20,36 @@ let quickToX: ((value: number) => void) | null = null;
 let quickToY: ((value: number) => void) | null = null;
 
 const activeProject = computed(() => {
-	if (!activeHoverProjectId.value) return null;
+	const activeId = activeHoverProjectId.value;
 
-	return projectsData.find((project) => project.id === activeHoverProjectId.value) ?? null;
+	if (!activeId) return null;
+
+	return projectsData.find((project) => project.id === activeId) ?? null;
 });
 
-function killPreviewTimeline(): void {
+function killPreviewTimeline() {
 	previewTimeline?.kill();
 
 	previewTimeline = null;
 }
 
-function setupQuickTo(): void {
+function setupQuickTo() {
 	const root = previewRootElement.value;
 
 	if (!root) return;
 
-	quickToX = gsap.quickTo(root, "x", { duration: 0.12, ease: "power3.out" });
+	quickToX = gsap.quickTo(root, "x", {
+		duration: 0.3,
+		ease: "power3.out",
+	});
 
-	quickToY = gsap.quickTo(root, "y", { duration: 0.12, ease: "power3.out" });
+	quickToY = gsap.quickTo(root, "y", {
+		duration: 0.3,
+		ease: "power3.out",
+	});
 }
 
-function setPreviewPositionInstant(event: PointerEvent): void {
+function setPreviewPositionInstant(event: PointerEvent) {
 	const root = previewRootElement.value;
 
 	if (!root) return;
@@ -56,7 +64,7 @@ function setPreviewPositionInstant(event: PointerEvent): void {
 	});
 }
 
-function updatePreviewPositionSmooth(event: PointerEvent): void {
+function updatePreviewPositionSmooth(event: PointerEvent) {
 	const OFFSET_X = 50;
 
 	const OFFSET_Y = -250;
@@ -66,7 +74,7 @@ function updatePreviewPositionSmooth(event: PointerEvent): void {
 	quickToY?.(event.clientY + OFFSET_Y);
 }
 
-function animatePreviewFadeIn(): void {
+function animatePreviewFadeIn() {
 	const root = previewRootElement.value;
 
 	if (!root) return;
@@ -75,10 +83,18 @@ function animatePreviewFadeIn(): void {
 
 	previewTimeline = gsap.timeline();
 
-	previewTimeline.fromTo(root, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.14, ease: "power2.out" });
+	previewTimeline.fromTo(
+		root,
+		{ autoAlpha: 0 },
+		{
+			autoAlpha: 1,
+			duration: 0.14,
+			ease: "power2.out",
+		},
+	);
 }
 
-function animatePreviewFadeOut(onComplete?: () => void): void {
+function animatePreviewFadeOut(onComplete?: () => void) {
 	const root = previewRootElement.value;
 
 	if (!root) {
@@ -98,37 +114,45 @@ function animatePreviewFadeOut(onComplete?: () => void): void {
 	});
 }
 
-function handleProjectPointerEnter(projectId: ProjectId, event: PointerEvent): void {
+async function handleProjectPointerEnter(projectId: ProjectId, event: PointerEvent) {
+	if (!isDesktop.value) return;
+
 	activeHoverProjectId.value = projectId;
 
-	nextTick(() => {
-		const root = previewRootElement.value;
+	await nextTick();
 
-		if (!root) return;
+	const root = previewRootElement.value;
 
-		gsapContext?.revert();
+	if (!root) return;
 
-		gsapContext = null;
+	gsapContext?.revert();
 
-		gsapContext = gsap.context(() => {
-			gsap.set(root, { autoAlpha: 0 });
+	gsapContext = null;
+
+	gsapContext = gsap.context(() => {
+		gsap.set(root, {
+			autoAlpha: 0,
 		});
-
-		setPreviewPositionInstant(event);
-
-		setupQuickTo();
-
-		animatePreviewFadeIn();
 	});
+
+	setPreviewPositionInstant(event);
+
+	setupQuickTo();
+
+	animatePreviewFadeIn();
 }
 
-function handleProjectPointerMove(projectId: ProjectId, event: PointerEvent): void {
+function handleProjectPointerMove(projectId: ProjectId, event: PointerEvent) {
+	if (!isDesktop.value) return;
+
 	if (activeHoverProjectId.value !== projectId) return;
 
 	updatePreviewPositionSmooth(event);
 }
 
-function handleProjectPointerLeave(projectId: ProjectId): void {
+function handleProjectPointerLeave(projectId: ProjectId) {
+	if (!isDesktop.value) return;
+
 	if (activeHoverProjectId.value !== projectId) return;
 
 	animatePreviewFadeOut(() => {

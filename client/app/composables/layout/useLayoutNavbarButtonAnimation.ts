@@ -14,12 +14,12 @@ type UseLayoutNavbarButtonAnimationOptions = {
 };
 
 export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAnimationOptions) {
-	const iconTimelineRef = shallowRef<gsap.core.Timeline | null>(null);
+	const timelineRef = shallowRef<gsap.core.Timeline | null>(null);
 
-	let gsapContext: gsap.Context | null = null;
+	let context: gsap.Context | null = null;
 
-	onMounted(() => {
-		if (!import.meta.client) return;
+	onMounted(async () => {
+		await nextTick();
 
 		const topLine = options.topLineElement.value;
 
@@ -29,20 +29,24 @@ export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAni
 
 		if (!topLine || !centerLine || !bottomLine) return;
 
-		gsapContext = gsap.context(() => {
-			iconTimelineRef.value = gsap
+		context?.revert();
+
+		context = null;
+
+		context = gsap.context(() => {
+			timelineRef.value = gsap
 				.timeline({ paused: true })
 				.to(topLine, {
 					rotate: 45,
 					y: 6,
-					duration: 0.25,
+					duration: 0.5,
 					ease: "power2.inOut",
 				})
 				.to(
 					centerLine,
 					{
 						autoAlpha: 0,
-						duration: 0.12,
+						duration: 0.5,
 						ease: "power2.inOut",
 					},
 					"<",
@@ -52,7 +56,7 @@ export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAni
 					{
 						rotate: -45,
 						y: -6,
-						duration: 0.25,
+						duration: 0.5,
 						ease: "power2.inOut",
 					},
 					"<",
@@ -61,15 +65,15 @@ export function useLayoutNavbarButtonAnimation(options: UseLayoutNavbarButtonAni
 	});
 
 	onBeforeUnmount(() => {
-		gsapContext?.revert();
+		context?.revert();
 
-		gsapContext = null;
+		context = null;
 
-		iconTimelineRef.value = null;
+		timelineRef.value = null;
 	});
 
 	return {
-		play: () => iconTimelineRef.value?.play(),
-		reverse: () => iconTimelineRef.value?.reverse(),
+		play: () => timelineRef.value?.play(),
+		reverse: () => timelineRef.value?.reverse(),
 	};
 }
