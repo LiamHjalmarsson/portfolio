@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import gsap from "gsap";
+import { useHeaderReveal } from "~/composables/animation/useHeaderReveal";
+
+type HeaderTheme = "light" | "dark";
 
 const { theme, withScrollTrigger } = defineProps<{
 	subtitle: string;
 	title: string;
-	theme: "light" | "dark";
+	theme: HeaderTheme;
 	withScrollTrigger: boolean;
 }>();
 
@@ -22,43 +24,11 @@ const hasDefaultSlotContent = computed(() => {
 	return renderedDefaultSlotNodes.length > 0;
 });
 
-onMounted(async () => {
-	if (!import.meta.client) return;
-
-	await nextTick();
-
-	const context = gsap.context(() => {
-		const timeline = gsap.timeline({
-			scrollTrigger: withScrollTrigger
-				? {
-						trigger: sectionRootRef.value,
-						start: "top 80%",
-						toggleActions: "play none none none",
-					}
-				: undefined,
-		});
-
-		timeline
-			.from(sectionRootRef.value, {
-				y: "30vh",
-				duration: 1,
-				ease: "circ.out",
-			})
-			.from(
-				headerContentRef.value,
-				{
-					opacity: 0,
-					y: 200,
-					duration: 1,
-					ease: "circ.out",
-				},
-				"<+0.2",
-			);
-	}, sectionRootRef);
-
-	onBeforeUnmount(() => {
-		context.revert();
-	});
+useHeaderReveal({
+	animationRootElement: sectionRootRef,
+	headerContentElement: headerContentRef,
+	withScrollTrigger,
+	start: "top 80%",
 });
 </script>
 
