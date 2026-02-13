@@ -51,7 +51,7 @@ onMounted(async () => {
 <template>
 	<section id="home" class="relative flex min-h-screen flex-col justify-end overflow-hidden">
 		<div
-			class="h-[40vh] lg:h-[55vh] flex flex-col max-xl:flex-1 w-full items-start xl:items-end xl:justify-end pt-24 md:pt-32 xl:pt-34 px-3 md:px-6 lg:px-12">
+			class="h-[30vh] lg:h-[55vh] flex flex-col max-xl:flex-1 w-full items-start xl:items-end xl:justify-end pt-24 md:pt-32 xl:pt-34 px-3 md:px-6 lg:px-12">
 			<div
 				ref="gridRootElement"
 				class="grid max-lg:flex-1 min-h-0 w-full h-1/2 lg:h-130 2xl:h-162 xl:w-180 2xl:w-220 grid-cols-12 grid-rows-12 gap-3 overflow-hidden">
