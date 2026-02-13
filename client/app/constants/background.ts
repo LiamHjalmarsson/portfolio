@@ -12,7 +12,7 @@ export type Background = {
 
 export const backgroundData: Background[] = [
 	{
-		title: "Fullstack Developer",
+		title: "Fullstack Utvecklare",
 		company: "Timetjek",
 		description: `I min tidigare roll på Timetjek arbetade jag med utveckling och vidareutveckling av ett webbaserat personalsystem som används dagligen för schemaläggning, löneunderlag och hantering av personaldata. Systemet hanterade känslig information och ställde höga krav på stabilitet, säkerhet, tillgänglighet och användarupplevelse.
 		
@@ -37,7 +37,7 @@ export const backgroundData: Background[] = [
 		],
 	},
 	{
-		title: "Junior Frontend Developer",
+		title: "Junior Frontend Utvecklare",
 		company: "Nifitech",
 		description: `På Nifitech arbetade jag i flera projekt där fokus låg på att sätta mig in i befintliga kodbaser och bidra till mer robusta och underhållsvänliga lösningar.
 		
