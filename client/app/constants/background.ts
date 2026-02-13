@@ -60,7 +60,7 @@ export const backgroundData: Background[] = [
 		],
 	},
 	{
-		title: "Internship",
+		title: "Praktikant inom Projekt & Utveckling",
 		company: "Sjöbergska",
 		description: `Under min praktik på Sjöbergska deltog jag i ett pro bono-projekt där jag var involverad i hela processen från planering till leverans och hade huvudsakligt ansvar för design och utveckling av lösningen.
 		
