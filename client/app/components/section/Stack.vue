@@ -33,7 +33,7 @@ useParagraphReveal({
 <template>
 	<section
 		id="tech"
-		class="flex min-h-screen flex-col items-center justify-between space-y-12 px-3 py-24 lg:py-48 md:px-6 lg:px-12 xl:py-64 xl:space-y-24">
+		class="flex lg:min-h-screen flex-col items-center justify-between py-12 md:py-24 lg:py-48 2xl:py-64 px-3 md:px-6 lg:px-12 space-y-12 2xl:space-y-24">
 		<div ref="textWrapRef" class="max-w-480">
 			<p
 				ref="textRef"

@@ -29,6 +29,8 @@ useTextLinesReveal({
 	animationRootElement: containerRootElement,
 	lineElements,
 	withScrollTrigger: true,
+	start: "top 115%",
+	withClip: true,
 });
 </script>
 

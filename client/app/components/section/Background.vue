@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import gsap from "gsap";
 import { useMediaQuery } from "@vueuse/core";
 import { backgroundData } from "~/constants/background";
 
@@ -10,7 +11,9 @@ Här är en översikt av min bakgrund från studier till arbete.`;
 
 const sectionRootRef = ref<HTMLElement | null>(null);
 
-const backgroundRefs = ref<HTMLElement[]>([]);
+const listRefs = ref<HTMLElement[]>([]);
+
+let context: gsap.Context | null = null;
 
 const getItemStyle = computed(() => {
 	return (index: number): Record<string, string> => {
@@ -23,11 +26,52 @@ const getItemStyle = computed(() => {
 	};
 });
 
-function registerItemElement(element: Element | ComponentPublicInstance | null, index: number) {
+function registerList(element: Element | null, index: number) {
 	if (!(element instanceof HTMLElement)) return;
 
-	backgroundRefs.value[index] = element;
+	listRefs.value[index] = element;
 }
+
+onMounted(async () => {
+	if (!import.meta.client) return;
+	await nextTick();
+
+	const root = sectionRootRef.value;
+	const lists = listRefs.value.filter((el): el is HTMLElement => el instanceof HTMLElement);
+
+	if (!root || lists.length === 0) return;
+
+	context?.revert();
+
+	context = gsap.context(() => {
+		lists.forEach((list) => {
+			const items = Array.from(list.querySelectorAll<HTMLElement>("li"));
+
+			gsap.set(items, {
+				autoAlpha: 0,
+				y: 200,
+			});
+
+			gsap.timeline({
+				scrollTrigger: {
+					trigger: list,
+					start: "top 85%",
+				},
+			}).to(items, {
+				autoAlpha: 1,
+				y: 0,
+				duration: 0.7,
+				stagger: 0.15,
+				ease: "power3.out",
+			});
+		});
+	}, root);
+});
+
+onBeforeUnmount(() => {
+	context?.revert();
+	context = null;
+});
 </script>
 
 <template>
@@ -44,7 +88,6 @@ function registerItemElement(element: Element | ComponentPublicInstance | null, 
 			<div
 				v-for="(background, index) in backgroundData"
 				:key="index"
-				:ref="(element) => registerItemElement(element, index)"
 				class="lg:sticky min-h-[65vh] w-full border-t border-white/20 bg-black text-white px-3 py-12 md:px-6 lg:px-12"
 				:style="getItemStyle(index)">
 				<div class="flex flex-col space-y-6 lg:space-y-12 font-light">
@@ -62,11 +105,9 @@ function registerItemElement(element: Element | ComponentPublicInstance | null, 
 						class="text-md text-pretty leading-relaxed tracking-widest text-white/60 md:text-lg lg:text-xl 2xl:text-2xl">
 						{{ background.description }}
 					</p>
-
-					<ul class="grid gap-3 lg:gap-6 lg:grid-cols-2">
+					<ul :ref="(el) => registerList(el, index)" class="grid gap-3 lg:gap-6 lg:grid-cols-2">
 						<li v-for="(item, itemIndex) in background.items" :key="itemIndex">
-							<div
-								class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12 transition duration-300">
+							<div class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12">
 								<h3 class="text-lg md:text-xl font-semibold tracking-wide text-white">
 									{{ item.title }}
 								</h3>
