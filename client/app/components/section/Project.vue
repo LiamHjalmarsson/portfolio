@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
 			<div
 				v-if="activeProject && isDesktop"
 				ref="previewRootElement"
-				class="pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-96 h-74">
+				class="pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-100 2xl:w-160 h-80 2xl:h-100">
 				<NuxtImg
 					:src="activeProject.imageSrc"
 					:alt="activeProject.imageAlt"
