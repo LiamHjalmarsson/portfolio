@@ -25,6 +25,14 @@ export default defineNuxtConfig({
 		},
 	},
 
+	routeRules: {
+		"/images/**": {
+			cache: {
+				maxAge: 31536000,
+			},
+		},
+	},
+
 	app: {
 		head: {
 			htmlAttrs: {
