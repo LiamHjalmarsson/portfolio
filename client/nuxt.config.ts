@@ -31,6 +31,12 @@ export default defineNuxtConfig({
 				maxAge: 31536000,
 			},
 		},
+
+		"/_ipx/**": {
+			headers: {
+				"Cache-Control": "public, max-age=31536000, immutable",
+			},
+		},
 	},
 
 	app: {
