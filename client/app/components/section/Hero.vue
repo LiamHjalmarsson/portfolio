@@ -90,8 +90,8 @@ onMounted(async () => {
 							alt="Showcase image"
 							quality="80"
 							preload
-							class="h-full w-full object-cover"
-							format="webp" />
+							format="webp"
+							class="h-full w-full object-cover" />
 					</div>
 
 					<div ref="nextImageWrapperElement" class="absolute inset-0">
@@ -99,8 +99,8 @@ onMounted(async () => {
 							:src="rotatingImageSources[nextImageIndex]"
 							alt="Next showcase image"
 							quality="80"
-							class="h-full w-full object-cover"
-							format="webp" />
+							format="webp"
+							class="h-full w-full object-cover" />
 					</div>
 				</div>
 			</div>

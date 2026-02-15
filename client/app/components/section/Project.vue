@@ -138,8 +138,9 @@ onBeforeUnmount(() => {
 				<NuxtImg
 					:src="activeProject.imageSrc"
 					:alt="activeProject.imageAlt"
-					class="h-full w-full object-cover object-center"
-					loading="lazy" />
+					format="webp"
+					loading="lazy"
+					class="h-full w-full object-cover object-center" />
 			</div>
 		</div>
 	</section>
