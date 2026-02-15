@@ -1,3 +1,4 @@
+loading="lazy"
 <script setup lang="ts">
 import gsap from "gsap";
 import type { ComponentPublicInstance } from "vue";
@@ -14,6 +15,8 @@ const listRootRef = ref<HTMLElement | null>(null);
 
 const projectInnerRefs = ref<HTMLElement[]>([]);
 
+const isMounted = ref(false);
+
 const activeProject = computed(() => {
 	const id = activeHoverProjectId.value;
 
@@ -22,12 +25,18 @@ const activeProject = computed(() => {
 	return projectsData.find((project) => project.id === id) ?? null;
 });
 
-const { isDesktop, handleProjectPointerEnter, handleProjectPointerMove, handleProjectPointerLeave } =
-	useProjectHoverPreview<ProjectId>({
-		previewRootElement,
-		activeHoverProjectId,
-		isDesktopQuery: "(min-width: 63rem)",
-	});
+const {
+	isDesktop: mediaQueryResult,
+	handleProjectPointerEnter,
+	handleProjectPointerMove,
+	handleProjectPointerLeave,
+} = useProjectHoverPreview<ProjectId>({
+	previewRootElement,
+	activeHoverProjectId,
+	isDesktopQuery: "(min-width: 63rem)",
+});
+
+const isDesktop = computed(() => isMounted.value && mediaQueryResult.value);
 
 let revealContext: gsap.Context | null = null;
 
@@ -38,6 +47,8 @@ function registerProjectInner(element: Element | ComponentPublicInstance | null,
 }
 
 onMounted(async () => {
+	isMounted.value = true;
+
 	if (!import.meta.client) return;
 
 	await nextTick();
@@ -113,7 +124,8 @@ onBeforeUnmount(() => {
 								:src="project.imageSrc"
 								:alt="project.imageAlt"
 								class="object-cover object-center rounded-2xl"
-								format="webp" />
+								format="webp"
+								loading="lazy" />
 						</div>
 					</div>
 				</div>
@@ -126,7 +138,8 @@ onBeforeUnmount(() => {
 				<NuxtImg
 					:src="activeProject.imageSrc"
 					:alt="activeProject.imageAlt"
-					class="h-full w-full object-cover object-center" />
+					class="h-full w-full object-cover object-center"
+					loading="lazy" />
 			</div>
 		</div>
 	</section>

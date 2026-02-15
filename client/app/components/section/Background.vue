@@ -13,11 +13,15 @@ const sectionRootRef = ref<HTMLElement | null>(null);
 
 const listRefs = ref<HTMLElement[]>([]);
 
+const isMounted = ref(false);
+
 let context: gsap.Context | null = null;
 
 const getItemStyle = computed(() => {
 	return (index: number): Record<string, string> => {
-		if (!isDesktop.value) return { top: "0px", marginBottom: "0px" };
+		if (!isMounted.value || !isDesktop.value) {
+			return { top: "0px", marginBottom: "0px" };
+		}
 
 		return {
 			top: `calc(1vh + ${index * 8}em)`,
@@ -33,10 +37,14 @@ function registerList(element: Element | null, index: number) {
 }
 
 onMounted(async () => {
+	isMounted.value = true;
+
 	if (!import.meta.client) return;
+
 	await nextTick();
 
 	const root = sectionRootRef.value;
+
 	const lists = listRefs.value.filter((el): el is HTMLElement => el instanceof HTMLElement);
 
 	if (!root || lists.length === 0) return;
@@ -70,6 +78,7 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
 	context?.revert();
+
 	context = null;
 });
 </script>

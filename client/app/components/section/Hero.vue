@@ -60,9 +60,11 @@ onMounted(async () => {
 					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-12 relative overflow-hidden rounded-2xl lg:rounded-4xl p-6">
 					<NuxtImg
 						src="/images/me.png"
+						format="webp"
+						preload
+						quality="80"
 						alt="Svartvit bild på Liam Hjalmarsson som står utomhus vid ett räcke med hav och klippor i bakgrunden och under en molnig himmel."
-						class="absolute inset-0 h-full w-full object-cover"
-						format="webp" />
+						class="absolute inset-0 h-full w-full object-cover" />
 				</div>
 
 				<div
@@ -86,6 +88,8 @@ onMounted(async () => {
 						<NuxtImg
 							:src="rotatingImageSources[currentImageIndex]"
 							alt="Showcase image"
+							quality="80"
+							preload
 							class="h-full w-full object-cover"
 							format="webp" />
 					</div>
@@ -94,6 +98,7 @@ onMounted(async () => {
 						<NuxtImg
 							:src="rotatingImageSources[nextImageIndex]"
 							alt="Next showcase image"
+							quality="80"
 							class="h-full w-full object-cover"
 							format="webp" />
 					</div>
