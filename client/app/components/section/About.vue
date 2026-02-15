@@ -45,7 +45,10 @@ useImageReveal({
 				<AnimatedTextLines :text="aboutSecondaryText" class="font-light uppercase" />
 
 				<div ref="imageRef" class="flex-1 h-140 relative overflow-hidden">
-					<NuxtImg src="/images/me.png" class="rounded-3xl object-cover lg:absolute w-full h-full" />
+					<NuxtImg
+						src="/images/me.png"
+						alt="Svartvit bild på Liam Hjalmarsson som står utomhus vid ett räcke med hav och klippor i bakgrunden och under en molnig himmel."
+						class="rounded-3xl object-cover lg:absolute w-full h-full" />
 				</div>
 			</div>
 		</div>

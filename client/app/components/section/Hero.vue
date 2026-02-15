@@ -60,7 +60,7 @@ onMounted(async () => {
 					class="col-span-6 sm:col-span-6 row-span-6 max-sm:row-span-12 sm:row-span-12 relative overflow-hidden rounded-2xl lg:rounded-4xl p-6">
 					<NuxtImg
 						src="/images/me.png"
-						alt="Liam Hjalmarsson"
+						alt="Svartvit bild på Liam Hjalmarsson som står utomhus vid ett räcke med hav och klippor i bakgrunden och under en molnig himmel."
 						class="absolute inset-0 h-full w-full object-cover"
 						format="webp" />
 				</div>
@@ -73,6 +73,7 @@ onMounted(async () => {
 						:key="social.name"
 						:to="social.href"
 						target="_blank"
+						:aria-label="`Besök ${social.name}`"
 						class="flex h-full items-center justify-center w-full">
 						<Icon :name="social.icon" size="36" />
 					</NuxtLink>

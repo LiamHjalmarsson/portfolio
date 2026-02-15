@@ -44,10 +44,18 @@ export function useSeo(input: SeoInput = {}): void {
 	});
 
 	useHead({
+		htmlAttrs: {
+			lang: "sv",
+		},
 		link: [
 			{
 				rel: "canonical",
 				href: canonicalUrl,
+			},
+			{
+				rel: "icon",
+				type: "image/png",
+				href: "/3d.png",
 			},
 		],
 	});

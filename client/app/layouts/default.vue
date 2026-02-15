@@ -3,6 +3,9 @@
 <template>
 	<div class="relative min-h-screen">
 		<LayoutNavbar />
-		<slot />
+
+		<main>
+			<slot />
+		</main>
 	</div>
 </template>

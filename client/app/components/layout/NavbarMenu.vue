@@ -43,7 +43,6 @@ onMounted(() => {
 <template>
 	<nav
 		ref="menuRootElement"
-		:aria-hidden="!isMenuOpen"
 		class="fixed z-50 flex h-full w-full flex-col justify-between bg-black px-3 md:px-6 lg:px-12 pb-8 max-lg:pt-14 lg:py-28 uppercase text-white/80 md:left-1/2 md:w-1/2">
 		<ul class="flex flex-col space-y-4 overflow-hidden">
 			<li
@@ -79,6 +78,7 @@ onMounted(() => {
 						:key="social.name"
 						:to="social.href"
 						target="_blank"
+						:aria-label="`Besök ${social.name}`"
 						class="text-xs lg:text-sm leading-loose tracking-widest uppercase transition-colors duration-300 hover:text-white">
 						{{ social.name }}
 					</NuxtLink>
