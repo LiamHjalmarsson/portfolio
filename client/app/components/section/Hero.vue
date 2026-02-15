@@ -63,6 +63,9 @@ onMounted(async () => {
 						format="webp"
 						preload
 						quality="80"
+						sizes="(max-width: 768px) 100vw, 1200px"
+						loading="eager"
+						fetchpriority="high"
 						alt="Svartvit bild på Liam Hjalmarsson som står utomhus vid ett räcke med hav och klippor i bakgrunden och under en molnig himmel."
 						class="absolute inset-0 h-full w-full object-cover" />
 				</div>
