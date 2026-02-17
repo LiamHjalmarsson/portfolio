@@ -94,8 +94,8 @@ onBeforeUnmount(() => {
 	<section id="projects" class="relative flex min-h-screen flex-col justify-between">
 		<AnimatedHeaderSection title="Projekt" subtitle="Några projekt" theme="dark" :with-scroll-trigger="true" />
 
-		<div ref="listRootRef" class="relative flex-1 lg:pt-12 lg:px-12 pb-12 lg:pb-24">
-			<div
+		<ul ref="listRootRef" class="relative flex-1 lg:pt-12 lg:px-12 pb-12 lg:pb-24">
+			<li
 				v-for="(project, index) in projectsData"
 				:key="project.id"
 				class="group relative z-10 mx-auto max-w-400 transition"
@@ -103,33 +103,35 @@ onBeforeUnmount(() => {
 				@pointermove="handleProjectPointerMove(project.id, $event)"
 				@pointerleave="handleProjectPointerLeave(project.id)">
 				<div :ref="(el) => registerProjectInner(el, index)">
-					<div
-						class="pointer-events-none absolute inset-0 border-4 border-black opacity-0 transition-all duration-300 ease-out will-change-transform lg:group-hover:opacity-100" />
+					<NuxtLink :to="project.href" target="_blank" :aria-label="`Besök Projekt ${project.title}`">
+						<div
+							class="pointer-events-none absolute inset-0 border-4 border-black opacity-0 transition-all duration-300 ease-out will-change-transform lg:group-hover:opacity-100" />
 
-					<div
-						class="lg:border-b px-3 md:px-12 py-6 md:py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
-						<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
-							<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
-								{{ project.title }}
-							</h2>
+						<div
+							class="lg:border-b px-3 md:px-12 py-6 md:py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
+							<div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
+								<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
+									{{ project.title }}
+								</h2>
 
-							<div
-								class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
-								<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+								<div
+									class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
+									<p v-for="tech in project.tech" :key="tech">{{ tech }}</p>
+								</div>
+							</div>
+
+							<div v-if="!isDesktop">
+								<NuxtImg
+									:src="project.imageSrc"
+									:alt="project.imageAlt"
+									class="object-cover object-center rounded-2xl"
+									format="webp"
+									loading="lazy" />
 							</div>
 						</div>
-
-						<div v-if="!isDesktop">
-							<NuxtImg
-								:src="project.imageSrc"
-								:alt="project.imageAlt"
-								class="object-cover object-center rounded-2xl"
-								format="webp"
-								loading="lazy" />
-						</div>
-					</div>
+					</NuxtLink>
 				</div>
-			</div>
+			</li>
 
 			<div
 				v-if="activeProject && isDesktop"
@@ -142,6 +144,6 @@ onBeforeUnmount(() => {
 					loading="lazy"
 					class="h-full w-full object-cover object-center" />
 			</div>
-		</div>
+		</ul>
 	</section>
 </template>

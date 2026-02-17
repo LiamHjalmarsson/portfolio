@@ -24,7 +24,7 @@ const getItemStyle = computed(() => {
 		}
 
 		return {
-			top: `calc(1vh + ${index * 8}em)`,
+			top: `calc(0vh + ${index * 8}em)`,
 			marginBottom: `${(backgroundData.length - index - 1) * 1}rem`,
 		};
 	};

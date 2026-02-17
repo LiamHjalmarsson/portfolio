@@ -15,7 +15,7 @@ export const projectsData: ProjectItem[] = [
 		imageSrc: "/images/altmedia.png",
 		imageAlt: "AltMedia project preview",
 		tech: ["Nuxt", "Strapi", "TypeScript", "Tailwind"],
-		href: "/",
+		href: "https://alt-media-five.vercel.app/",
 	},
 	{
 		id: "portfolio",
@@ -23,6 +23,6 @@ export const projectsData: ProjectItem[] = [
 		imageSrc: "/images/oldportfolio.png",
 		imageAlt: "Portfolio project preview",
 		tech: ["React", "Sanity", "Tailwind"],
-		href: "/",
+		href: "https://oldportfolio.liamhjalmarsson.se/",
 	},
 ];
