@@ -43,6 +43,7 @@ onMounted(() => {
 <template>
 	<nav
 		ref="menuRootElement"
+		style="visibility: hidden"
 		class="fixed z-50 flex h-full w-full flex-col justify-between bg-black px-3 md:px-6 lg:px-12 pb-8 max-lg:pt-14 lg:py-28 uppercase text-white/80 md:left-1/2 md:w-1/2">
 		<ul class="flex flex-col space-y-4 overflow-hidden">
 			<li

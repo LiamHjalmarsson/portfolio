@@ -20,36 +20,40 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 		await nextTick();
 
 		const root = options.menuRootElement.value;
-
 		const links = options.menuLinkElements.value;
-
 		const contact = options.contactSectionElement.value;
 
 		if (!root || !contact || links.length === 0) return;
 
 		context?.revert();
 
-		context = null;
-
 		context = gsap.context(() => {
+			// 🔴 Viktigt: sätt initial state direkt
 			gsap.set(root, {
 				xPercent: 100,
+				visibility: "hidden",
 			});
 
 			gsap.set(links, {
 				autoAlpha: 0,
 				x: -200,
 			});
+
 			gsap.set(contact, {
 				autoAlpha: 0,
 				y: 200,
 			});
 
 			timelineRef.value = gsap
-				.timeline({ paused: true })
+				.timeline({
+					paused: true,
+					onStart: () => {
+						gsap.set(root, { visibility: "visible" });
+					},
+				})
 				.to(root, {
 					xPercent: 0,
-					duration: 1,
+					duration: 0.9,
 					ease: "power3.out",
 				})
 				.to(
@@ -57,7 +61,7 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 					{
 						autoAlpha: 1,
 						x: 0,
-						stagger: 0.25,
+						stagger: 0.2,
 						duration: 0.5,
 						ease: "power2.out",
 					},
@@ -71,7 +75,7 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 						duration: 0.5,
 						ease: "power2.out",
 					},
-					"<+0.6",
+					"<+0.4",
 				);
 		}, root);
 	});
