@@ -20,7 +20,9 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 		await nextTick();
 
 		const root = options.menuRootElement.value;
+
 		const links = options.menuLinkElements.value;
+
 		const contact = options.contactSectionElement.value;
 
 		if (!root || !contact || links.length === 0) return;
@@ -28,7 +30,6 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 		context?.revert();
 
 		context = gsap.context(() => {
-			// 🔴 Viktigt: sätt initial state direkt
 			gsap.set(root, {
 				xPercent: 100,
 				visibility: "hidden",
