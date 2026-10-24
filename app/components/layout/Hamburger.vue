@@ -1,39 +1,39 @@
 
 <template>
-	<button
-		type="button"
-		:aria-label="open ? 'Stäng meny' : 'Öppna meny'"
-		:aria-expanded="open"
-		aria-controls="sidebar"
-		class="fixed z-50 flex flex-col items-center justify-center space-y-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:h-20 md:w-20 top-4 right-10"
-		@click="toggleMenu"
-	>
-  		 <span class="relative block w-9 h-7 overflow-hidden" aria-hidden="true">
-			<span
-				ref="topRef"
-				class=" absolute w-full bg-white h-0.5 left-0 top-0"
-			/>
-			<span
-				ref="midRef"
-				class=" absolute w-full bg-white h-0.5 left-0 top-1/2 -translate-y-1/2"
-			/>
-			<span
-				ref="bottomRef"
-				class=" absolute w-full bg-white h-0.5 left-0 bottom-0"
-			/>
-		</span>
-	</button>
+    <button
+        type="button"
+        :aria-label="open ? 'Stäng meny' : 'Öppna meny'"
+        :aria-expanded="open"
+        aria-controls="sidebar"
+        class="fixed z-50 flex flex-col items-center justify-center space-y-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:h-20 md:w-20 top-4 right-10"
+        @click="toggleMenu"
+    >
+        <span class="relative block w-9 h-7 overflow-hidden" aria-hidden="true">
+            <span
+                ref="topRef"
+                class=" absolute w-full bg-white h-0.5 left-0 top-0"
+            />
+            <span
+                ref="midRef"
+                class=" absolute w-full bg-white h-0.5 left-0 top-1/2 -translate-y-1/2"
+            />
+            <span
+                ref="bottomRef"
+                class=" absolute w-full bg-white h-0.5 left-0 bottom-0"
+            />
+        </span>
+    </button>
 </template>
 
 <script setup lang="ts">
-import gsap from "gsap";
+import gsap from 'gsap'
 
-const open = defineModel<boolean>('open', { default: false });
+const open = defineModel<boolean>('open', { default: false })
 
 const toggleMenu = () => {
-	console.log(open)
+    console.log(open)
 
-	open.value = !open.value
+    open.value = !open.value
 }
 
 const topRef = ref<HTMLSpanElement | null >(null)
@@ -45,7 +45,7 @@ const bottomRef = ref<HTMLSpanElement | null >(null)
 let animation : GSAPTimeline
 
 onMounted(() => {
-	animation = gsap.timeline({ paused: true })
+    animation = gsap.timeline({ paused: true })
 
     animation.to(midRef.value, {
         x: '100%',
@@ -55,14 +55,14 @@ onMounted(() => {
 
     animation.to(topRef.value, {
         top: '50%',
-		yPercent: -50,
+        yPercent: -50,
         duration: 0.15,
     }, '<0.25')
 
 
     animation.to(bottomRef.value, {
-		bottom: '50%',
-		yPercent: 50,
+        bottom: '50%',
+        yPercent: 50,
         duration: 0.15,
     }, '<')
 

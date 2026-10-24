@@ -88,7 +88,9 @@ const menuAnimation = () => {
     if (open.value) {
         animation.set(menuRef.value, { autoAlpha: 1 })
 
-        animation.to(menuRef.value, {
+        animation.fromTo(menuRef.value, {
+            xPercent: 100,
+        }, {
             xPercent: 0,
             duration: 0.9,
             ease: 'power3.out',
@@ -142,10 +144,6 @@ const menuAnimation = () => {
         animation.set(menuRef.value, { autoAlpha: 0 })
     }
 }
-
-onMounted(() => {
-    gsap.set(menuRef.value, { xPercent: 100 })
-})
 
 watch(open, () => {
     menuAnimation()
