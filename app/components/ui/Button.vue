@@ -33,19 +33,10 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 
-type ButtonVariant = 'primary' | 'outline' | 'ghost'
-
-type ButtonType = 'button' | 'submit' | 'reset'
-
 const {
     variant = 'primary',
     type = 'button',
-} = defineProps<{
-    label: string
-    variant?: ButtonVariant
-    type?: ButtonType
-    to?: string
-}>()
+} = defineProps<Button>()
 
 const baseClass = 'inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 rounded-full'
 

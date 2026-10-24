@@ -1,17 +1,10 @@
-type SeoInput = {
-    title?: string
-    description?: string
-    ogImage?: string
-    noIndex?: boolean
-}
-
 const DEFAULT_SITE_NAME = 'Liam Hjalmarsson'
 
 const DEFAULT_DESCRIPTION = 'Liam Hjalmarsson fullstackutvecklare med fokus på moderna webblösningar, UX och prestanda.'
 
 const DEFAULT_IMAGE = '/images/me.png'
 
-export function useSeo(input: SeoInput = {}): void {
+export function useSeo(input: Seo = {}): void {
     const route = useRoute()
 
     const { siteUrl } = useRuntimeConfig().public

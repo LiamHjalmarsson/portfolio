@@ -1,14 +1,4 @@
-type ProjectItem = {
-	id: string;
-	title: string;
-	imageSrc: string;
-	imageAlt: string;
-	description?: string;
-	tech: string[];
-	href: string;
-};
-
-export const projectsData: ProjectItem[] = [
+export const projectsData: Project[] = [
 	{
 		id: "altmedia",
 		title: "AltMedia",

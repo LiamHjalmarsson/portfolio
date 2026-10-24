@@ -30,17 +30,17 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { stackItems, type TechTileItem } from '~/constants/stack'
+import { stackItems } from '~/constants/stack'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const { items = [] } = defineProps<{
-    items?: TechTileItem[]
+    items?: Stack[]
 }>()
 
 const text = 'Genom arbete med både kod och design har jag utvecklat ett helhetsperspektiv på digitala produkter. Det har jag med mig när jag bygger och tänker.'
 
-const resolvedItems = computed<TechTileItem[]>(() => (items.length > 0 ? items : stackItems))
+const resolvedItems = computed<Stack[]>(() => (items.length > 0 ? items : stackItems))
 
 const largeTechItems = computed(() => resolvedItems.value.filter(item => item.size === 'large'))
 

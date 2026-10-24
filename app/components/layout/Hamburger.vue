@@ -31,8 +31,6 @@ import gsap from 'gsap'
 const open = defineModel<boolean>('open', { default: false })
 
 const toggleMenu = () => {
-    console.log(open)
-
     open.value = !open.value
 }
 

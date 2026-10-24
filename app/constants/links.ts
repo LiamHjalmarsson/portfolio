@@ -1,9 +1,3 @@
-type Link = {
-	name: string;
-	to: string;
-	sectionId: string;
-};
-
 export const links: Link[] = [
 	{
 		name: "Hem",

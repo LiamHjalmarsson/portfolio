@@ -1,13 +1,4 @@
-export type TechTileSize = "large" | "small";
-
-export type TechTileItem = {
-	key: string;
-	label: string;
-	size: TechTileSize;
-	logo: string;
-};
-
-export const stackItems: TechTileItem[] = [
+export const stackItems: Stack[] = [
 	{
 		key: "vue",
 		label: "Vue",

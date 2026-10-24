@@ -6,7 +6,7 @@ export default withNuxt(
     {
         ignores: ['app/components/ui/*'],
         rules: {
-            '@typescript-eslint/no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': 'on',
             'vue/require-default-prop': 'off',
         },
     },
