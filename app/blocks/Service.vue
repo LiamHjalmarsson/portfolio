@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { Observer } from 'gsap/all'
+import { Observer } from 'gsap/Observer'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { services } from '~/constants/services'

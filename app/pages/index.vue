@@ -9,6 +9,10 @@
 
             <About />
         </div>
+
+        <Project />
+
+        <Contact />
     </div>
 </template>
 

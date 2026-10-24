@@ -1,118 +1,107 @@
+<template>
+    <NuxtLink
+        v-if="to"
+        :to="to"
+        :aria-label="label"
+        :target="to.startsWith('http') ? '_blank' : undefined"
+        :rel="to.startsWith('http') ? 'noopener noreferrer' : undefined"
+        class="inline-flex">
+        <span
+            ref="contentRef"
+            :class="[baseClass, variantClass]"
+            @pointermove="followPointer"
+            @pointerleave="resetPosition">
+            <slot>{{ label }}</slot>
+        </span>
+    </NuxtLink>
+
+    <button
+        v-else
+        :type="type"
+        :aria-label="label"
+        class="inline-flex">
+        <span
+            ref="contentRef"
+            :class="[baseClass, variantClass]"
+            @pointermove="followPointer"
+            @pointerleave="resetPosition">
+            <slot>{{ label }}</slot>
+        </span>
+    </button>
+</template>
+
 <script setup lang="ts">
-import gsap from "gsap";
+import { gsap } from 'gsap'
 
-type ButtonVariant = "primary" | "outline" | "ghost";
+type ButtonVariant = 'primary' | 'outline' | 'ghost'
 
-type ButtonType = "button" | "submit" | "reset";
+type ButtonType = 'button' | 'submit' | 'reset'
 
-type UiButtonProps = {
-	label: string;
-	variant?: ButtonVariant;
-	type?: ButtonType;
-	to?: string;
-};
+const {
+    variant = 'primary',
+    type = 'button',
+} = defineProps<{
+    label: string
+    variant?: ButtonVariant
+    type?: ButtonType
+    to?: string
+}>()
 
-const props = withDefaults(defineProps<UiButtonProps>(), {
-	variant: "primary",
-	type: "button",
-});
+const baseClass = 'inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 rounded-full'
 
-const baseClass =
-	"inline-flex items-center justify-center font-semibold text-lg transition-colors whitespace-nowrap select-none border-2 px-8 md:px-12 py-4 md:py-6 rounded-full";
+const variantClass = computed(() => {
+    if (variant === 'outline') {
+        return 'border-primary-600 text-primary-600 bg-transparent hover:bg-primary-700 hover:text-white active:bg-primary-200'
+    }
 
-const variantClass = computed<string>(() => {
-	if (props.variant === "outline") {
-		return "border-primary-600 text-primary-600 bg-transparent hover:bg-primary-700 hover:text-white active:bg-primary-200";
-	}
+    if (variant === 'ghost') {
+        return 'text-primary-600 font-medium underline-offset-4 hover:underline px-0 py-0 border-transparent'
+    }
 
-	if (props.variant === "ghost") {
-		return "text-primary-600 font-medium underline-offset-4 hover:underline px-0 py-0 border-transparent";
-	}
+    return 'bg-primary-600 border-primary-600 text-white hover:bg-primary-700 active:bg-primary-800'
+})
 
-	return "bg-primary-600 border-primary-600 text-white hover:bg-primary-700 active:bg-primary-800";
-});
+const contentRef = ref<HTMLSpanElement | null>(null)
 
-const rootRef = ref<HTMLElement | null>(null);
+let moveX: gsap.QuickToFunc
 
-function animateTowardPointer(element: HTMLElement, offsetX: number, offsetY: number): void {
-	const strengthDivisor = 10;
+let moveY: gsap.QuickToFunc
 
-	gsap.to(element, {
-		x: offsetX / strengthDivisor,
-		y: offsetY / strengthDivisor,
-		duration: 0.3,
-		ease: "power3.out",
-	});
+function followPointer(event: PointerEvent) {
+    const content = contentRef.value
+
+    if (!content) {
+        return
+    }
+
+    const bounds = content.getBoundingClientRect()
+
+    moveX((event.clientX - (bounds.left + bounds.width / 2)) / 10)
+
+    moveY((event.clientY - (bounds.top + bounds.height / 2)) / 10)
 }
 
-function resetPosition(element: HTMLElement): void {
-	gsap.to(element, {
-		x: 0,
-		y: 0,
-		duration: 0.4,
-		ease: "power3.out",
-	});
+function resetPosition() {
+    moveX(0)
+
+    moveY(0)
 }
 
-function handlePointerMove(event: PointerEvent): void {
-	const element = rootRef.value;
+onMounted(() => {
+    moveX = gsap.quickTo(contentRef.value, 'x', {
+        duration: 0.3,
+        ease: 'power3.out',
+    })
 
-	if (!element) return;
-
-	const rect = element.getBoundingClientRect();
-
-	const offsetX = event.clientX - (rect.left + rect.width / 2);
-
-	const offsetY = event.clientY - (rect.top + rect.height / 2);
-
-	animateTowardPointer(element, offsetX, offsetY);
-}
-
-function handlePointerLeave(): void {
-	const element = rootRef.value;
-	if (!element) return;
-
-	resetPosition(element);
-}
-
-onMounted(async () => {
-	await nextTick();
-
-	const element = rootRef.value;
-	if (!element) return;
-
-	element.addEventListener("pointermove", handlePointerMove);
-
-	element.addEventListener("pointerleave", handlePointerLeave);
-});
+    moveY = gsap.quickTo(contentRef.value, 'y', {
+        duration: 0.3,
+        ease: 'power3.out',
+    })
+})
 
 onBeforeUnmount(() => {
-	const element = rootRef.value;
+    moveX?.tween.kill()
 
-	if (element) {
-		element.removeEventListener("pointermove", handlePointerMove);
-
-		element.removeEventListener("pointerleave", handlePointerLeave);
-	}
-});
+    moveY?.tween.kill()
+})
 </script>
-
-<template>
-	<NuxtLink
-		v-if="to"
-		:to="to"
-		:aria-label="label"
-		:target="to.startsWith('http') ? '_blank' : undefined"
-		:rel="to.startsWith('http') ? 'noopener noreferrer' : undefined"
-		class="inline-flex">
-		<span ref="rootRef" :class="[baseClass, variantClass]">
-			<slot>{{ label }}</slot>
-		</span>
-	</NuxtLink>
-
-	<button v-else :type="type" :aria-label="label" class="inline-flex">
-		<span ref="rootRef" :class="[baseClass, variantClass]">
-			<slot>{{ label }}</slot>
-		</span>
-	</button>
-</template>
