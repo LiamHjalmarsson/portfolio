@@ -25,7 +25,7 @@
                         </h2>
 
                         <p class="text-sm md:text-base tracking-widest text-white/50 md:text-right uppercase">
-                            {{ background.company }}
+                            {{ background.organization }}
                         </p>
                     </div>
 
@@ -37,23 +37,30 @@
                         ref="listRefs"
                         class="grid gap-3 lg:gap-6 lg:grid-cols-2">
                         <li
-                            v-for="(item, itemIndex) in background.items"
+                            v-for="(item, itemIndex) in background.skills"
                             :key="itemIndex">
                             <div class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12">
-                                <h3 class="text-lg md:text-xl font-semibold tracking-wide text-white">
+                                <h3 class="text-lg md:text-xl font-semibold tracking-wide text-white mb-4">
                                     {{ item.title }}
                                 </h3>
 
-                                <p class="mt-4 text-sm md:text-base lg:text-lg leading-relaxed tracking-wide text-white/60">
-                                    {{ item.description }}
-                                </p>
+
+                                <div class="flex flex-wrap gap-3">
+                                    <div
+                                        v-for="tag in item.tags"
+                                        :key="tag"
+                                    >
+                                        <span class="text-sm md:text-base lg:text-lg leading-relaxed tracking-wide text-white/60">
+                                            {{ tag}}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </div></section>
 </template>
 
 <script setup lang="ts">

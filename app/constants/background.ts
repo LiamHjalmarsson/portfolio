@@ -1,155 +1,317 @@
 
-export const backgroundData: Background[] = [
+export const backgroundData: Background[] =  [
     {
-        title: 'Webbutvecklare',
-        company: 'Karabin AB',
+        id: 'karabin',
+        type: 'work',
+        title: 'Webbutvecklare / Fullstackutvecklare',
+        organization: 'Karabin AB',
         description:
-            'Arbetar med utveckling, vidareutveckling och förvaltning av webbplatser och verksamhetssystem. Arbetet omfattar både frontend och backend, med fokus på moderna webbtekniker, systemintegrationer och långsiktigt hållbara lösningar. Arbetar även med modernisering av äldre system, CMS-utveckling samt förbättringar inom tillgänglighet, SEO och prestanda.',
-        items: [
+            'Arbetar med utveckling och förvaltning av webbplatser och verksamhetssystem. Fokus ligger på fullstackutveckling, systemintegrationer och modernisering av befintliga lösningar.',
+
+        highlights: [
+            'Vidareutveckling av fastighetssystem för besiktning och nyckelhantering.',
+            'Utveckling av CMS-baserade webbplatser och återanvändbara komponenter.',
+            'Modernisering av äldre PHP- och Laravel-applikationer.',
+            'Integrationer för digital signering, PDF-generering och e-postflöden.',
+            'Förbättringar inom tillgänglighet, SEO och prestanda.',
+        ],
+
+        skills: [
             {
                 title: 'Backend',
-                description: 'PHP, Laravel, REST API, affärslogik och systemintegrationer',
+                tags: [
+                    'PHP',
+                    'Laravel',
+                    'REST API',
+                    'Affärslogik',
+                    'Systemintegrationer',
+                ],
             },
             {
                 title: 'Frontend',
-                description: 'Vue 3, TypeScript, JavaScript, Inertia, Tailwind CSS och GSAP',
+                tags: [
+                    'Vue 3',
+                    'TypeScript',
+                    'JavaScript',
+                    'Inertia',
+                    'Tailwind CSS',
+                    'GSAP',
+                ],
             },
             {
                 title: 'Databaser',
-                description:
-                    'SQL Server, T-SQL, stored procedures, SQL-frågor och relationsdatabaser',
+                tags: [
+                    'SQL Server',
+                    'T-SQL',
+                    'Stored procedures',
+                    'Relationsdatabaser',
+                    'SQL-frågor',
+                ],
             },
             {
                 title: 'Systemutveckling',
-                description:
-                    'Legacy-modernisering, versionsuppgraderingar, refaktorering, felsökning och systemförvaltning',
+                tags: [
+                    'Legacy-modernisering',
+                    'Refaktorering',
+                    'Versionsuppgraderingar',
+                    'Felsökning',
+                    'Systemförvaltning',
+                ],
             },
             {
                 title: 'Integrationer',
-                description:
-                    'REST API, PDF-generering, digital signering och e-postflöden',
+                tags: [
+                    'REST API',
+                    'Digital signering',
+                    'PDF-generering',
+                    'E-postflöden',
+                ],
             },
             {
-                title: 'CMS & webb',
-                description:
-                    'CMS-utveckling, WCAG, SEO, tillgänglighet, responsiv design och prestanda',
+                title: 'CMS & webbkvalitet',
+                tags: [
+                    'CMS-utveckling',
+                    'WCAG',
+                    'SEO',
+                    'Tillgänglighet',
+                    'Responsiv design',
+                    'Webbprestanda',
+                ],
             },
         ],
     },
     {
+        id: 'timetjek',
+        type: 'work',
         title: 'Fullstackutvecklare',
-        company: 'Timetjek',
+        organization: 'Timetjek',
         description:
-            'Arbetade med utveckling och vidareutveckling av ett webbaserat personalsystem för schemaläggning, löneunderlag och personalhantering. Ansvarade för implementation av ny funktionalitet, systemförvaltning och modernisering av plattformen genom migrering av äldre kod, databasanpassningar och förbättrad kodstruktur.',
-        items: [
+            'Arbetade med utveckling och vidareutveckling av ett webbaserat personalsystem för schemaläggning, löneunderlag och personalhantering. Rollen omfattade både nyutveckling och förvaltning av befintliga lösningar.',
+
+        highlights: [
+            'Utveckling av funktioner för personalhantering och schemaläggning.',
+            'Modernisering och migrering av äldre kod.',
+            'Databasanpassningar och förbättrad kodstruktur.',
+            'Felsökning, vidareutveckling och systemförvaltning.',
+        ],
+
+        skills: [
             {
                 title: 'Backend',
-                description: 'Laravel, PHP, REST API och affärslogik',
+                tags: [
+                    'PHP',
+                    'Laravel',
+                    'REST API',
+                    'Affärslogik',
+                ],
             },
             {
                 title: 'Frontend',
-                description:
-                    'Vue, JavaScript, TypeScript och komponentbaserade användargränssnitt',
+                tags: [
+                    'Vue',
+                    'JavaScript',
+                    'TypeScript',
+                    'Komponentbaserad UI',
+                ],
             },
             {
                 title: 'Databaser',
-                description:
-                    'SQL, relationsdatabaser, databasstruktur, databasrelationer och databasanpassningar',
+                tags: [
+                    'SQL',
+                    'Relationsdatabaser',
+                    'Databasstruktur',
+                    'Databasrelationer',
+                ],
             },
             {
                 title: 'Systemutveckling',
-                description:
-                    'Legacy-migrering, ny funktionalitet, refaktorering, felsökning och systemförvaltning',
+                tags: [
+                    'Legacy-migrering',
+                    'Refaktorering',
+                    'Felsökning',
+                    'Systemförvaltning',
+                ],
             },
         ],
     },
     {
+        id: 'nifitech',
+        type: 'work',
         title: 'Junior frontendutvecklare',
-        company: 'Nifitech',
+        organization: 'Nifitech',
         description:
-            'Arbetade med frontendutveckling i projekt baserade på Laravel, Vue och Nuxt. Utvecklade användargränssnitt, integrerade API:er och förbättrade kodstruktur och återanvändbarhet. Bidrog även till modernisering av befintliga Vue-applikationer genom övergång till Composition API och Pinia samt implementation av flerspråkigt innehåll.',
-        items: [
+            'Arbetade med frontendutveckling i Laravel-, Vue- och Nuxt-baserade projekt. Fokus låg på användargränssnitt, API-integrationer och modernisering av befintliga frontendapplikationer.',
+
+        highlights: [
+            'Utveckling av responsiva användargränssnitt.',
+            'Integration av frontend med backend-API:er.',
+            'Modernisering till Composition API och Pinia.',
+            'Implementation av flerspråkigt innehåll.',
+            'Förbättring av komponentstruktur och återanvändbar kod.',
+        ],
+
+        skills: [
             {
                 title: 'Frontend',
-                description:
-                    'Vue, Nuxt, JavaScript, Tailwind CSS och responsiv UI-utveckling',
+                tags: [
+                    'Vue',
+                    'Nuxt',
+                    'JavaScript',
+                    'Tailwind CSS',
+                    'Responsiv design',
+                ],
             },
             {
                 title: 'Backend & API',
-                description: 'Laravel, routes, controllers och API-integrationer',
+                tags: [
+                    'Laravel',
+                    'Routes',
+                    'Controllers',
+                    'API-integrationer',
+                ],
             },
             {
-                title: 'Arkitektur & state management',
-                description:
-                    'Composition API, Pinia, Vuex och återanvändbara komponenter',
+                title: 'Arkitektur',
+                tags: [
+                    'Composition API',
+                    'Pinia',
+                    'Vuex',
+                    'Komponentarkitektur',
+                ],
             },
             {
                 title: 'Internationalisering',
-                description: 'Flerspråkighet och hantering av lokaliserat innehåll',
+                tags: [
+                    'i18n',
+                    'Flerspråkighet',
+                    'Lokaliserat innehåll',
+                ],
             },
         ],
     },
     {
+        id: 'sjobergska',
+        type: 'work',
         title: 'Praktikant inom projekt & utveckling',
-        company: 'Sjöbergska',
+        organization: 'Sjöbergska',
         description:
-            'Deltog i ett pro bono-projekt från planering och kravställning till design, utveckling och leverans av en webbplats. Arbetade med kunddialog, behovsanalys, kravspecifikationer, prototyper och implementation i Webflow. Bidrog även med dokumentation och uppdateringar av befintliga webbplatser.',
-        items: [
+            'Deltog i ett pro bono-projekt från planering och kravställning till design, utveckling och leverans. Arbetade med kunddialog, prototyper, Webflow och dokumentation.',
+
+        highlights: [
+            'Planering och genomförande av ett kundprojekt.',
+            'Kravspecifikationer och behovsanalys.',
+            'Utformning av wireframes och prototyper.',
+            'Implementation och leverans av webbplats i Webflow.',
+            'Användardokumentation och uppdateringar i Drupal.',
+        ],
+
+        skills: [
             {
                 title: 'Design',
-                description:
-                    'Wireframes, prototyper, UI-design och informationsstruktur',
+                tags: [
+                    'Wireframes',
+                    'Prototyper',
+                    'UI-design',
+                    'Informationsstruktur',
+                ],
             },
             {
                 title: 'Webbutveckling',
-                description: 'Webflow och uppdateringar i Drupal',
+                tags: [
+                    'Webflow',
+                    'Drupal',
+                    'CMS',
+                ],
             },
             {
                 title: 'Projektarbete',
-                description:
-                    'Kunddialog, kravspecifikationer, tidsestimat och projektplanering',
+                tags: [
+                    'Kunddialog',
+                    'Kravspecifikation',
+                    'Tidsestimat',
+                    'Projektplanering',
+                ],
             },
             {
                 title: 'Dokumentation',
-                description: 'Användardokumentation och överlämning till kund',
+                tags: [
+                    'Användardokumentation',
+                    'Överlämning till kund',
+                ],
             },
         ],
     },
     {
+        id: 'malmo-university',
+        type: 'education',
         title: 'Kandidatexamen i medieteknik',
-        company: 'Malmö universitet',
+        organization: 'Malmö universitet',
         description:
-            'Tvärvetenskaplig universitetsutbildning med fokus på teknik, design och digitala medier. Arbetade genom hela utvecklingsprocessen, från idé och kravanalys till design, programmering, testning och presentation. Utbildningen gav en bred förståelse för samspelet mellan teknik, användare och verksamhet.',
-        items: [
+            'Tvärvetenskaplig universitetsutbildning inom teknik, design och digitala medier. Utbildningen omfattade hela utvecklingsprocessen, från idé och kravanalys till design, programmering, testning och presentation.',
+
+        highlights: [
+            'Utveckling av webbapplikationer och digitala produkter.',
+            'Arbete med UX, UI och användarcentrerad design.',
+            'Projektplanering, kravanalys och arbete i team.',
+            'Examensarbete om gamification och användarbeteende inom e-handel, med kvalitativa intervjuer och kvantitativa enkäter.',
+        ],
+
+        skills: [
             {
-                title: 'Programmering & webbutveckling',
-                description:
-                    'HTML, CSS, JavaScript, C#, PHP och databasdrivna webbapplikationer',
+                title: 'Programmering',
+                tags: [
+                    'HTML',
+                    'CSS',
+                    'JavaScript',
+                    'PHP',
+                    'C#',
+                ],
             },
             {
                 title: 'Backend & databaser',
-                description:
-                    'Relationsdatabaser, SQL, databaskopplingar och API-integrationer',
+                tags: [
+                    'SQL',
+                    'Relationsdatabaser',
+                    'Databaskopplingar',
+                    'API-integrationer',
+                ],
             },
             {
                 title: 'UX & UI-design',
-                description:
-                    'Interaktionsdesign, användarcentrerad utveckling, grafiska användargränssnitt, wireframes och prototyper',
+                tags: [
+                    'Interaktionsdesign',
+                    'Wireframes',
+                    'Prototyper',
+                    'Användarcentrerad design',
+                ],
             },
             {
                 title: 'Projektledning',
-                description:
-                    'Kravspecifikationer, riskanalys, processkartläggning, planering och teamarbete',
+                tags: [
+                    'Kravspecifikation',
+                    'Riskanalys',
+                    'Processkartläggning',
+                    'Teamarbete',
+                ],
             },
             {
                 title: 'Affär & strategi',
-                description:
-                    'Digital marknadsföring, affärsplanering, affärsmodeller och verksamhetsanalys',
+                tags: [
+                    'Digital marknadsföring',
+                    'Affärsmodeller',
+                    'Affärsplanering',
+                    'Verksamhetsanalys',
+                ],
             },
             {
-                title: 'Forskning & examensarbete',
-                description:
-                    'Undersökte hur gamification påverkar användarbeteende inom e-handel. Arbetet omfattade problemformulering, litteraturstudier, forskningsmetodik och datainsamling genom kvalitativa intervjuer och kvantitativa enkäter.',
+                title: 'Forskning',
+                tags: [
+                    'Gamification',
+                    'Forskningsmetodik',
+                    'Kvalitativa intervjuer',
+                    'Kvantitativa enkäter',
+                    'Användarbeteende',
+                ],
             },
         ],
     },
