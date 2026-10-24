@@ -22,7 +22,7 @@
 
         <div
             ref="contactRef"
-            class="flex flex-col flex-wrap justify-between space-y-3 lg:space-y-6 md:flex-row"
+            class="flex flex-col flex-wrap justify-between space-y-3 lg:space-y-6 xl:flex-row"
         >
             <div class="font-light">
                 <p class="tracking-wider text-white/50">
