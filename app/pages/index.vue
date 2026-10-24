@@ -4,7 +4,11 @@
 
         <Stack />
 
-        <About />
+        <div>
+            <Background />
+
+            <About />
+        </div>
     </div>
 </template>
 
