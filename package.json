@@ -1,0 +1,35 @@
+{
+	"name": "client",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"dependencies": {
+		"@nuxt/a11y": "^1.0.0-alpha.1",
+		"@nuxt/fonts": "^1.1.0",
+		"@nuxt/hints": "^1.1.5",
+		"@nuxt/icon": "^2.6.0",
+		"@nuxt/image": "^2.2.0",
+		"@tailwindcss/vite": "^4.1.18",
+		"@tresjs/cientos": "^5.2.5",
+		"@tresjs/nuxt": "^5.8.0",
+		"nuxt": "^4.6.2",
+		"nuxt-gtag": "^4.1.0",
+		"tailwindcss": "^4.1.18",
+		"three": "^0.182.0",
+		"v-gsap-nuxt": "^1.4.4",
+		"vue": "^3.5.27",
+		"vue-router": "^4.6.4"
+	},
+	"devDependencies": {
+		"@iconify-json/mdi": "^1.2.3",
+		"@nuxt/eslint": "^1.17.0",
+		"@types/three": "^0.182.0",
+		"eslint": "^10.13.0"
+	}
+}
