@@ -1,94 +1,94 @@
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
+
+const googleSiteVerification = process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+
+const gtagId = process.env.NUXT_PUBLIC_GTAG_ID
 
 export default defineNuxtConfig({
-	compatibilityDate: "2025-07-15",
+    compatibilityDate: '2025-07-15',
 
-	devtools: { enabled: true },
+    devtools: { enabled: true },
 
-	modules: [
-		"@nuxt/a11y",
-		"@nuxt/eslint",
-		"@nuxt/fonts",
-		"@nuxt/hints",
-		"@nuxt/image",
-		"@nuxt/icon",
-		"v-gsap-nuxt",
-		"@tresjs/nuxt",
-		"nuxt-gtag",
-	],
+    modules: [
+        '@nuxt/a11y',
+        '@nuxt/eslint',
+        '@nuxt/fonts',
+        '@nuxt/hints',
+        '@nuxt/image',
+        '@nuxt/icon',
+        'v-gsap-nuxt',
+        '@tresjs/nuxt',
+        'nuxt-gtag',
+    ],
 
-	runtimeConfig: {
-		public: {
-			siteUrl: "https://liamhjalmarsson.se",
-			googleSiteVerification: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
-			gtagId: process.env.NUXT_PUBLIC_GTAG_ID ?? "",
-		},
-	},
+    runtimeConfig: {
+        public: {
+            siteUrl: 'https://liamhjalmarsson.se',
+        },
+    },
 
-	routeRules: {
-		"/images/**": {
-			cache: {
-				maxAge: 31536000,
-			},
-		},
+    routeRules: {
+        '/': {
+            prerender: true,
+        },
 
-		"/_ipx/**": {
-			headers: {
-				"Cache-Control": "public, max-age=31536000, immutable",
-			},
-		},
-	},
+        '/images/**': {
+            headers: {
+                'Cache-Control': 'public, max-age=31536000',
+            },
+        },
 
-	app: {
-		head: {
-			htmlAttrs: {
-				lang: "sv",
-			},
-			meta: [
-				{
-					name: "google-site-verification",
-					content: process.env.NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
-				},
-				{
-					charset: "utf-8",
-				},
-				{
-					name: "viewport",
-					content: "width=device-width, initial-scale=1",
-				},
-			],
+        '/_ipx/**': {
+            headers: {
+                'Cache-Control': 'public, max-age=31536000, immutable',
+            },
+        },
+    },
 
-			link: [
-				{
-					rel: "icon",
-					type: "image/png",
-					href: "/3d.png",
-				},
-			],
-		},
-	},
+    app: {
+        head: {
+            htmlAttrs: {
+                lang: 'sv',
+            },
+            meta: googleSiteVerification ? [
+                {
+                    name: 'google-site-verification',
+                    content: googleSiteVerification,
+                },
+            ] : [],
 
-	components: [
-		{
+            link: [
+                {
+                    rel: 'icon',
+                    type: 'image/png',
+                    href: '/3d.png',
+                },
+            ],
+        },
+    },
+
+    components: [
+        {
             path: '~/components',
             pathPrefix: false,
         },
-	],
+    ],
 
-	css: ["./app/assets/css/main.css"],
+    css: ['~/assets/css/main.css'],
 
-	vite: {
-		plugins: [tailwindcss()],
-	},
+    vite: {
+        plugins: [tailwindcss()],
+    },
 
-	vgsap: {
-		presets: [],
-		breakpoint: 768,
-		scroller: "",
-		composable: true,
-	},
+    vgsap: {
+        presets: [],
+        breakpoint: 768,
+        scroller: '',
+        composable: true,
+    },
 
-	gtag: {
-		id: process.env.NUXT_PUBLIC_GTAG_ID ?? "",
-	},
-});
+    gtag: {
+        enabled: Boolean(gtagId),
+        id: gtagId ?? '',
+    },
+})
