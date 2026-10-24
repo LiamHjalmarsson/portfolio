@@ -68,6 +68,13 @@ export default defineNuxtConfig({
 		},
 	},
 
+	components: [
+		{
+            path: '~/components',
+            pathPrefix: false,
+        },
+	],
+
 	css: ["./app/assets/css/main.css"],
 
 	vite: {

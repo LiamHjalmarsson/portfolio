@@ -3,7 +3,10 @@ useSeo();
 </script>
 
 <template>
-	<SectionHero />
+	<div>
+		x
+	</div>
+	<!-- <SectionHero />
 
 	<SectionStack />
 
@@ -13,5 +16,5 @@ useSeo();
 
 	<SectionProject />
 
-	<SectionContact />
+	<SectionContact /> -->
 </template>

@@ -6,9 +6,9 @@ export type NavbarMenuAnimation = {
 };
 
 type Options = {
-	menuRootElement: Ref<HTMLElement | null>;
-	menuLinkElements: Ref<HTMLElement[]>;
-	contactSectionElement: Ref<HTMLElement | null>;
+	menuRef: Ref<HTMLElement | null>;
+	menuLinks: Ref<HTMLElement[]>;
+	contactRef: Ref<HTMLElement | null>;
 };
 
 export function useLayoutNavbarMenuAnimation(options: Options) {
@@ -19,18 +19,18 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 	onMounted(async () => {
 		await nextTick();
 
-		const root = options.menuRootElement.value;
+		const menu = options.menuRef.value;
 
-		const links = options.menuLinkElements.value;
+		const links = options.menuLinks.value;
 
-		const contact = options.contactSectionElement.value;
+		const contact = options.contactRef.value;
 
-		if (!root || !contact || links.length === 0) return;
+		if (!menu || !contact || links.length === 0) return;
 
 		context?.revert();
 
 		context = gsap.context(() => {
-			gsap.set(root, {
+			gsap.set(menu, {
 				xPercent: 100,
 				visibility: "hidden",
 			});
@@ -49,10 +49,12 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 				.timeline({
 					paused: true,
 					onStart: () => {
-						gsap.set(root, { visibility: "visible" });
+						gsap.set(menu, {
+							visibility: "visible"
+						});
 					},
 				})
-				.to(root, {
+				.to(menu, {
 					xPercent: 0,
 					duration: 0.9,
 					ease: "power3.out",
@@ -78,7 +80,7 @@ export function useLayoutNavbarMenuAnimation(options: Options) {
 					},
 					"<+0.4",
 				);
-		}, root);
+		}, menu);
 	});
 
 	onBeforeUnmount(() => {
