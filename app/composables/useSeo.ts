@@ -1,35 +1,33 @@
 type SeoInput = {
-	title?: string;
-	description?: string;
-	ogImage?: string;
-	noIndex?: boolean;
-};
+    title?: string
+    description?: string
+    ogImage?: string
+    noIndex?: boolean
+}
 
 const DEFAULT_SITE_NAME = 'Liam Hjalmarsson'
 
-const DEFAULT_DESCRIPTION =
-	'Liam Hjalmarsson fullstackutvecklare med fokus på moderna webblösningar, UX och prestanda.'
+const DEFAULT_DESCRIPTION = 'Liam Hjalmarsson fullstackutvecklare med fokus på moderna webblösningar, UX och prestanda.'
 
 const DEFAULT_IMAGE = '/images/me.png'
 
 export function useSeo(input: SeoInput = {}): void {
     const route = useRoute()
 
-    const runtimeConfig = useRuntimeConfig()
-
-    const siteUrl = runtimeConfig.public.siteUrl
+    const { siteUrl } = useRuntimeConfig().public
 
     const title = input.title ?? DEFAULT_SITE_NAME
 
     const description = input.description ?? DEFAULT_DESCRIPTION
 
-    const ogImage = input.ogImage ?? DEFAULT_IMAGE
+    const ogImage = new URL(input.ogImage ?? DEFAULT_IMAGE, siteUrl).href
 
-    const canonicalUrl = `${siteUrl}${route.path}`
+    const canonicalUrl = new URL(route.path, siteUrl).href
 
     useSeoMeta({
         title,
         description,
+        robots: input.noIndex ? 'noindex, nofollow' : undefined,
 
         ogTitle: title,
         ogDescription: description,
@@ -51,11 +49,6 @@ export function useSeo(input: SeoInput = {}): void {
             {
                 rel: 'canonical',
                 href: canonicalUrl,
-            },
-            {
-                rel: 'icon',
-                type: 'image/png',
-                href: '/3d.png',
             },
         ],
     })
