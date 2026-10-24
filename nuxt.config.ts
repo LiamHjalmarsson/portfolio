@@ -72,6 +72,10 @@ export default defineNuxtConfig({
             path: '~/components',
             pathPrefix: false,
         },
+        {
+            path: '~/blocks',
+            pathPrefix: false,
+        },
     ],
 
     css: ['~/assets/css/main.css'],

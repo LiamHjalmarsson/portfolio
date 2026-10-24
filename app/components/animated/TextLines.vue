@@ -1,47 +1,75 @@
-<script setup lang="ts">
-import { useTextLinesReveal } from "~/composables/animation/useTextLinesReveal";
-
-const props = withDefaults(
-	defineProps<{
-		text: string;
-		wrapperClass?: string;
-		lineClass?: string;
-	}>(),
-	{
-		wrapperClass: "",
-		lineClass: "block leading-relaxed tracking-wide text-pretty text-sm md:text-md lg:text-xl 2xl:text-3xl",
-	},
-);
-
-const containerRootElement = ref<HTMLElement | null>(null);
-
-const lineElements = ref<HTMLElement[]>([]);
-
-const textLines = computed(() => props.text.split("\n").filter((line) => line.trim() !== ""));
-
-function registerLineElement(element: Element | ComponentPublicInstance | null, index: number): void {
-	if (!(element instanceof HTMLElement)) return;
-
-	lineElements.value[index] = element;
-}
-
-useTextLinesReveal({
-	animationRootElement: containerRootElement,
-	lineElements,
-	withScrollTrigger: true,
-	start: "top 115%",
-	withClip: true,
-});
-</script>
-
 <template>
-	<div ref="containerRootElement" :class="wrapperClass">
-		<span
-			v-for="(line, index) in textLines"
-			:key="line"
-			:ref="(element) => registerLineElement(element, index)"
-			:class="lineClass">
-			{{ line }}
-		</span>
-	</div>
+    <div
+        ref="containerRef"
+        class="overflow-hidden"
+        :class="wrapperClass"
+    >
+        <span
+            v-for="line in textLines"
+            :key="line"
+            ref="lineRefs"
+            :class="lineClass"
+        >
+            {{ line }}
+        </span>
+    </div>
 </template>
+
+<script setup lang="ts">
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const {
+    text,
+    wrapperClass = '',
+    lineClass = 'block leading-relaxed tracking-wide text-pretty text-sm md:text-md lg:text-xl 2xl:text-3xl',
+} = defineProps<{
+    text: string
+    wrapperClass?: string
+    lineClass?: string
+}>()
+
+const containerRef = ref<HTMLDivElement | null>(null)
+
+const lineRefs = ref<HTMLSpanElement[]>([])
+
+const textLines = computed(() => text.split('\n').filter(line => line.trim() !== ''))
+
+let animation: GSAPTimeline
+
+onMounted(() => {
+    animation = gsap.timeline({
+        scrollTrigger: {
+            trigger: containerRef.value,
+            start: 'top 115%',
+            toggleActions: 'play none none none',
+        },
+    })
+
+    animation.fromTo(containerRef.value, {
+        clipPath: 'inset(0% 0% 100% 0%)',
+    }, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 0.8,
+        ease: 'power3.out',
+    })
+
+    animation.fromTo(lineRefs.value, {
+        opacity: 0,
+        y: 24,
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        stagger: 0.3,
+        clearProps: 'transform',
+    }, '<0.1')
+})
+
+onBeforeUnmount(() => {
+    animation?.kill()
+})
+</script>
