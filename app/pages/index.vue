@@ -3,6 +3,8 @@
         <Hero />
 
         <Stack />
+
+        <About />
     </div>
 </template>
 
