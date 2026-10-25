@@ -12,7 +12,7 @@
             <li
                 v-for="project in projectsData"
                 :key="project.id"
-                class="group relative z-10 mx-auto max-w-400 transition"
+                class="group relative z-10 mx-auto max-w-400 transition duration-300 hover:bg-black hover:text-white"
                 @pointerenter="showPreview(project, $event)"
                 @pointermove="movePreview"
                 @pointerleave="hidePreview">
@@ -22,17 +22,14 @@
                         target="_blank"
                         :aria-label="`Besök Projekt ${project.title}`">
                         <div
-                            class="pointer-events-none absolute inset-0 border-4 border-black opacity-0 transition-all duration-300 ease-out will-change-transform lg:group-hover:opacity-100" />
-
-                        <div
-                            class="lg:border-b px-3 md:px-12 py-6 md:py-12 lg:py-24 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
-                            <div class="space-y-3 md:space-y-6 lg:space-y-12 relative z-10">
-                                <h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl 2xl:text-6xl">
+                            class="lg:border-b px-3 md:px-12 py-6 md:py-12 lg:py-20 relative max-lg:flex max-md:flex-col max-md:space-y-3 max-md:space-x-0 max-lg:space-x-6 max-lg:overflow-hidden">
+                            <div class="flex justify-between items-center relative z-10">
+                                <h2 class="text-4xl font-semibold md:text-5xl lg:text-6xl 2xl:text-7xl group-hover:text-primary duration-300 transition">
                                     {{ project.title }}
                                 </h2>
 
                                 <div
-                                    class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-medium">
+                                    class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-semibold">
                                     <p
                                         v-for="tech in project.tech"
                                         :key="tech">
@@ -57,7 +54,7 @@
 
         <div
             ref="previewRef"
-            class="invisible max-lg:hidden pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-100 2xl:w-160 h-80 2xl:h-100">
+            class="invisible max-lg:hidden pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-100 2xl:w-160 h-64 2xl:h-80">
             <NuxtImg
                 v-if="activeProject"
                 :src="activeProject.imageSrc"
