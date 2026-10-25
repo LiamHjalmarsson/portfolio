@@ -24,12 +24,12 @@
                             {{ background.title }}
                         </h2>
 
-                        <p class="text-sm md:text-base tracking-widest text-white/50 md:text-right uppercase">
+                        <p class="text-sm md:text-base tracking-widest text-white/80 md:text-right uppercase">
                             {{ background.organization }}
                         </p>
                     </div>
 
-                    <p class="text-md text-pretty leading-relaxed tracking-widest text-white/60 md:text-lg lg:text-xl 2xl:text-2xl">
+                    <p class="text-md text-pretty leading-relaxed tracking-widest text-white/80 md:text-lg lg:text-xl 2xl:text-2xl">
                         {{ background.description }}
                     </p>
 
@@ -50,7 +50,7 @@
                                         v-for="tag in item.tags"
                                         :key="tag"
                                     >
-                                        <span class="text-sm md:text-base lg:text-lg leading-relaxed tracking-wide text-white/60">
+                                        <span class="text-sm md:text-base lg:text-lg leading-relaxed tracking-wide text-white/80">
                                             {{ tag}}
                                         </span>
                                     </div>

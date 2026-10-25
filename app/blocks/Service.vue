@@ -23,7 +23,7 @@
                                 {{ service.title }}
                             </h2>
 
-                            <p class="text-xl lg:text-2xl leading-relaxed tracking-widest text-black/60 text-pretty">
+                            <p class="text-xl lg:text-2xl leading-relaxed tracking-widest text-black/80 text-pretty">
                                 {{ service.description }}
                             </p>
                         </div>
