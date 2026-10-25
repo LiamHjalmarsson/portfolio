@@ -5,11 +5,11 @@ export const stackItems: Stack[] = [
 		size: "large",
 		logo: "mdi:vuejs",
 	},
-	{
-		key: "nuxt",
-		label: "Nuxt.js",
+    {
+		key: "laravel",
+		label: "Laravel",
 		size: "large",
-		logo: "mdi:nuxt",
+		logo: "mdi:laravel",
 	},
 	{
 		key: "typescript",
@@ -17,17 +17,17 @@ export const stackItems: Stack[] = [
 		size: "large",
 		logo: "mdi:language-typescript",
 	},
+    {
+		key: "nuxt",
+		label: "Nuxt.js",
+		size: "small",
+		logo: "mdi:nuxt",
+	},
 	{
 		key: "gsap",
 		label: "GSAP",
 		size: "small",
 		logo: "simple-icons:gsap",
-	},
-	{
-		key: "laravel",
-		label: "Laravel",
-		size: "small",
-		logo: "mdi:laravel",
 	},
 	{
 		key: "tailwind",

@@ -16,11 +16,10 @@
             <div class="w-full overflow-hidden">
                 <div class="grid grid-cols-12">
                     <StackCard
-                        v-for="(item, index) in orderedItems"
+                        v-for="item in orderedItems"
                         :key="item.key"
-                        :index="index"
-                        :size="item.size"
-                        :logo="item.logo" />
+                        :stack="item"
+                    />
                 </div>
             </div>
         </div>
