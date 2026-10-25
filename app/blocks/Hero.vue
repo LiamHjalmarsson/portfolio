@@ -2,7 +2,7 @@
 <template>
     <section
         id="home"
-        class="relative flex min-h-screen flex-col justify-end overflow-hidden"
+        class="relative flex flex-col justify-end overflow-hidden"
     >
         <div
             class="h-[30vh] lg:h-[55vh] flex flex-col max-xl:flex-1 w-full items-start xl:items-end xl:justify-end pt-24 md:pt-32 xl:pt-34 px-3 md:px-6 lg:px-12"

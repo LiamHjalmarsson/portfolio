@@ -15,17 +15,16 @@ export type BackgroundType = 'work' | 'education'
 
 export interface BackgroundSkillGroup {
     title: string
-    tags: string[]
+    description?: string
+    tags?: string[]
 }
 
 export interface Background {
-    id: string
-    type: BackgroundType
     title: string
-    organization: string
+    company: string
+    type: BackgroundType
     period?: string
     description: string
-    highlights: string[]
     skills: BackgroundSkillGroup[]
 }
 

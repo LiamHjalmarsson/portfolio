@@ -1,14 +1,14 @@
 <template>
     <section
         id="projects"
-        class="relative flex min-h-screen flex-col justify-between">
+        class="relative flex flex-col justify-between py-16 md:py-24 lg:py-48">
         <Header
             title="Projekt"
             subtitle="Några projekt"
             theme="dark"
             :with-scroll-trigger="true" />
 
-        <ul class="relative flex-1 lg:pt-12 lg:px-12 pb-12 lg:pb-24">
+        <ul class="relative flex-1 lg:px-12 lg:pt-12">
             <li
                 v-for="project in projectsData"
                 :key="project.id"

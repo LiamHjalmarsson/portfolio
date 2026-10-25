@@ -5,6 +5,7 @@
                 ref="titleRef"
                 class="flex flex-col justify-center gap-3 md:gap-6 pb-6 pt-12 lg:pt-24 lg:gap-12 px-3 md:px-6 lg:px-12"
             >
+
                 <p
                     class="text-sm lg:text-lg font-light tracking-[0.5rem] uppercase"
                     :class="themeColor"

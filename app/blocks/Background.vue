@@ -2,71 +2,43 @@
     <section
         id="background"
         class="min-h-screen lg:px-3">
-        <div class="rounded-t-4xl bg-black">
-            <Header
-                title="Utbildning & Arbete"
-                subtitle="Vad jag har gjort"
-                theme="light"
-                :with-scroll-trigger="true">
-                <TextLines
-                    :text="sectionText"
-                    class="font-light uppercase" />
-            </Header>
-
-            <div
-                v-for="(background, index) in backgroundData"
-                :key="index"
-                class="lg:sticky min-h-[65vh] w-full border-t border-white/20 bg-black text-white px-3 py-12 md:px-6 lg:px-12 md:top-[calc(var(--index)*8em)] md:mb-[calc(var(--remaining)*1rem)]"
-                :style="{ '--index': index, '--remaining': backgroundData.length - index - 1 }">
-                <div class="flex flex-col space-y-6 lg:space-y-12 font-light">
-                    <div class="flex max-sm:flex-col justify-between sm:items-center gap-3">
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
-                            {{ background.title }}
-                        </h2>
-
-                        <p class="text-sm md:text-base tracking-widest text-white/80 md:text-right uppercase">
-                            {{ background.organization }}
-                        </p>
-                    </div>
-
-                    <p class="text-md text-pretty leading-relaxed tracking-widest text-white/80 md:text-lg lg:text-xl 2xl:text-2xl">
-                        {{ background.description }}
-                    </p>
-
-                    <ul
-                        ref="listRefs"
-                        class="grid gap-3 lg:gap-6 lg:grid-cols-2">
-                        <li
-                            v-for="(item, itemIndex) in background.skills"
-                            :key="itemIndex">
-                            <div class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-12">
-                                <h3 class="text-lg md:text-xl font-semibold tracking-wide text-white mb-4">
-                                    {{ item.title }}
-                                </h3>
+        <div class="rounded-t-4xl bg-black pb-6">
+                <Header
+                    title="Vägen hit"
+                    subtitle="~/vad-jag-har-gjort"
+                    theme="light"
+                    :with-scroll-trigger="true"
+                >
+                    <TextLines
+                        :text="sectionText"
+                        class="font-light uppercase"
+                        />
+                </Header>
 
 
-                                <div class="flex flex-wrap gap-3">
-                                    <div
-                                        v-for="tag in item.tags"
-                                        :key="tag"
-                                    >
-                                        <span class="text-sm md:text-base lg:text-lg leading-relaxed tracking-wide text-white/80">
-                                            {{ tag}}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <p class="px-3 md:px-6 lg:px-12 font-mono text-xs text-white/80 md:text-sm pb-6">
+                <span class="text-primary-500">$</span>
+                git log --karriär
+            </p>
+
+            <div ref="stackRef">
+                <BackgroundItem
+                    v-for="(background, index) in backgroundData"
+                    :key="`${background.company}-${index}`"
+                    :background="background"
+                    :index="index"
+                    :total="backgroundData.length"
+                    :is-first-item="index === 0"
+                />
             </div>
-        </div></section>
+        </div>
+    </section>
 </template>
 
 <script setup lang="ts">
+import { backgroundData } from '~/constants/background'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { backgroundData } from '~/constants/background'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -74,35 +46,56 @@ const sectionText = `Min resa inom tech började under utbildningen och har
 sedan vuxit genom projekt, teamarbete och erfarenhet.
 Här är en översikt av min bakgrund från studier till arbete.`
 
-const listRefs = ref<HTMLUListElement[]>([])
+const stackRef = ref<HTMLElement | null>(null)
 
-let animations: GSAPTimeline[] = []
+const TOP_OFFSET = 20
+
+const PEEK = 50
+
+let media: gsap.MatchMedia | undefined
 
 onMounted(() => {
-    animations = listRefs.value.map((list) => {
-        const animation = gsap.timeline({
-            scrollTrigger: {
-                trigger: list,
-                start: 'top 85%',
-            },
-        })
+    media = gsap.matchMedia()
 
-        animation.fromTo(list.children, {
-            autoAlpha: 0,
-            y: 200,
-        }, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.15,
-        })
+    media.add('(min-width: 1024px)', () => {
+        const cards = gsap.utils.toArray<HTMLElement>('[data-stack-card]', stackRef.value)
 
-        return animation
+        const lastCard = cards.at(-1)
+
+        cards.forEach((card, index) => {
+            const nextCard = cards[index + 1]
+
+            if (!nextCard || !lastCard) {
+                return
+            }
+
+            ScrollTrigger.create({
+                trigger: card,
+                start: `top top+=${TOP_OFFSET + index * PEEK}`,
+                endTrigger: lastCard,
+                end: `top top+=${TOP_OFFSET + (cards.length - 1) * PEEK}`,
+                pin: true,
+                pinSpacing: false,
+            })
+
+            gsap.fromTo(card.querySelector('[data-stack-inner]'), {
+                scale: 1,
+                filter: 'brightness(1)',
+            }, {
+                filter: 'brightness(0.55)',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: nextCard,
+                    start: 'top bottom',
+                    end: `top top+=${TOP_OFFSET + (index + 1) * PEEK}`,
+                    scrub: true,
+                },
+            })
+        })
     })
 })
 
 onBeforeUnmount(() => {
-    animations.forEach(animation => animation.kill())
+    media?.revert()
 })
 </script>

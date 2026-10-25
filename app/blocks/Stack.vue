@@ -1,10 +1,13 @@
 <template>
     <section
         id="tech"
-        class="flex lg:min-h-screen items-center justify-center py-16 md:py-24 lg:py-48 2xl:py-64 px-3 md:px-6 lg:px-12">
+        class="flex items-center justify-center py-16 md:py-24 lg:py-48 2xl:py-64 px-3 md:px-6 lg:px-12">
         <div
             class="flex flex-col items-center justify-between lg:px-12 space-y-12 2xl:space-y-24"
         >
+            <div class="mx-auto">
+                <span class="text-primary">$</span> cat stack.txt
+            </div>
             <div ref="containerRef" class="max-w-480">
                 <p
                     ref="textRef"
