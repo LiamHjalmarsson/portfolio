@@ -15,8 +15,10 @@
                 {{ index + 1 }}
             </span>
 
-            <div class="flex flex-wrap h-14 items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
-                <span class="text-primary">commit {{ background.title }}</span>
+            <div class="flex h-14 flex-wrap items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
+                <span class="text-primary">
+                    commit {{ background.title }}
+                </span>
 
                 <span
                     v-if="index === 0"
@@ -31,15 +33,18 @@
             </div>
 
             <div class="relative flex flex-col gap-8 p-5 font-light md:p-8 lg:gap-12 lg:p-12">
-                <div class="flex max-sm:flex-col justify-between sm:items-center gap-5">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold">
+                <div class="flex justify-between gap-5 max-sm:flex-col sm:items-center">
+                    <h2 class="text-2xl font-semibold md:text-3xl lg:text-4xl 2xl:text-5xl">
                         {{ background.title }}
                     </h2>
 
-                    <p class="flex items-center gap-2 text-sm md:text-base tracking-widest text-white/80 md:text-right uppercase font-medium">
+                    <p class="flex items-center gap-2 text-sm font-medium tracking-widest text-white/80 uppercase md:text-right md:text-base">
                         <Icon
-                            :name="background.type === 'work' ? 'mdi:office-building-outline' : 'mdi:school-outline'"
+                            :name="background.type === 'work'
+                                ? 'mdi:office-building-outline'
+                                : 'mdi:school-outline'"
                             size="24"
+                            aria-hidden="true"
                         />
 
                         {{ background.company }}
@@ -52,40 +57,41 @@
 
                 <ul
                     ref="listRef"
-                    class="grid gap-3 lg:gap-6 lg:grid-cols-2 2xl:grid-cols-3"
+                    class="grid gap-3 lg:grid-cols-2 lg:gap-6 2xl:grid-cols-3"
                 >
                     <li
-                        v-for="(skill, itemIndex) in background.skills"
-                        :key="itemIndex"
+                        v-for="skill in background.skills"
+                        :key="skill.group"
                     >
                         <div class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-8">
-                            <div class="flex items-center gap-5 mb-5">
+                            <div class="mb-5 flex items-center gap-5">
                                 <span class="grid size-11 shrink-0 place-items-center rounded-xl bg-white/5 text-primary-500">
                                     <Icon
-                                        name="mdi:office-building-outline"
+                                        :name="skillGroups[skill.group as keyof typeof skillGroups].icon"
                                         size="24"
                                     />
                                 </span>
 
-                                <h3 class="text-lg md:text-xl font-semibold tracking-wide text-white">
-                                    {{ skill.title }}
+                                <h3 class="text-lg font-semibold tracking-wide text-white md:text-xl">
+                                    {{ skillGroups[skill.group as keyof typeof skillGroups].title }}
                                 </h3>
                             </div>
 
-                            <span
-                                v-if="skill.description"
-                                class="text-base leading-relaxed tracking-wide text-white/80"
-                            >
-                                {{ skill.description }}
-                            </span>
-
-                            <div class="flex flex-wrap gap-3" v-if="skill.tags">
+                            <div class="flex flex-wrap gap-2">
                                 <span
-                                    v-for="tag in skill.tags"
-                                    :key="tag"
-                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-base text-white/70 transition group-hover:border-white/20"
+                                    v-for="tech in getTechnologies(skill.technologies ?? [])"
+                                    :key="tech.id"
+                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
                                 >
-                                    {{ tag }}
+                                    {{ tech.label }}
+                                </span>
+
+                                <span
+                                    v-for="item in getSkills(skill.skills)"
+                                    :key="item.id"
+                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
+                                >
+                                    {{ item.title }}
                                 </span>
                             </div>
                         </div>
@@ -99,11 +105,12 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { gsap } from 'gsap'
+import { skillGroups } from '~/data/skillGroups'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { index, total, background } = defineProps<{
+defineProps<{
     background: Background
     index: number
     total: number

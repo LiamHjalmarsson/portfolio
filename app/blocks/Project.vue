@@ -31,7 +31,7 @@
                                 <div
                                     class="flex max-lg:space-y-3 max-md:flex-row max-lg:flex-col lg:space-x-6 max-md:space-x-6 text-md md:text-lg lg:text-xl font-semibold">
                                     <p
-                                        v-for="tech in project.tech"
+                                        v-for="tech in project.technologies"
                                         :key="tech">
                                         {{ tech }}
                                     </p>
@@ -68,11 +68,9 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { projectsData } from '~/constants/projects'
+import { projectsData } from '~/data/projects'
 
 gsap.registerPlugin(ScrollTrigger)
-
-type Project = (typeof projectsData)[number]
 
 const projectRefs = ref<HTMLDivElement[]>([])
 

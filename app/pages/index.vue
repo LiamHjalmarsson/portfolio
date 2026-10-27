@@ -11,7 +11,6 @@
         </div>
 
         <Project />
-
         <Contact />
     </div>
 </template>

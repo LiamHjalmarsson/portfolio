@@ -2,7 +2,7 @@
     <section
         id="about"
         ref="containerRef"
-        class="min-h-screen lg:px-3">
+        class="h-fit lg:px-3">
         <div class="bg-black rounded-b-4xl">
             <Header
                 subtitle="Lite mer"
@@ -16,7 +16,7 @@
                 class="flex max-md:flex-col-reverse md:items-center justify-between max-md:space-y-reverse max-md:mt-6 max-md:space-y-12 md:space-x-16 px-3 md:px-6 lg:px-12 pb-16 font-ligt tracking-wide text-white/80">
                 <TextLines :text="aboutSecondaryText" class="font-light uppercase" />
 
-                <div ref="imageRef" class="flex-1 h-140 relative overflow-hidden min-w-[325px]">
+                <div ref="imageRef" class="flex-1 h-140 relative overflow-hidden min-w-80">
                     <NuxtImg
                         src="/images/me.png"
                         format="webp"

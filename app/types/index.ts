@@ -1,3 +1,7 @@
+import type { SkillGroupId } from "~/data/skillGroups";
+import type { SkillId } from "~/data/skills";
+import type { TechnologyId } from "~/data/technologies";
+
 export interface SocialLink {
 	name: string;
 	href: string;
@@ -9,39 +13,6 @@ export interface Link {
 	to: string;
 	sectionId: string;
 };
-
-
-export type BackgroundType = 'work' | 'education'
-
-export interface BackgroundSkillGroup {
-    title: string
-    description?: string
-    tags?: string[]
-}
-
-export interface Background {
-    title: string
-    company: string
-    type: BackgroundType
-    period?: string
-    description: string
-    skills: BackgroundSkillGroup[]
-}
-
-export interface Project  {
-	id: string;
-	title: string;
-	imageSrc: string;
-	imageAlt: string;
-	description?: string;
-	tech: string[];
-	href: string;
-};
-
-export interface Service {
-    title: string
-    description: string
-}
 
 export type Size = "large" | "small";
 
@@ -68,4 +39,59 @@ export interface Button {
     variant?: ButtonVariant
     type?: ButtonType
     to?: string
+}
+
+export type Category = 'frontend' | 'backend' | 'database' | 'tool'
+
+export type BackgroundType = 'work' | 'education'
+
+export interface Technology {
+    id?: number
+    label: string
+    logo?: string
+    category: Category
+    size?: Size
+    color?: string
+}
+
+export interface Skill {
+    title: string
+    description?: string
+    technologies?: Technology[]
+}
+
+export interface SkillGroup {
+    title: string
+    icon: string
+}
+
+export interface BackgroundSkill {
+    group: SkillGroupId
+    technologies?: TechnologyId[]
+    skills: SkillId[]
+}
+
+export interface Background {
+    id: string
+    title: string
+    company: string
+    type: BackgroundType
+    description: string
+    skills: BackgroundSkill[]
+}
+
+export interface Project  {
+	id: string;
+	title: string;
+	imageSrc: string;
+	imageAlt: string;
+	description?: string;
+	href?: string;
+    technologies?: TechnologyId[]
+    skills?: SkillId[]
+};
+
+export interface Service {
+    title: string
+    description: string
 }

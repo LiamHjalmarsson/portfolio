@@ -61,8 +61,8 @@
 
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { links } from '~/constants/links'
-import { socials } from '~/constants/socials'
+import { links } from '~/data/links'
+import { socials } from '~/data/socials'
 
 const open = defineModel<boolean>('open', { default: false })
 

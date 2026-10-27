@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { StackItem } from '~/data/stack';
 
-defineProps<{stack: Stack}>();
+defineProps<{stack: StackItem}>();
 </script>
 
 <template>
@@ -14,7 +15,7 @@ defineProps<{stack: Stack}>();
 		<span
 			ref="iconWrapRef"
 			class="font-bold group-hover:text-primary transition duration-300">
-			<Icon :name="stack.logo" :size=" stack.size === 'large' ?  90 : 75" />
+			<Icon  v-if="stack.logo" :name="stack.logo" :size=" stack.size === 'large' ?  90 : 75" />
 		</span>
 
         <span class=" absolute bottom-0 left-0 px-6 py-4 text-black font-semibold text-sm group-hover:text-primary transition duration-300">

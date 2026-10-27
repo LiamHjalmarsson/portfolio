@@ -97,7 +97,7 @@
 
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { socials } from '~/constants/socials'
+import { socials } from '~/data/socials'
 
 const heroDescriptionText = `Här utforskar jag kod, design och digitala lösningar.
 Kika runt och hör av dig om du vill bygga något tillsammans,
