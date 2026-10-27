@@ -15,21 +15,23 @@
                 {{ index + 1 }}
             </span>
 
-            <div class="flex h-14 flex-wrap items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
-                <span class="text-primary">
-                    commit {{ background.title }}
+            <div class="flex h-14 flex justify-between items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
+                <span class="text-primary max-lg:hidden">
+                    commit {{ background.code }}
                 </span>
 
-                <span
-                    v-if="index === 0"
-                    class="text-terminal"
-                >
-                    (HEAD → nu)
-                </span>
+                <div>
+                    <span
+                        v-if="index === 0"
+                        class="text-green-500"
+                    >
+                        (HEAD → nu)
+                    </span>
 
-                <span class="rounded-full border border-white/15 px-2.5 py-0.5 text-white/70">
-                    {{ background.type === 'work' ? 'arbete' : 'utbildning' }}
-                </span>
+                    <span class="rounded-full border border-white/15 px-2.5 py-0.5 text-white/70">
+                        {{ background.type === 'work' ? 'Arbete' : 'utbildning' }}
+                    </span>
+                </div>
             </div>
 
             <div class="relative flex flex-col gap-8 p-5 font-light md:p-8 lg:gap-12 lg:p-12">

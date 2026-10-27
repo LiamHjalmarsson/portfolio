@@ -1,7 +1,7 @@
     export const skills = {
         api: {
             title: 'API-utveckling',
-            technologies: ['php', 'laravel'],
+            technologies: ['php', 'laravel' ,],
         },
         integrations: {
             title: 'Systemintegrationer',

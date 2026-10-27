@@ -74,6 +74,7 @@ export interface BackgroundSkill {
 export interface Background {
     id: string
     title: string
+    code: string
     company: string
     type: BackgroundType
     description: string

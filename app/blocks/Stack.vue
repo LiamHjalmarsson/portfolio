@@ -2,7 +2,7 @@
 <template>
     <section
         id="tech"
-        class="flex items-center justify-center px-3 py-16 md:px-6 md:py-24 lg:px-12 lg:py-48 2xl:py-64"
+        class="flex items-center justify-center py-16 md:py-24 xl:px-12 lg:py-48 2xl:py-64"
     >
         <div class="flex w-full flex-col items-center justify-between space-y-12 lg:px-12 2xl:space-y-24">
             <div ref="containerRef" class="max-w-480">

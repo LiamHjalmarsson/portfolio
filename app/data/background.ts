@@ -3,6 +3,7 @@ export const backgroundData: Background[] = [
     {
         id: 'karabin',
         title: 'Webbutvecklare',
+        code: "a3f9c21",
         company: 'Karabin AB',
         type: 'work',
         description:
@@ -11,12 +12,12 @@ export const backgroundData: Background[] = [
             {
                 group: 'backend',
                 technologies: ['php', 'laravel'],
-                skills: ['api', 'integrations', 'businessLogic'],
+                skills: ['api', 'integrations'],
             },
             {
                 group: 'frontend',
                 technologies: ['vue3', 'typescript', 'javascript', 'inertia', 'tailwind'],
-                skills: ['components', 'responsive'],
+                skills: [],
             },
             {
                 group: 'databases',
@@ -25,7 +26,7 @@ export const backgroundData: Background[] = [
             },
             {
                 group: 'systemDevelopment',
-                skills: ['legacy', 'upgrades', 'refactoring', 'debugging', 'maintenance'],
+                skills: ['legacy', 'refactoring', 'debugging'],
             },
             {
                 group: 'cmsWeb',
@@ -36,6 +37,7 @@ export const backgroundData: Background[] = [
     {
         id: 'timetjek',
         title: 'Fullstackutvecklare',
+        code: "7be04d1",
         company: 'Timetjek',
         type: 'work',
         description:
@@ -44,12 +46,12 @@ export const backgroundData: Background[] = [
             {
                 group: 'backend',
                 technologies: ['php', 'laravel'],
-                skills: ['api', 'businessLogic'],
+                skills: ['api'],
             },
             {
                 group: 'frontend',
-                technologies: ['vue', 'javascript', 'typescript'],
-                skills: ['components'],
+                technologies: ['vue', 'javascript', 'typescript', 'tailwind'],
+                skills: [],
             },
             {
                 group: 'databases',
@@ -65,6 +67,7 @@ export const backgroundData: Background[] = [
     {
         id: 'nifitech',
         title: 'Junior frontendutvecklare',
+        code: "c41e9a8",
         company: 'Nifitech',
         type: 'work',
         description:
@@ -73,27 +76,24 @@ export const backgroundData: Background[] = [
             {
                 group: 'frontend',
                 technologies: ['vue', 'nuxt', 'typescript', 'javascript', 'tailwind'],
-                skills: ['components', 'responsive'],
+                skills: [],
             },
             {
-                group: 'backendApi',
+                group: 'backend',
                 technologies: ['laravel'],
-                skills: ['api', 'integrations'],
+                skills: ['api'],
             },
             {
                 group: 'architecture',
                 technologies: ['pinia', 'vuex'],
                 skills: ['stateManagement', 'refactoring'],
             },
-            {
-                group: 'internationalization',
-                skills: ['internationalization'],
-            },
         ],
     },
     {
         id: 'sjöbergska',
         title: 'Praktikant inom projekt & utveckling',
+        code: "19d0f7e",
         company: 'Sjöbergska',
         type: 'work',
         description:
@@ -121,6 +121,7 @@ export const backgroundData: Background[] = [
     {
         id: 'malmo-university',
         title: 'Kandidatexamen i medieteknik',
+        code: "0e5b2c3",
         company: 'Malmö universitet',
         type: 'education',
         description:
