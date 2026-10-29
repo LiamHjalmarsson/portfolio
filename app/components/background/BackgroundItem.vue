@@ -15,7 +15,7 @@
                 {{ index + 1 }}
             </span>
 
-            <div class="flex h-14 flex justify-between items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
+            <div class="flex h-14 justify-between items-center gap-x-4 gap-y-2 border-b border-white/10 px-5 py-4 font-mono text-xs md:px-8 lg:px-12">
                 <span class="text-primary max-lg:hidden">
                     commit {{ background.code }}
                 </span>
@@ -62,38 +62,38 @@
                     class="grid gap-3 lg:grid-cols-2 lg:gap-6 2xl:grid-cols-3"
                 >
                     <li
-                        v-for="skill in background.skills"
-                        :key="skill.group"
+                        v-for="area in background.areas"
+                        :key="area.title"
                     >
                         <div class="h-full rounded-2xl border border-white/10 bg-white/3 p-6 lg:p-8">
                             <div class="mb-5 flex items-center gap-5">
                                 <span class="grid size-11 shrink-0 place-items-center rounded-xl bg-white/5 text-primary-500">
                                     <Icon
-                                        :name="skillGroups[skill.group as keyof typeof skillGroups].icon"
+                                        :name="area.icon"
                                         size="24"
                                     />
                                 </span>
 
                                 <h3 class="text-lg font-semibold tracking-wide text-white md:text-xl">
-                                    {{ skillGroups[skill.group as keyof typeof skillGroups].title }}
+                                    {{ area.title }}
                                 </h3>
                             </div>
 
                             <div class="flex flex-wrap gap-2">
                                 <span
-                                    v-for="tech in getTechnologies(skill.technologies ?? [])"
-                                    :key="tech.id"
+                                    v-for="tech in area.technologies"
+                                    :key="tech"
                                     class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
                                 >
-                                    {{ tech.label }}
+                                    {{ tech }}
                                 </span>
 
                                 <span
-                                    v-for="item in getSkills(skill.skills)"
-                                    :key="item.id"
+                                    v-for="skill in  area.skills"
+                                    :key="skill"
                                     class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
                                 >
-                                    {{ item.title }}
+                                    {{ skill }}
                                 </span>
                             </div>
                         </div>
@@ -107,13 +107,13 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { gsap } from 'gsap'
-import { skillGroups } from '~/data/skillGroups'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import type { Collections } from '@nuxt/content'
 
 gsap.registerPlugin(ScrollTrigger)
 
 defineProps<{
-    background: Background
+    background: Collections['background']
     index: number
     total: number
 }>()

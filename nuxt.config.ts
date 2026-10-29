@@ -19,6 +19,8 @@ export default defineNuxtConfig({
         'v-gsap-nuxt',
         '@tresjs/nuxt',
         'nuxt-gtag',
+        '@nuxt/content',
+        'nuxt-studio',
     ],
 
     runtimeConfig: {
@@ -106,4 +108,26 @@ export default defineNuxtConfig({
         enabled: Boolean(gtagId),
         id: gtagId ?? '',
     },
+
+    studio: {
+        route: '/admin',
+
+        repository: {
+            provider: 'github',
+            owner: 'LiamHjalmarsson',
+            repo: 'Portfolio',
+            branch: 'master',
+            private: false,
+        }
+    },
+
+    nitro: {
+        prerender: {
+            // Pre-render the homepage
+            routes: ['/'],
+            // Then crawl all the links on the page
+            crawlLinks: true
+        }
+    }
+
 })

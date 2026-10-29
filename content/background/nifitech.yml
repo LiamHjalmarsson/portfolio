@@ -1,0 +1,32 @@
+title: Junior frontendutvecklare
+code: c41e9a8
+company: Nifitech
+type: work
+order: 3
+description: Arbetade med frontendutveckling i projekt baserade på Laravel, Vue och Nuxt. Utvecklade användargränssnitt,
+  integrerade API:er och förbättrade kodstruktur och återanvändbarhet. Bidrog även till modernisering av befintliga
+  Vue-applikationer genom övergång till Composition API och Pinia samt implementation av flerspråkigt innehåll.
+areas:
+- title: Frontend
+  icon: mdi:monitor
+  technologies:
+  - vue
+  - nuxt
+  - typescript
+  - javascript
+  - tailwind
+  skills: []
+- title: Backend
+  icon: mdi:server-outline
+  technologies:
+  - laravel
+  skills:
+  - API-utveckling
+- title: Arkitektur & state management
+  icon: mdi:source-branch
+  technologies:
+  - pinia
+  - vuex
+  skills:
+  - State management
+  - Refaktorering

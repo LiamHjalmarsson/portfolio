@@ -23,7 +23,7 @@
 
             <div ref="stackRef">
                 <BackgroundItem
-                    v-for="(background, index) in backgroundData"
+                    v-for="(background, index) in data"
                     :key="`${background.company}-${index}`"
                     :background="background"
                     :index="index"
@@ -41,6 +41,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { backgroundData } from '~/data/background'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const { data } = await useAsyncData('background', () =>
+    queryCollection('background')
+        .order('order', 'ASC')
+        .all()
+)
 
 const sectionText = `Min resa inom tech började under utbildningen och har
 sedan vuxit genom projekt, teamarbete och erfarenhet.

@@ -1,0 +1,11 @@
+title: Portfolio
+description: Tidigare portfolio byggd med React och Sanity
+order: 2
+image:
+  src: /images/oldportfolio.png
+  alt: Förhandsvisning av tidigare portfolio
+href: https://oldportfolio.liamhjalmarsson.se/
+technologies:
+  - react
+  - sanity
+  - tailwind

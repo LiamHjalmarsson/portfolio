@@ -1,0 +1,31 @@
+title: Praktikant inom projekt & utveckling
+code: 19d0f7e
+company: Sjöbergska
+type: work
+order: 4
+description: Deltog i ett pro bono-projekt från planering och kravställning till design, utveckling och leverans
+  av en webbplats. Arbetade med kunddialog, behovsanalys, kravspecifikationer, prototyper och implementation
+  i Webflow. Bidrog även med dokumentation och uppdateringar av befintliga webbplatser.
+areas:
+- title: Design
+  icon: mdi:palette-outline
+  technologies: []
+  skills:
+  - UI/UX-design
+- title: Webbutveckling
+  icon: mdi:web
+  technologies:
+  - webflow
+  - drupal
+  skills:
+  - CMS-utveckling
+- title: Projektarbete
+  icon: mdi:clipboard-check-outline
+  technologies: []
+  skills:
+  - Projektarbete
+- title: Dokumentation
+  icon: mdi:file-document-outline
+  technologies: []
+  skills:
+  - Dokumentation

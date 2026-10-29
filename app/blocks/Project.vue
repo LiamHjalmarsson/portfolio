@@ -10,7 +10,7 @@
 
         <ul class="relative flex-1 lg:px-12 lg:pt-12">
             <li
-                v-for="project in projectsData"
+                v-for="project in projects"
                 :key="project.id"
                 class="group relative z-10 mx-auto max-w-400 transition duration-300 hover:bg-black hover:text-white"
                 @pointerenter="showPreview(project, $event)"
@@ -57,8 +57,8 @@
             class="invisible max-lg:hidden pointer-events-none fixed left-0 top-0 z-50 overflow-hidden rounded-3xl shadow-xl will-change-transform w-100 2xl:w-160 h-64 2xl:h-80">
             <NuxtImg
                 v-if="activeProject"
-                :src="activeProject.imageSrc"
-                :alt="activeProject.imageAlt"
+                :src="activeProject.image.src"
+                :alt="activeProject.image.alt"
                 format="webp"
                 class="h-full w-full object-cover object-center" />
         </div>
@@ -68,9 +68,12 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { projectsData } from '~/data/projects'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const { data: projects } = await useAsyncData('projects', () =>
+    queryCollection('projects').order('order', 'ASC').all()
+)
 
 const projectRefs = ref<HTMLDivElement[]>([])
 

@@ -1,0 +1,38 @@
+title: Fullstackutvecklare
+code: 7be04d1
+company: Timetjek
+type: work
+order: 2
+description: Arbetade med utveckling och vidareutveckling av ett webbaserat personalsystem för schemaläggning,
+  löneunderlag och personalhantering. Ansvarade för implementation av ny funktionalitet, systemförvaltning
+  och modernisering av plattformen genom migrering av äldre kod, databasanpassningar och förbättrad kodstruktur.
+areas:
+- title: Backend
+  icon: mdi:server-outline
+  technologies:
+  - php
+  - laravel
+  skills:
+  - API-utveckling
+- title: Frontend
+  icon: mdi:monitor
+  technologies:
+  - vue
+  - javascript
+  - typescript
+  - tailwind
+  skills: []
+- title: Databaser
+  icon: mdi:database-outline
+  technologies:
+  - sql
+  skills:
+  - Databasstruktur
+- title: Systemutveckling
+  icon: mdi:code-braces
+  technologies: []
+  skills:
+  - Legacy & modernisering
+  - Refaktorering
+  - Felsökning
+  - Systemförvaltning

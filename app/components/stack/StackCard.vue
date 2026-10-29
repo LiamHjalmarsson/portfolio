@@ -1,7 +1,10 @@
-<script setup lang="ts">
-import type { StackItem } from '~/data/stack';
 
-defineProps<{stack: StackItem}>();
+<script setup lang="ts">
+import type { Collections } from '@nuxt/content'
+
+defineProps<{
+    stack: Collections['technologies']
+}>()
 </script>
 
 <template>
@@ -15,11 +18,11 @@ defineProps<{stack: StackItem}>();
 		<span
 			ref="iconWrapRef"
 			class="font-bold group-hover:text-primary transition duration-300">
-			<Icon  v-if="stack.logo" :name="stack.logo" :size=" stack.size === 'large' ?  90 : 75" />
+			<Icon  v-if="stack.icon" :name="stack.icon" :size=" stack.size === 'large' ?  90 : 75" />
 		</span>
 
         <span class=" absolute bottom-0 left-0 px-6 py-4 text-black font-semibold text-sm group-hover:text-primary transition duration-300">
-            {{ stack.label }}
+            {{ stack.title }}
         </span>
 	</div>
 </template>

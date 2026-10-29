@@ -1,0 +1,15 @@
+title: AltMedia
+description: Webbprojekt byggt med Nuxt och Strapi
+order: 1
+
+image:
+  src: /images/altmedia.png
+  alt: Förhandsvisning av AltMedia
+
+href: https://alt-media-five.vercel.app/
+
+technologies:
+  - nuxt
+  - strapi
+  - typescript
+  - tailwind

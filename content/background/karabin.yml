@@ -1,0 +1,50 @@
+title: Webbutvecklare
+code: a3f9c21
+company: Karabin AB
+type: work
+order: 1
+description: Arbetar med utveckling, vidareutveckling och förvaltning av webbplatser och verksamhetssystem.
+  Arbetet omfattar både frontend och backend, med fokus på moderna webbtekniker, systemintegrationer och långsiktigt
+  hållbara lösningar. Arbetar även med modernisering av äldre system, CMS-utveckling samt förbättringar inom
+  tillgänglighet, SEO och prestanda.
+areas:
+- title: Backend
+  icon: mdi:server-outline
+  technologies:
+  - php
+  - laravel
+  skills:
+  - API-utveckling
+  - Systemintegrationer
+- title: Frontend
+  icon: mdi:monitor
+  technologies:
+  - vue3
+  - typescript
+  - javascript
+  - inertia
+  - tailwind
+  skills: []
+- title: Databaser
+  icon: mdi:database-outline
+  technologies:
+  - sql
+  - tsql
+  skills:
+  - Databasstruktur
+  - Stored procedures
+- title: Systemutveckling
+  icon: mdi:code-braces
+  technologies: []
+  skills:
+  - Legacy & modernisering
+  - Refaktorering
+  - Felsökning
+- title: CMS & webb
+  icon: mdi:web
+  technologies: []
+  skills:
+  - CMS-utveckling
+  - Tillgänglighet & WCAG
+  - SEO
+  - Webbprestanda

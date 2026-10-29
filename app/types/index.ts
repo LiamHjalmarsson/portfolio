@@ -1,6 +1,7 @@
 import type { SkillGroupId } from "~/data/skillGroups";
 import type { SkillId } from "~/data/skills";
 import type { TechnologyId } from "~/data/technologies";
+import type { Collections } from '@nuxt/content'
 
 export interface SocialLink {
 	name: string;
@@ -81,16 +82,7 @@ export interface Background {
     skills: BackgroundSkill[]
 }
 
-export interface Project  {
-	id: string;
-	title: string;
-	imageSrc: string;
-	imageAlt: string;
-	description?: string;
-	href?: string;
-    technologies?: TechnologyId[]
-    skills?: SkillId[]
-};
+export type Project = Collections['projects']
 
 export interface Service {
     title: string

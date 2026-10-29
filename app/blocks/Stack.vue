@@ -18,7 +18,7 @@
                 <div class="grid grid-cols-12">
                     <StackCard
                         v-for="item in orderedItems"
-                        :key="item.key"
+                        :key="item.id"
                         :stack="item"
                     />
                 </div>
@@ -31,23 +31,25 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { stackItems, type StackItem } from '~/data/stack'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const props = defineProps<{
-    items?: StackItem[]
-}>()
+const { data: technologies } = await useAsyncData('technologies', () =>
+    queryCollection('technologies')
+        .where('featured', '=', true)
+        .order('order', 'ASC')
+        .all()
+)
 
 const text =
     'Genom arbete med både kod och design har jag utvecklat ett helhetsperspektiv på digitala produkter. Det har jag med mig när jag bygger och tänker.'
 
 const orderedItems = computed(() => {
-    const resolvedItems = props.items?.length ? props.items : stackItems
+    const items = technologies.value ?? []
 
     return [
-        ...resolvedItems.filter(item => item.size === 'large'),
-        ...resolvedItems.filter(item => item.size === 'small'),
+        ...items.filter(item => item.size === 'large'),
+        ...items.filter(item => item.size === 'small'),
     ]
 })
 

@@ -1,0 +1,46 @@
+title: Kandidatexamen i medieteknik
+code: 0e5b2c3
+company: Malmö universitet
+type: education
+order: 5
+description: Tvärvetenskaplig universitetsutbildning med fokus på teknik, design och digitala medier. Arbetade
+  genom hela utvecklingsprocessen, från idé och kravanalys till design, programmering, testning och presentation.
+  Utbildningen gav en bred förståelse för samspelet mellan teknik, användare och verksamhet.
+areas:
+- title: Programmering & webbutveckling
+  icon: mdi:code-tags
+  technologies:
+  - html
+  - css
+  - javascript
+  - csharp
+  - php
+  skills:
+  - Komponentbaserad utveckling
+- title: Backend & databaser
+  icon: mdi:database-outline
+  technologies:
+  - sql
+  skills:
+  - Databasstruktur
+  - API-utveckling
+- title: UX & UI-design
+  icon: mdi:vector-square
+  technologies: []
+  skills:
+  - UI/UX-design
+- title: Projektledning
+  icon: mdi:account-group-outline
+  technologies: []
+  skills:
+  - Projektarbete
+- title: Affär & strategi
+  icon: mdi:chart-line
+  technologies: []
+  skills:
+  - Digital marknadsföring
+- title: Forskning & examensarbete
+  icon: mdi:school-outline
+  technologies: []
+  skills:
+  - Forskning & analys
