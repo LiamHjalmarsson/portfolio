@@ -24,10 +24,10 @@
             <div ref="stackRef">
                 <BackgroundItem
                     v-for="(background, index) in data"
-                    :key="`${background.company}-${index}`"
+                    :key="`${background.id}-${index}`"
                     :background="background"
                     :index="index"
-                    :total="backgroundData.length"
+                    :total="data?.length ?? 0"
                     :is-first-item="index === 0"
                 />
             </div>
@@ -38,7 +38,6 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { backgroundData } from '~/data/background'
 
 gsap.registerPlugin(ScrollTrigger)
 
