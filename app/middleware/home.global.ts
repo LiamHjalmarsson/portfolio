@@ -1,7 +1,0 @@
-import { defineNuxtRouteMiddleware, navigateTo } from "#app";
-
-export default defineNuxtRouteMiddleware((to) => {
-	if (to.path !== "/") {
-		return navigateTo("/");
-	}
-});

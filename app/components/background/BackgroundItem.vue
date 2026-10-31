@@ -83,7 +83,7 @@
                                 <span
                                     v-for="tech in area.technologies"
                                     :key="tech"
-                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
+                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-xs capitalize text-white/70"
                                 >
                                     {{ tech }}
                                 </span>
@@ -91,7 +91,7 @@
                                 <span
                                     v-for="skill in  area.skills"
                                     :key="skill"
-                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-sm text-white/70"
+                                    class="rounded-full border border-white/10 px-3 py-1 font-mono text-xs capitalize text-white/70"
                                 >
                                     {{ skill }}
                                 </span>
