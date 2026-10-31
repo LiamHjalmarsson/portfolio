@@ -26,7 +26,7 @@
         >
             <div class="font-light">
                 <p class="tracking-wider text-white/50">
-                    Email
+                    E-post
                 </p>
 
                 <NuxtLink
@@ -39,7 +39,7 @@
 
             <div class="font-light">
                 <p class="tracking-wider text-white/50">
-                    Social Media
+                    Sociala medier
                 </p>
 
                 <div class="flex flex-col md:flex-row md:space-x-2 max-md:space-y-2">

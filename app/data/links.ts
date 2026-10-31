@@ -10,7 +10,7 @@ export const links: Link[] = [
 		sectionId: "tech",
 	},
 	{
-		name: "Backgrund",
+		name: "Bakgrund",
 		to: "/background",
 		sectionId: "background",
 	},
