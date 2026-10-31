@@ -83,7 +83,7 @@
 
         <Header
             title="Liam Hjalmarsson"
-            subtitle="Fullstack"
+            subtitle="~/Fullstackutvecklare - Skåne"
             theme="dark"
             :with-scroll-trigger="false"
         >

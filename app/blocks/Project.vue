@@ -4,7 +4,7 @@
         class="relative flex flex-col justify-between py-16 md:py-24 lg:py-48">
         <Header
             title="Projekt"
-            subtitle="Några projekt"
+            subtitle="~/några-projekt"
             theme="dark"
             :with-scroll-trigger="true" />
 

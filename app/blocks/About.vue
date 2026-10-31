@@ -5,7 +5,7 @@
         class="h-fit lg:px-3">
         <div class="bg-black rounded-b-4xl">
             <Header
-                subtitle="Lite mer"
+                subtitle="~/mer-om-mig"
                 title="Om mig"
                 theme="light"
                 :with-scroll-trigger="true">
@@ -42,7 +42,7 @@ const aboutSecondaryText = `För mig handlar mycket om att vara närvarande i de
 Att lyssna, justera och låta erfarenhet forma nästa steg,
 snarare än att skynda vidare.`
 
-const sectionRootRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
 
 const imageRef = ref<HTMLDivElement | null>(null)
 
@@ -53,21 +53,21 @@ let imageAnimation: GSAPTimeline
 onMounted(() => {
     scaleAnimation = gsap.timeline({
         scrollTrigger: {
-            trigger: sectionRootRef.value,
-            start: 'bottom 70%',
+            trigger: containerRef.value,
+            start: 'bottom 65%',
             end: 'bottom 10%',
             scrub: true,
         },
     })
 
-    scaleAnimation.to(sectionRootRef.value, {
+    scaleAnimation.to(containerRef.value, {
         scale: 0.85,
         ease: 'power1.inOut',
     })
 
     imageAnimation = gsap.timeline({
         scrollTrigger: {
-            trigger: sectionRootRef.value,
+            trigger: containerRef.value,
             start: 'top 45%',
             toggleActions: 'play none none none',
         },

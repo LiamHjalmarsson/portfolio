@@ -118,35 +118,37 @@ defineProps<{
     total: number
 }>()
 
-const listRefs = ref<HTMLUListElement[]>([])
+const listRef = ref<HTMLUListElement | null>(null)
 
-let animations: GSAPTimeline[] = []
+let animation: GSAPTimeline
 
 onMounted(() => {
-    animations = listRefs.value.map((list) => {
-        const animation = gsap.timeline({
-            scrollTrigger: {
-                trigger: list,
-                start: 'top 85%',
-            },
-        })
+    const list = listRef.value
 
-        animation.fromTo(list.children, {
-            autoAlpha: 0,
-            y: 120,
-        }, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out',
-            stagger: 0.12,
-        })
+    if (!list) {
+        return
+    }
 
-        return animation
+    animation = gsap.timeline({
+        scrollTrigger: {
+            trigger: list,
+            start: 'top 85%',
+        },
+    })
+
+    animation.fromTo(list.children, {
+        autoAlpha: 0,
+        y: 120,
+    }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.12,
     })
 })
 
 onBeforeUnmount(() => {
-    animations.forEach(animation => animation.kill())
+    animation?.kill()
 })
 </script>

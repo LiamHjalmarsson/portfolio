@@ -12,7 +12,7 @@
                     <TextLines
                         :text="sectionText"
                         class="font-light uppercase"
-                        />
+                    />
                 </Header>
 
 

@@ -1,8 +1,8 @@
 <template>
     <footer id="contact" className="flex flex-col justify-between min-h-screen bg-black py-16">
         <Header
-            title="Kontakta mig"
-            subtitle="Ide, frågor eller bara säga hej"
+            title="Ide, frågor eller bara säga hej"
+            subtitle="~/kontakta-mig"
             theme="light"
             :with-scroll-trigger="true">
             <TextLines :text="text" class="font-light uppercase" />
