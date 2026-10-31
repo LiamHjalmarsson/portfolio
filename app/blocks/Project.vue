@@ -12,7 +12,7 @@
             <li
                 v-for="project in projects"
                 :key="project.id"
-                class="group relative z-10 mx-auto max-w-400 transition duration-300 hover:bg-black hover:text-white"
+                class="group relative z-10 mx-auto max-w-400 transition duration-300 lg:hover:bg-black lg:hover:text-white"
                 @pointerenter="showPreview(project, $event)"
                 @pointermove="movePreview"
                 @pointerleave="hidePreview">
@@ -40,8 +40,8 @@
 
                             <div class="lg:hidden">
                                 <NuxtImg
-                                    :src="project.imageSrc"
-                                    :alt="project.imageAlt"
+                                    :src="project.image.src"
+                                    :alt="project.image.alt"
                                     class="object-cover object-center rounded-2xl"
                                     format="webp"
                                     loading="lazy" />

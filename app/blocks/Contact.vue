@@ -1,5 +1,5 @@
 <template>
-    <section id="contact" className="flex flex-col justify-between min-h-screen bg-black pb-16">
+    <footer id="contact" className="flex flex-col justify-between min-h-screen bg-black py-16">
         <Header
             title="Kontakta mig"
             subtitle="Ide, frågor eller bara säga hej"
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 </template>
 
 <script lang="ts" setup>

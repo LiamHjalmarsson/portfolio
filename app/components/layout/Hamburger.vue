@@ -8,7 +8,7 @@
         class="fixed z-50 flex flex-col items-center justify-center space-y-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:h-20 md:w-20 top-4 right-10"
         @click="toggleMenu"
     >
-        <span class="relative block w-9 h-7 overflow-hidden" aria-hidden="true">
+        <span class="relative block w-7 md:w-9 h-5 md:h-7 overflow-hidden" aria-hidden="true">
             <span
                 ref="topRef"
                 class=" absolute w-full bg-white h-0.5 left-0 top-0"
